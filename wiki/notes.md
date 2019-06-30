@@ -24,7 +24,8 @@ end
 
 ### Do I need a shopping cart table?
 I'm literally just tracking user_id in it.  
-BUT shopping_cart lets me just delete the shopping cart and start fresh, instead of going through the joins table
+BUT shopping_cart lets me just delete the shopping cart and start fresh, instead
+ of going through the joins table and removing items 
 
 .
 
@@ -46,7 +47,7 @@ Does this work?  How would I differentiate between the two
  look identical.
 
 *current design in backend_routes*
-:`/books/:categoryId/books`
+:`api/books/:categoryId/books`
 
 .
 

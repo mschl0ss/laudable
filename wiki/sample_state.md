@@ -1,4 +1,4 @@
-// ```javascript
+```javascript
 {
     entities: {
         users: {
@@ -45,6 +45,7 @@
                 title: 'Name of the Wind',
                 authorId: 1,
                 narratorId: 2,
+                categoryId: 1,
                 publisherSummary: 'Lorem ipsum dolor sit amet',
                 releaseDate: '1/1/2000',
                 lengthInMinutes: 500,
@@ -57,6 +58,7 @@
                 title: 'Swamp Thing',
                 authorId: 3,
                 narratorId: 4,
+                categoryId: 2,
                 publisherSummary: 'Lorem ipsum dolor sit amet',
                 releaseDate: '1/1/1980',
                 lengthInMinutes: 300,
@@ -122,41 +124,25 @@
                 userId: 5
             },
         },
-        booksInUserLibrary: {
+        booksInUserCollection: {
             1: {
                 id: 1,
                 userId: 1,
-                bookId: 1
-            }
+                bookId: 1,
+                collectionType: 'library'
+            },
             2: {
                 id: 2,
                 userId: 3,
-                bookId: 2
-            }
-        },
-        booksInUserWishlist: {
-            1: {
-                id: 1,
+                bookId: 2,
+                collectionType: 'library'
+            },
+            3: {
+                id: 3,
                 userId: 1,
-                bookId: 3
+                bookId: 2,
+                collectionType: 'wishlist'
             }
-            2: {
-                id: 2,
-                userId: 2,
-                bookId: 5
-            }
-        },
-        bookCategories: {
-            1: {
-                id: 1,
-                bookId: 1,
-                categoryId: 1
-            },
-            2: {
-                id: 2,
-                bookOd: 2,
-                categoryId: 2
-            },
         },
         shoppingCartBooks: {
             1: {
@@ -179,4 +165,4 @@
     },
     session: { currentUserId: 897 }
 }
-// ```
+```

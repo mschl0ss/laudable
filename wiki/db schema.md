@@ -11,9 +11,7 @@
 [shopping_cart](https://github.com/mschl0ss/laudable/wiki/DB-Schema#shopping_cart)
 
 #### Joins Tables:
- [books_in_user_library](https://github.com/mschl0ss/laudable/wiki/DB-Schema#books_in_user_library) .
- [books_in_user_wishlist](https://github.com/mschl0ss/laudable/wiki/DB-Schema#books_in_user_wishlist) . 
- [book_categories](https://github.com/mschl0ss/laudable/wiki/DB-Schema#book_categories) .
+ [books_in_user_collection](https://github.com/mschl0ss/laudable/wiki/DB-Schema#books_in_user_collection) .
  [shopping_cart_books](https://github.com/mschl0ss/laudable/wiki/DB-Schema#shopping_cart_books)
 
 
@@ -63,6 +61,7 @@ includes both authors and narrators
 |`Title`|string|not null, indexed, unique|
 |`author_id`|integer|not null, indexed|
 |`narrator_id`|integer|not null, indexed|
+|`category_id`|integer|not null, indexed|
 |`publisher_summary`|text|not null
 |`release_date`|datetime|not null|
 |`length_in_minutes`|integer|not null|
@@ -71,7 +70,7 @@ includes both authors and narrators
 |`created_at`|datetime|not null|
 |`updated_at`|datetime|not null|
 
-* indices on `title`, `author_id` & `narrator_id`, unique: true
+* indices on `title`, `author_id`, `narrator_id`, `category_id`, unique: true
 * both author and narrator are from `content_creators`
 
 .
@@ -91,8 +90,7 @@ includes both authors and narrators
 .
 
 ## `reviews`
-review types are limited to 3 types by model validation
-    ['editor', 'critic', 'user']
+review types are limited to **'editor'**, **'critic'**, or **'user'**
 
 |column|datatype|details|
 |---|---|---|
@@ -110,11 +108,12 @@ review types are limited to 3 types by model validation
 |`updated_at`|datetime|not null|
 
  * indices on `book_id`, `user_id`, `rating_overall`, unique: true
- * indices on `review_type_id`, `helpful_score`
+ * indices on `review_type`, `helpful_score`
 
 .
 
 ## `shopping_cart`
+
 |column|datatype|details|
 |---|---|---|
 |`id`|integer|not null, primary key|
@@ -126,48 +125,21 @@ review types are limited to 3 types by model validation
 
 .
 
-## `books_in_user_library`
+## `books_in_user_collection`
 joins table (users, books)
+
+`collection_type` is either **'library'** or **'wishlist'**
 
 |column|datatype|details|
 |---|---|---|
 |`id`|integer|not null, primary key|
 |`user_id`|integer|not null, indexed|
 |`book_id`|integer|not null, indexed|
+|`collection_type`|string|not null|
 |`created_at`|datetime|not null|
 |`updated_at`|datetime|not null|
 
 * indices on `user_id` & `book_id`
-
-.
-
-## `books_in_user_wishlist`
-joins table (users, books)
-
-|column|datatype|details|
-|---|---|---|
-|`id`|integer|not null, primary key|
-|`user_id`|integer|not null, indexed|
-|`book_id`|integer|not null, indexed|
-|`created_at`|datetime|not null|
-|`updated_at`|datetime|not null|
-
-* indices on `user_id` & `book_id`
-
-.
-
-## `book_categories`
-joins table (books, category)
-
-|column|datatype|details|
-|---|---|---|
-|`id`|integer|not null, primary key|
-|`book_id`|integer|not null, indexed|
-|`category_id`|integer|not null, indexed|
-|`created_at`|datetime|not null|
-|`updated_at`|datetime|not null|
-
-* indices on `category_id` & `book_id`
 
 .
 
