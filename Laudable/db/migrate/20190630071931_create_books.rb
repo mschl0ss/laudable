@@ -15,5 +15,6 @@ class CreateBooks < ActiveRecord::Migration[5.2]
 
     add_index :books, :author_id
     add_index :books, :narrator_id
+    add_index :books, :category_id
   end
 end

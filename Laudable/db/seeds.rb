@@ -9,8 +9,9 @@
 require 'faker'
 
 #USERS
+user_count = 30
 
-30.times do
+user_count.times do
     name = Faker::Name.unique.name
     User.create(
         username: name, 
@@ -22,26 +23,9 @@ require 'faker'
 end
 
 #CONTENT CREATORS
-100.times {ContentCreator.create(name: Faker::Book.author)}
+cc_count = 100
+cc_count.times {ContentCreator.create(name: Faker::Book.author)}
 
-#BOOKS
-(1..50).each do |i|
-    pub_sum = Faker::Movies::PrincessBride.quote + " | "
-    pub_sum += Faker::Movies::Lebowski.quote + " | "
-    pub_sum += Faker::Movies::VForVendetta.quote
-    
-    Book.create( 
-        title: Faker::Book.unique.title,
-        author_id: i,
-        narrator_id: i+1,
-        publisher_summary: pub_sum,
-        release_date: Date.today - rand(10000),
-        length_in_minutes: rand(120...300),
-        price_in_cents: rand(500...2000),
-        language: i % 3 === 0 ? 'Spanish' : 'English'
-    )
-
-end
 
 #CATEGORIES (30 total)
 (1..10).each do |i|
@@ -64,8 +48,33 @@ end
     )
 end
 
+#BOOKS
+book_count = 100
+
+(1..book_count).each do |i|
+    pub_sum = Faker::Movies::PrincessBride.quote + " | "
+    pub_sum += Faker::Movies::Lebowski.quote + " | "
+    pub_sum += Faker::Movies::VForVendetta.quote
+    
+    Book.create( 
+        title: Faker::Book.unique.title,
+        author_id: i % 100,
+        narrator_id: i+1 % 100,
+        category_id: i % 30,
+        publisher_summary: pub_sum,
+        release_date: Date.today - rand(10000),
+        length_in_minutes: rand(120...300),
+        price_in_cents: rand(500...2000),
+        language: i % 3 === 0 ? 'Spanish' : 'English'
+    )
+
+end
+
+
 #REVIEWS
-(1..200).each do |i|
+review_count = 200
+
+(1..review_count).each do |i|
     i % 20 ? 'critic' : 'user'
     Review.create(
         title: Faker::Quotes::Shakespeare.hamlet_quote,
@@ -81,28 +90,20 @@ end
 end
 
 #SHOPPING CART
-(1..30).each do |user_id|
+cart_count = user_count
+
+(1..cart_count).each do |user_id|
     ShoppingCart.create( user_id: user_id)
 end
 
-#BOOK CATEGORIES
-category_ids = (1..30).to_a.shuffle
-
-(1..50).each do |i|
-    BookCategory.create(
-         book_id: i,
-         category_id: category_ids[i%30] )
-end
-
-
 #SHOPPING CART BOOKS
+books_in_cart_count = 300
+book_ids = (1..book_count).to_a.shuffle
+cart_ids = (1..cart_count).to_a.shuffle
 
-cart_ids = (1..30).to_a.shuffle
-book_ids = (1..50).to_a.shuffle
-
-(1..300).each do |i|
-    cart = i % 30
-    book = i % 50
+(1..books_in_cart_count).each do |i|
+    cart = i % cart_count
+    book = i % book_count
     ShoppingCartBook.create(
         shopping_cart_id: cart,
         book_id: book
@@ -110,20 +111,12 @@ book_ids = (1..50).to_a.shuffle
 
 end
 
-#BOOKS IN USER WISHLIST (30 users, 50 books)
-
-(1...200).each do |i|
-    BookInUserWishList.create(
-        user_id: i % 30,
-        book_id: i % 50
-    )
-end
-
-#BOOKS IN USER LIBRARY (30 users, 50 books)
-
-(1...300).each do |i|
-    BookInUserLibrary.create(
-        user_id: i % 30,
-        book_id: i % 50
+#BOOKS IN USER COLLECTION 
+books_in_collection_count = 200
+(1..books_in_collection_count).each do |i|
+    BookInUserCollection.create(
+        user_id: i % user_count,
+        book_id: i % book_count,
+        collection_type: i % 4 == 0 ? 'wishlist' : 'library'
     )
 end
