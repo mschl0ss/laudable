@@ -1,11 +1,7 @@
 
 ## Stuff I dont know (not an exhaustive list)
 
-### User has_many :library_books ...how to filter for just library not wishlist
 
-### Right now a ContentCreator could be both a narrator and an author.  That's maybe not good?
-
-.
 
 ### Composite keys
 Eg in `books_in_user_library` the combination of book and user should be unique.
@@ -23,12 +19,6 @@ end
 I'm literally just tracking user_id in it.  
 BUT shopping_cart lets me just delete the shopping cart and start fresh, instead
  of going through the joins table and removing items 
-
-.
-
-### Categories, their parents and their children
-Anything wrong with loading all descendants into state when I grab a category?
-Should I just load all categories into state from the get go or actually grab as needed?
 
 .
 
@@ -54,27 +44,8 @@ What ajax calls?
 
 .
 
-### How much home page stuff to do?
-
-.
-
-### When to implement footer?
-
-.
-
-### ActiveStorage
-Since it's part of my bonus MVPs, how much do I need to engage with it?
-How do I get images for books?
-
-.
-
 ### Selecting books by criteria logic: Selectors in Frontend or Customize JSON views?
 maybe do in a selector?  maybe easier to do in backend because I'll have access to rails methods?
-
-.
-
-### shopping cart implementation?
-Can we walk through the high level strategy?
 
 .
 

@@ -8,7 +8,7 @@ Laudable is an Audible clone created by Marc Schlossberg.  It replicates the cor
 ### Design Docs
 
 * [MVP List](https://github.com/mschl0ss/laudable/wiki/mvp-list)
-* [DB Schema](https://github.com/mschl0ss/laudable/wiki/DB-Schema)
+* [Schema](https://github.com/mschl0ss/laudable/wiki/schema)
 * [Sample State](https://github.com/mschl0ss/laudable/wiki/sample-state)
 * [Frontend Routes](https://github.com/mschl0ss/laudable/wiki/frontend-routes)
 * [Backend Routes](https://github.com/mschl0ss/laudable/wiki/backend-routes)
@@ -17,5 +17,6 @@ Laudable is an Audible clone created by Marc Schlossberg.  It replicates the cor
 
 ### Workflow
 
-* [Notes](https://github.com/mschl0ss/laudable/wiki/notes)
-* [Strategies](https://github.com/mschl0ss/laudable/wiki/strategies)
+* [Notes](https://github.com/mschl0ss/laudable/wiki/workflow-%7C--notes)
+* [Strategies](https://github.com/mschl0ss/laudable/wiki/workflow-%7C-strategies)
+* [PA Meeting 1](https://github.com/mschl0ss/laudable/wiki/workflow-%7C-pa-meeting-1)
