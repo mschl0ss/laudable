@@ -1,12 +1,9 @@
 
 ## Stuff I dont know (not an exhaustive list)
 
+### User has_many :library_books ...how to filter for just library not wishlist
+
 ### Right now a ContentCreator could be both a narrator and an author.  That's maybe not good?
-
-.
-
-### Probably don't need a joings table for books/categories
-Each book only has one category
 
 .
 
