@@ -1,0 +1,2 @@
+class BookInUserWishList < ApplicationRecord
+end

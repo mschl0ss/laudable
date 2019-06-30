@@ -1,6 +1,31 @@
 
 ## Stuff I dont know (not an exhaustive list)
 
+### Right now a ContentCreator could be both a narrator and an author.  That's maybe not good?
+
+.
+
+### Probably don't need a joings table for books/categories
+Each book only has one category
+
+.
+
+### Composite keys
+Eg in `books_in_user_library` the combination of book and user should be unique.
+Should I enforce at db level, model level, or later?
+
+from [Rails Docs](https://guides.rubyonrails.org/active_record_validations.html#uniqueness)
+```ruby
+class Holiday < ApplicationRecord
+  validates :name, uniqueness: { scope: :year,
+    message: "should happen once per year" }
+end
+```
+
+### Do I need a shopping cart table?
+I'm literally just tracking user_id in it.  
+BUT shopping_cart lets me just delete the shopping cart and start fresh, instead of going through the joins table
+
 .
 
 ### Categories, their parents and their children

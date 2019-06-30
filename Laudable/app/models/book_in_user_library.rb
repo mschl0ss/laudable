@@ -1,0 +1,2 @@
+class BookInUserLibrary < ApplicationRecord
+end
