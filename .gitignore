@@ -20,7 +20,6 @@ Laudable/tmp/*
 Laudable/storage/*
 !Laudable/storage/.keep
 
-Laudable/node_modules
 Laudable/yarn-error.log
 
 Laudable/public/assets
@@ -28,3 +27,11 @@ Laudable/.byebug_history
 
 # Ignore master key for decrypting credentials and more.
 Laudable/config/master.key
+
+# Ignore stupid stuff
+Laudable/node_modules/
+Laudable/bundle.js
+Laudable/bundle.js.map
+Laudable/.byebug_history
+Laudable/.DS_Store
+Laudable/npm-debug.log
