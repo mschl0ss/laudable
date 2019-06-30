@@ -1,6 +1,6 @@
 ## HTML
 
-* `GET / StaticPagesController#root`
+* `GET /StaticPagesController#root`
 
 .
 
@@ -10,11 +10,16 @@
 
 ### `users`
 
-* `GET /api/user/:userId` - get user demographic info
-* `POST /api/users` - sign up
-* `GET /api/users/:userId/shoppingCart/` - returns shopping cart
-* `POST /api/users/:userId/shoppingCart/` - create a new shopping cart
-* `PATCH /api/users/:userId/shoppingCart/` - updates user's shopping cart
+* `GET    /api/user/:userId` - get user demographic info
+* `POST   /api/users` - sign up
+* `GET    /api/users/:userId/library` - returns books in user's library
+* `POST   /api/users/:userId/library/:bookId` - adds a book to user's library
+* `GET    /api/users/:userId/wishlist` - returns books in user's wishlist
+* `POST   /api/users/:userId/wishlist/:bookId` - adds a book to user's wishlist
+* `DELETE /api/users/:userId/wishlist/:bookId` - removes a book from user's wishlist
+* `GET    /api/users/:userId/shoppingCart/` - returns shopping cart
+* `POST   /api/users/:userId/shoppingCart/` - create a new shopping cart
+* `PATCH  /api/users/:userId/shoppingCart/` - updates user's shopping cart
 * `DELETE /api/users/:userId/shoppingCart/` - delete's user's shopping cart
 
 .

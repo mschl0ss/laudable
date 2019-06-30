@@ -27,9 +27,12 @@
     * `BookShow`
         * `BookSlideShowItem`
         * `CommentItem`
-* `/users/:userId/books`
-    * `UserLibraryIndex`
-        * `UserLibraryIndexItem`
+* `/users/:userId/library`
+    * `UserCatalogIndex`
+        * `UserCatalogIndexItem`
+* `/users/:userId/wishlist`
+    * `UserCatalogIndex`
+        * `UserCatalogIndexItem`
 * `/users/:userId/shoppingCart`
     * `ShoppingCart`
 
