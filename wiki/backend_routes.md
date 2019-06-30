@@ -10,7 +10,7 @@
 
 ### `users`
 
-* `GET    /api/user/:userId` - get user demographic info
+* `GET    /api/users/:userId` - get user demographic info
 * `POST   /api/users` - sign up
 * `GET    /api/users/:userId/library` - returns books in user's library 
 

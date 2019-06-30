@@ -1,18 +1,18 @@
 #### Users: 
- [users](https://github.com/mschl0ss/laudable/wiki/DB-Schema#users) .
- [content_creators](https://github.com/mschl0ss/laudable/wiki/DB-Schema#content_creators)
+ [users](https://github.com/mschl0ss/laudable/wiki/schema#users) .
+ [content_creators](https://github.com/mschl0ss/laudable/wiki/schema#content_creators)
 
 #### Books:
- [books](https://github.com/mschl0ss/laudable/wiki/DB-Schema#books) .
- [categories](https://github.com/mschl0ss/laudable/wiki/DB-Schema#categories) .
- [reviews](https://github.com/mschl0ss/laudable/wiki/DB-Schema#reviews)
+ [books](https://github.com/mschl0ss/laudable/wiki/schema#books) .
+ [categories](https://github.com/mschl0ss/laudable/wiki/schema#categories) .
+ [reviews](https://github.com/mschl0ss/laudable/wiki/schema#reviews)
 
 #### Shopping Cart:
-[shopping_cart](https://github.com/mschl0ss/laudable/wiki/DB-Schema#shopping_cart)
+[shopping_cart](https://github.com/mschl0ss/laudable/wiki/schema#shopping_cart)
 
 #### Joins Tables:
- [books_in_user_collection](https://github.com/mschl0ss/laudable/wiki/DB-Schema#books_in_user_collection) .
- [shopping_cart_books](https://github.com/mschl0ss/laudable/wiki/DB-Schema#shopping_cart_books)
+ [books_in_user_collection](https://github.com/mschl0ss/laudable/wiki/schema#books_in_user_collection) .
+ [shopping_cart_books](https://github.com/mschl0ss/laudable/wiki/schema#shopping_cart_books)
 
 
 .

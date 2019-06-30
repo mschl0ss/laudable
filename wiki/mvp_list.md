@@ -6,9 +6,8 @@ Laudable, an Audible clone, is an audiobook store and library that allows users
 
  ## Prework
  ### 6 / 30 / 2019 :: Sunday :: 1 day
-  * Prepare seed data
-
-.
+* Prepare seed data (COMPLETED)
+* Finish migrations & models. `rails db:setup` should generate a robust (but probably not finished) schema populated with data (COMPLETED)
 
 .
 
@@ -23,11 +22,18 @@ Laudable, an Audible clone, is an audiobook store and library that allows users
 
 ## 2. User sign up and sign in.  Demo user sign in.
 ### 7 / 03 / 2019 :: Wednesday :: 2 days
+* API JSON routes work. 'GET' requests show in browser, 'POST' works in postman
+    * USER SHOW - api/user/:userId (COMPLETED)
+    * USER CREATE - api/users (COMPLETED)
+    * SESSION CREATE - /session (COMPLETED)
+    * SESSION DELETE - api/session
 * User is greeted by not logged in splash page
-* Users can sign up, sign in, and log out
+* Users can sign up, log in, and log out
 * Users can use a demo login to try out the site
+* Error messages display on failed sign up or log in
 * Users can't use certain features without logging in
-    Adding reviews, personal library, shopping cart all require log in
+
+    *Adding reviews, personal library, shopping cart all require log in*
 
 .
 
