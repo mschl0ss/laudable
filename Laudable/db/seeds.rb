@@ -8,15 +8,20 @@
 
 require 'faker'
 
+### A note about faker and the 'unique' method.  The Faker categories are actually
+### not too deep.  So if you see something like 'max retries exceeded' it's 
+### because the category is all out of unique entries.  To solve this,
+### I either concatenated multiple non-unique Faker generated things, and/or
+### included a random number somewhere in the mix
+
 #USERS
 user_count = 30
 
 user_count.times do
-    name = Faker::Name.unique.name
     User.create(
-        username: name, 
+        username: Faker::Name.unique.name, 
         password: Faker::Internet.password(7),
-        email: Faker::Internet.email(name),
+        email: Faker::Internet.email(:username),
         city: Faker::Address.city,
         state: Faker::Address.state
         )
@@ -28,21 +33,28 @@ cc_count.times {ContentCreator.create(name: Faker::Book.author)}
 
 
 #CATEGORIES (30 total)
-(1..10).each do |i|
+#In order to have existing category ids to assign to parent id
+#Loop through 3 times, each for 1/3 the total amount of desired categories
+#the whole ().ceil business is essentially .to_i but rounding up
+
+category_count = 30
+category_loop_count = (category_count * 0.333333333).ceil
+
+(1..category_loop_count).each do |i|
     Category.create!(
         parent_category_id: nil,
         category_name: Faker::Book.unique.genre,
     )
 end
 
-(1..10).each do |i|
-    Category.create(
+(1..category_loop_count).each do |i|
+    Category.create!(
         parent_category_id: i,
         category_name: Faker::Book.unique.genre,
     )
 end
-(11..20).each do |i|
-    Category.create(
+(category_loop_count+1..category_loop_count*2).each do |i|
+    Category.create!(
         parent_category_id: i,
         category_name: Faker::Book.unique.genre,
     )
@@ -58,9 +70,9 @@ book_count = 100
     
     Book.create!( 
         title: Faker::Book.unique.title,
-        author_id: i % 100 == 0 ? 1 : i % 100,
-        narrator_id: i+1 > 100 ? 100 : i+1,
-        category_id: i % 30 == 0 ? 1 : i % 30,
+        author_id: i % cc_count == 0 ? 1 : i % cc_count,
+        narrator_id: i+1 > cc_count ? cc_count : i+1,
+        category_id: i % category_count == 0 ? 1 : i % category_count,
         publisher_summary: pub_sum,
         release_date: Date.today - rand(10000),
         length_in_minutes: rand(120...300),
@@ -72,16 +84,22 @@ end
 
 
 #REVIEWS
-review_count = 200
+review_count = 500
 
 (1..review_count).each do |i|
-    i % 20 ? 'critic' : 'user'
+
+    body = rand(1..review_count*100).to_s + " | " 
+    body += Faker::Quotes::Shakespeare.romeo_and_juliet_quote + " | "
+    body += Faker::Quotes::Shakespeare.romeo_and_juliet_quote + " | " 
+    body += Faker::Quotes::Shakespeare.romeo_and_juliet_quote
+    
+    review_type = i % 20 == 0 ? 'critic' : i % 30 == 0 ? 'editor' : 'user'
     Review.create!(
-        title: rand(1..20000).to_s + " | " + Faker::Cosmere.surge + " | " + Faker::Quotes::Shakespeare.hamlet_quote,
-        body: rand(1..20000).to_s + " | " + Faker::Quotes::Shakespeare.romeo_and_juliet_quote + " | " + Faker::Quotes::Shakespeare.romeo_and_juliet_quote + " | " + Faker::Quotes::Shakespeare.romeo_and_juliet_quote,
-        book_id: i % 50 == 0 ? 1 : i % 50,
-        user_id: i % 30 == 0 ? 1 : i % 30,
-        review_type: i % 20 ? 'critic' : 'user',
+        title: rand(1..review_count*100).to_s + " | " + Faker::Cosmere.surge + " | " + Faker::Quotes::Shakespeare.hamlet_quote,
+        body: body,
+        book_id: i % book_count == 0 ? 1 : i % book_count,
+        user_id: i % user_count == 0 ? 1 : i % user_count,
+        review_type: review_type,
         rating_overall: rand(1..5),
         rating_performance: rand(1..5),
         rating_story: rand(1..5),
@@ -102,11 +120,9 @@ book_ids = (1..book_count).to_a.shuffle
 cart_ids = (1..cart_count).to_a.shuffle
 
 (1..books_in_cart_count).each do |i|
-    cart = i % cart_count
-    book = i % book_count
     ShoppingCartBook.create!(
-        shopping_cart_id: cart == 0 ? 1 : cart,
-        book_id: book == 0 ? 1 : book
+        shopping_cart_id: i % cart_count == 0 ? 1 : i % cart_count,
+        book_id: i % book_count == 0 ? 1 : i % book_count
     )
 
 end
