@@ -16,12 +16,14 @@ require 'faker'
 
 #USERS
 user_count = 30
+user_ids = (1..user_count).to_a.shuffle
 
 user_count.times do
-    User.create(
-        username: Faker::Name.unique.name, 
+    name = Faker::Name.unique.name
+    User.create!(
+        username: name, 
         password: Faker::Internet.password(7),
-        email: Faker::Internet.email(:username),
+        email: Faker::Internet.email(name),
         city: Faker::Address.city,
         state: Faker::Address.state
         )
@@ -29,7 +31,9 @@ end
 
 #CONTENT CREATORS
 cc_count = 100
-cc_count.times {ContentCreator.create(name: Faker::Book.author)}
+cc_ids = (1..cc_count).to_a.shuffle
+
+cc_count.times {ContentCreator.create!(name: Faker::Book.author)}
 
 
 #CATEGORIES (30 total)
@@ -39,6 +43,7 @@ cc_count.times {ContentCreator.create(name: Faker::Book.author)}
 
 category_count = 30
 category_loop_count = (category_count * 0.333333333).ceil
+category_ids = (1..category_count).to_a.shuffle
 
 (1..category_loop_count).each do |i|
     Category.create!(
@@ -62,6 +67,7 @@ end
 
 #BOOKS
 book_count = 100
+book_ids = (1..book_count).to_a.shuffle
 
 (1..book_count).each do |i|
     pub_sum = Faker::Movies::PrincessBride.quote + " | "
@@ -70,14 +76,14 @@ book_count = 100
     
     Book.create!( 
         title: Faker::Book.unique.title,
-        author_id: i % cc_count == 0 ? 1 : i % cc_count,
-        narrator_id: i+1 > cc_count ? cc_count : i+1,
-        category_id: i % category_count == 0 ? 1 : i % category_count,
+        author_id: cc_ids[i % cc_count],
+        narrator_id: cc_ids[i+1 % cc_count] == nil ? cc_ids[0] : cc_ids[i+1 % cc_count],
+        category_id: category_ids[i % category_count],
         publisher_summary: pub_sum,
         release_date: Date.today - rand(10000),
         length_in_minutes: rand(120...300),
         price_in_cents: rand(500...2000),
-        language: i % 3 === 0 ? 'spanish' : 'english'
+        language: i % 4 === 0 ? 'spanish' : 'english'
     )
 
 end
@@ -97,8 +103,9 @@ review_count = 500
     Review.create!(
         title: rand(1..review_count*100).to_s + " | " + Faker::Cosmere.surge + " | " + Faker::Quotes::Shakespeare.hamlet_quote,
         body: body,
-        book_id: i % book_count == 0 ? 1 : i % book_count,
-        user_id: i % user_count == 0 ? 1 : i % user_count,
+        # book_id: i % book_count == 0 ? 1 : book_ids[i % book_count],
+        book_id: book_ids[i % book_count],
+        user_id: user_ids[i % user_count],
         review_type: review_type,
         rating_overall: rand(1..5),
         rating_performance: rand(1..5),
@@ -111,18 +118,18 @@ end
 cart_count = user_count
 
 (1..cart_count).each do |user_id|
-    ShoppingCart.create( user_id: user_id)
+    ShoppingCart.create!( user_id: user_id)
 end
 
 #SHOPPING CART BOOKS
 books_in_cart_count = 300
-book_ids = (1..book_count).to_a.shuffle
+
 cart_ids = (1..cart_count).to_a.shuffle
 
 (1..books_in_cart_count).each do |i|
     ShoppingCartBook.create!(
-        shopping_cart_id: i % cart_count == 0 ? 1 : i % cart_count,
-        book_id: i % book_count == 0 ? 1 : i % book_count
+        shopping_cart_id: cart_ids[i % cart_count],
+        book_id: book_ids[i % book_count]
     )
 
 end
@@ -131,8 +138,8 @@ end
 collection_book_count = 200
 (1..collection_book_count).each do |i|
     CollectionBook.create!(
-        user_id: i % user_count == 0 ? 1 : i % user_count,
-        book_id: i % book_count == 0 ? 1 : i % book_count,
+        user_id: user_ids[i % user_count],
+        book_id: book_ids[i % book_count],
         collection_type: i % 4 == 0 ? 'wishlist' : 'library'
     )
 end

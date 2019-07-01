@@ -81,8 +81,8 @@ Laudable, an Audible clone, is an audiobook store and library that allows users
 
 .
      
-## 6. Library / Shopping Cart :: 7 / 10 / 2019 :: Wednesday :: 2 days
-### 
+## 6. Library / Shopping Cart
+### 7 / 10 / 2019 :: Wednesday :: 2 days
 * User can add books to the shopping cart from the book show page or search results
 * User accesses cart from UserNav bar
 * Cart has three sections

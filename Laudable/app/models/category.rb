@@ -18,5 +18,9 @@ class Category < ApplicationRecord
         class_name: :Category,
         optional: true
 
+    has_many :child_categories,
+        foreign_key: :parent_category,
+        class_name: :Category
+
     has_many :books
 end
