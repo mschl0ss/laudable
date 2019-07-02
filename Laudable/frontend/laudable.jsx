@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import createStore from './store/store';
+import Root from './components/root'
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,5 +10,5 @@ document.addEventListener('DOMContentLoaded', () => {
     const store = createStore();
 
 
-    ReactDOM.render(<h1>Shit's working this far bruh</h1>, root);
+    ReactDOM.render(<Root store={store} />, root);
 })

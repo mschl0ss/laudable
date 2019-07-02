@@ -8,9 +8,15 @@ class Api::SessionsController < ApplicationController
 
         if @user
             log_in(@user)
-            render api_user_url(@user)
+            render `api/users/show`
         else
             render json: ['nu uh.  no log in for you'], status: 418
         end
     end
+
+    def destroy
+        logout!
+        render json: { message: 'Logout successful.' }
+    end
+
 end
