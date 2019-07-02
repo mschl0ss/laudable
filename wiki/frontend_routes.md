@@ -2,8 +2,9 @@
 
 * `Root`
     * `App`
-        * `UserNav` (only renders if logged in)
-        * `SiteNav` (only renders if logged in)
+        * `NavBar`
+            * `UserNav`
+            * `SiteNav`
         * (main component)
         * `Footer`
 
@@ -18,12 +19,12 @@
     * `SessionForm`
 * `/signup`
     * `SessionForm`
-* `/category/:categoryId`
+* `/category/`
     * `CategoriesIndex`
-
-        *index will never actually show all categories, just current category and it's children*
-        
-        * `CategoryIndexItem`
+        * `CategoryIndexColumn`
+* `/category/:categoryId`
+    * `SubCategoriesIndex`
+        * `SubCategoryIndexItem`
     * `BooksSlideShow`
         * `BookSlideShowItem`
 * `/books/:bookId`
