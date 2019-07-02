@@ -10,33 +10,19 @@
 
 ### `users`
 
-* `GET    /api/users/:userId` - get user demographic info
+* `GET    /api/users/:userId` - get user info
+    * returns user's demographics, library, wishlist, and shopping cart
+
 * `POST   /api/users` - sign up
-* `GET    /api/users/:userId/library` - returns books in user's library 
 
-    *(returns all joins table rows for given `user_id`)*
-
-* `POST   /api/users/:userId/library/:bookId` - adds a book to user's library 
-
-    *(add joins table row)*
-
-* `GET    /api/users/:userId/wishlist` - returns books in user's wishlist 
-
-    *(return joins table row)*
+* `POST   /api/users/:userId/library/:bookId` - adds a book to user's library
 
 * `POST   /api/users/:userId/wishlist/:bookId` - adds a book to user's wishlist 
-    
-    *(add joins table row)*
 
 * `DELETE /api/users/:userId/wishlist/:bookId` - removes a book from user's wishlist 
-
-    *(delete joins table row)*
-
-* `GET    /api/users/:userId/shoppingCart/` - returns shopping cart 
-
-    *(returns all joins table rows for given `user_id`)*
     
 * `POST   /api/users/:userId/shoppingCart/` - create a new shopping cart
+
 * `DELETE /api/users/:userId/shoppingCart/` - delete's user's shopping cart
 
 .

@@ -20,13 +20,16 @@
     * `SessionForm`
 * `/category/:categoryId`
     * `CategoriesIndex`
+
         *index will never actually show all categories, just current category and it's children*
+        
         * `CategoryIndexItem`
-    * `BooksSlideshow`
+    * `BooksSlideShow`
         * `BookSlideShowItem`
 * `/books/:bookId`
     * `BookShow`
-        * `BookSlideShowItem`
+        * `BookSlideShow`
+            * `BookSlideShowItem`
         * `CommentsIndex`
             * `CommentIndexItem`
 * `/users/:userId/library`
