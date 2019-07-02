@@ -19,7 +19,6 @@
 .
 
 ## `users`
-standard users table
 
 |column|datatype|details|
 |---|---|---|
@@ -33,12 +32,10 @@ standard users table
 |`created_at`|datetime|not null|
 |`updated_at`|datetime|not null|
 
- * indices on `username`, `email`, `session_token` unique: true
-
 .
 
 ## `content_creators`
-includes both authors and narrators
+* includes both authors and narrators
 
 |column|datatype|details|
 |---|---|---|
@@ -48,7 +45,6 @@ includes both authors and narrators
 |`updated_at`|datetime|not null|
 
 #### Other demographic fields? (bday, etc)
-* index on `name`, unique: true
 
 .
 
@@ -62,7 +58,6 @@ includes both authors and narrators
 |`Title`|string|not null, indexed, unique|
 |`author_id`|integer|not null, indexed|
 |`narrator_id`|integer|not null, indexed|
-|`category_id`|integer|not null, indexed|
 |`publisher_summary`|text|not null
 |`release_date`|datetime|not null|
 |`length_in_minutes`|integer|not null|
@@ -71,8 +66,7 @@ includes both authors and narrators
 |`created_at`|datetime|not null|
 |`updated_at`|datetime|not null|
 
-* indices on `title`, `author_id`, `narrator_id`, `category_id`, unique: true
-* both author and narrator are from `content_creators`
+* foreign_keys: `author_id`, `narrator_id`, on table: **`content_creators`**
 
 .
 
@@ -86,12 +80,12 @@ includes both authors and narrators
 |`created_at`|datetime|not null|
 |`updated_at`|datetime|not null|
 
-* index on `category_name`, unique: true
+* foreign_keys: `parent_category_id`, on table: **`categories`**
 
 .
 
 ## `reviews`
-review types are limited to **'editor'**, **'critic'**, or **'user'**
+* review types are limited to **'editor'**, **'critic'**, or **'user'**
 
 |column|datatype|details|
 |---|---|---|
@@ -108,8 +102,8 @@ review types are limited to **'editor'**, **'critic'**, or **'user'**
 |`created_at`|datetime|not null|
 |`updated_at`|datetime|not null|
 
- * indices on `book_id`, `user_id`, `rating_overall`, unique: true
- * indices on `review_type`, `helpful_score`
+ * foreign_key: `book_id`, on table: **`books`**
+ * foreign_key: `user_id`, on table: **`users`**
 
 .
 
@@ -122,26 +116,29 @@ review types are limited to **'editor'**, **'critic'**, or **'user'**
 |`created_at`|datetime|not null|
 |`updated_at`|datetime|not null|
 
-* index on user_id
+* foreign_keys: `user_id`, on table: **`users`**
 
 .
 
 ## `book_categories`
-joins table (books, categories)
-should only contain leaf node categories.
+* joins table (books, categories)
+* should only contain leaf node categories.
 
 |column|datatype|details|
 |---|---|---|
 |`id`|integer|not null, primary key|
 |`book_id`|integer|not null, indexed|
 |`category_id`|integer|not null, indexed|
+|`created_at`|datetime|not null|
+|`updated_at`|datetime|not null|
 
-indices on `book_id` & `category_id`
+* foreign_keys: `book_id`, on table: **`books`**
+* foreign_keys: `category_id`, on table: **`categories`**
 
 .
 
 ## `collection_books`
-joins table (users, books)
+* joins table (users, books)
 
 `collection_type` is either **'library'** or **'wishlist'**
 
@@ -154,12 +151,13 @@ joins table (users, books)
 |`created_at`|datetime|not null|
 |`updated_at`|datetime|not null|
 
-* indices on `user_id` & `book_id`
+* foreign_keys: `book_id`, on table: **`books`**
+* foreign_keys: `user_id`, on table: **`users`**
 
 .
 
 ## `shopping_cart_books`
-joins tables (shopping_cart, books)
+* joins tables (shopping_cart, books)
 
 |column|datatype|details|
 |---|---|---|
@@ -169,4 +167,5 @@ joins tables (shopping_cart, books)
 |`created_at`|datetime|not null|
 |`updated_at`|datetime|not null|
 
-* index on `shopping_cart_id`, `book_id`
+* foreign_keys: `book_id`, on table: **`books`**
+* foreign_keys: `shopping_cart_id`, on table: **`shopping_carts`**
