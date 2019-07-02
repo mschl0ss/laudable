@@ -21,6 +21,7 @@
 
 ## Shopping Cart
 
+* Need to track fake user money.  Either in a column in user table or just in redux state.
 * when user is created, shopping cart is created for them
 * when a user checks out, the shopping cart is deleted and a new one is made
 * this will leave a bunch of 'dead' entries in the `shopping_cart_books` table

@@ -8,10 +8,11 @@
  [reviews](https://github.com/mschl0ss/laudable/wiki/schema#reviews)
 
 #### Shopping Cart:
-[shopping_cart](https://github.com/mschl0ss/laudable/wiki/schema#shopping_cart)
+[shopping_carts](https://github.com/mschl0ss/laudable/wiki/schema#shopping_carts)
 
 #### Joins Tables:
- [books_in_user_collection](https://github.com/mschl0ss/laudable/wiki/schema#books_in_user_collection) .
+ [book_categories](https://github.com/mschl0ss/laudable/wiki/schema#book_categories) .
+ [collection_books](https://github.com/mschl0ss/laudable/wiki/schema#collection_books) .
  [shopping_cart_books](https://github.com/mschl0ss/laudable/wiki/schema#shopping_cart_books)
 
 
@@ -112,7 +113,7 @@ review types are limited to **'editor'**, **'critic'**, or **'user'**
 
 .
 
-## `shopping_cart`
+## `shopping_carts`
 
 |column|datatype|details|
 |---|---|---|
@@ -125,7 +126,21 @@ review types are limited to **'editor'**, **'critic'**, or **'user'**
 
 .
 
-## `books_in_user_collection`
+## `book_categories`
+joins table (books, categories)
+should only contain leaf node categories.
+
+|column|datatype|details|
+|---|---|---|
+|`id`|integer|not null, primary key|
+|`book_id`|integer|not null, indexed|
+|`category_id`|integer|not null, indexed|
+
+indices on `book_id` & `category_id`
+
+.
+
+## `collection_books`
 joins table (users, books)
 
 `collection_type` is either **'library'** or **'wishlist'**

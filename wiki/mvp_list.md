@@ -23,9 +23,9 @@ Laudable, an Audible clone, is an audiobook store and library that allows users
 ## 2. User sign up and sign in.  Demo user sign in.
 ### 7 / 03 / 2019 :: Wednesday :: 2 days
 * API JSON routes work. 'GET' requests show in browser, 'POST' works in postman
-    * USER SHOW - api/user/:userId (COMPLETED)
-    * USER CREATE - api/users (COMPLETED)
-    * SESSION CREATE - /session (COMPLETED)
+    * USER SHOW - api/user/:userId (PENDING COMPLETED)
+    * USER CREATE - api/users (PENDING COMPLETED)
+    * SESSION CREATE - api/session (works on /session)
     * SESSION DELETE - api/session
 * User is greeted by not logged in splash page
 * Users can sign up, log in, and log out
@@ -89,9 +89,9 @@ Laudable, an Audible clone, is an audiobook store and library that allows users
   1. Cart - shows books in cart
   2. Checkout - user can submit purchase (include and 'add money to account' button)
   3. Confirmation - 
-    1. Cost is deducted from user's wallet
-    2. books are added to the library.
-    3. shopping cart is deleted and a new one is made
+        1. Cost is deducted from user's wallet
+        2. books are added to the library.
+        3. shopping cart is deleted and a new one is made
 * Library page shows a list with details of all owned books
 
 #### BONUS

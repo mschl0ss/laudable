@@ -13,6 +13,9 @@ class Category < ApplicationRecord
 
     validates :category_name, presence: true
 
+    has_many :book_categories
+    has_many :books, through: :book_categories, source: :book
+
     belongs_to :parent_category,
         foreign_key: :parent_category_id,
         class_name: :Category,
@@ -22,5 +25,5 @@ class Category < ApplicationRecord
         foreign_key: :parent_category,
         class_name: :Category
 
-    has_many :books
+    
 end

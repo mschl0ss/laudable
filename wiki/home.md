@@ -18,5 +18,8 @@ Laudable is an Audible clone created by Marc Schlossberg.  It replicates the cor
 ### Workflow
 
 * [Notes](https://github.com/mschl0ss/laudable/wiki/workflow-%7C--notes)
-* [Strategies](https://github.com/mschl0ss/laudable/wiki/workflow-%7C-strategies)
 * [PA Meeting 1](https://github.com/mschl0ss/laudable/wiki/workflow-%7C-pa-meeting-1)
+* [Strategies](https://github.com/mschl0ss/laudable/wiki/workflow-%7C-strategies)
+
+### Fixes
+* [Category Correction](https://github.com/mschl0ss/laudable/wiki/zFixes-%7C-category-correction)

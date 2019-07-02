@@ -19,14 +19,16 @@
 * `/signup`
     * `SessionForm`
 * `/category/:categoryId`
-    * `Subcategories`
-        * `SubcategoryItem`
+    * `CategoriesIndex`
+        *index will never actually show all categories, just current category and it's children*
+        * `CategoryIndexItem`
     * `BooksSlideshow`
         * `BookSlideShowItem`
 * `/books/:bookId`
     * `BookShow`
         * `BookSlideShowItem`
-        * `CommentItem`
+        * `CommentsIndex`
+            * `CommentIndexItem`
 * `/users/:userId/library`
     * `UserCatalogIndex`
         * `UserCatalogIndexItem`

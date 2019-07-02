@@ -10,16 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_30_171952) do
+ActiveRecord::Schema.define(version: 2019_07_02_001225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "book_categories", force: :cascade do |t|
+    t.integer "book_id", null: false
+    t.integer "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_book_categories_on_book_id"
+    t.index ["category_id"], name: "index_book_categories_on_category_id"
+  end
 
   create_table "books", force: :cascade do |t|
     t.string "title", null: false
     t.integer "author_id", null: false
     t.integer "narrator_id", null: false
-    t.integer "category_id", null: false
     t.text "publisher_summary", null: false
     t.date "release_date"
     t.integer "length_in_minutes", null: false
@@ -28,7 +36,6 @@ ActiveRecord::Schema.define(version: 2019_06_30_171952) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_books_on_author_id"
-    t.index ["category_id"], name: "index_books_on_category_id"
     t.index ["narrator_id"], name: "index_books_on_narrator_id"
     t.index ["title"], name: "index_books_on_title"
   end

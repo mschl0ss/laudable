@@ -41,29 +41,26 @@ cc_count.times {ContentCreator.create!(name: Faker::Book.author)}
 #Loop through 3 times, each for 1/3 the total amount of desired categories
 #the whole ().ceil business is essentially .to_i but rounding up
 
-category_count = 30
-category_loop_count = (category_count * 0.333333333).ceil
-category_ids = (1..category_count).to_a.shuffle
 
-(1..category_loop_count).each do |i|
+category_parent_count = 2
+category_children_count = 20
+category_ids = (1..category_children_count).to_a.shuffle
+
+#parent loop
+(1..category_parent_count).each do |i|
     Category.create!(
         parent_category_id: nil,
         category_name: Faker::Book.unique.genre,
     )
 end
 
-(1..category_loop_count).each do |i|
+(1..category_children_count).each do |i|
     Category.create!(
-        parent_category_id: i,
+        parent_category_id: i % 2 == 0 ? 1 : 2,
         category_name: Faker::Book.unique.genre,
     )
 end
-(category_loop_count+1..category_loop_count*2).each do |i|
-    Category.create!(
-        parent_category_id: i,
-        category_name: Faker::Book.unique.genre,
-    )
-end
+
 
 #BOOKS
 book_count = 100
@@ -78,7 +75,6 @@ book_ids = (1..book_count).to_a.shuffle
         title: Faker::Book.unique.title,
         author_id: cc_ids[i % cc_count],
         narrator_id: cc_ids[i+1 % cc_count] == nil ? cc_ids[0] : cc_ids[i+1 % cc_count],
-        category_id: category_ids[i % category_count],
         publisher_summary: pub_sum,
         release_date: Date.today - rand(10000),
         length_in_minutes: rand(120...300),
@@ -86,6 +82,18 @@ book_ids = (1..book_count).to_a.shuffle
         language: i % 4 === 0 ? 'spanish' : 'english'
     )
 
+end
+
+#BOOK CATEGORIES
+book_category_count = 150
+book_ids = (1..book_count).to_a.shuffle
+category_ids = (1..category_children_count).to_a.shuffle
+
+(1..book_category_count).each do |i|
+    BookCategory.create!(
+        book_id: book_ids[i % book_ids.length],
+        category_id: category_ids[i % category_ids.length]
+    )
 end
 
 

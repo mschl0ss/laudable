@@ -45,7 +45,6 @@
                 title: 'Name of the Wind',
                 authorId: 1,
                 narratorId: 2,
-                categoryId: 1,
                 publisherSummary: 'Lorem ipsum dolor sit amet',
                 releaseDate: '1/1/2000',
                 lengthInMinutes: 500,
@@ -58,7 +57,6 @@
                 title: 'Swamp Thing',
                 authorId: 3,
                 narratorId: 4,
-                categoryId: 2,
                 publisherSummary: 'Lorem ipsum dolor sit amet',
                 releaseDate: '1/1/1980',
                 lengthInMinutes: 300,
@@ -87,6 +85,18 @@
                 categoryName: 'Fiction',
                 childCategoryIds: [3]
             }
+        },
+        bookCategories: {
+            1: {
+                id: 1,
+                book_id: 2,
+                category_id: 3
+            },
+            2: {
+                id: 2,
+                book_id: 2,
+                category_id: 3
+            },
         },
         reviews: {
             1: {
@@ -124,7 +134,7 @@
                 userId: 5
             },
         },
-        booksInUserCollection: {
+        collectionBooks: {
             1: {
                 id: 1,
                 userId: 1,
