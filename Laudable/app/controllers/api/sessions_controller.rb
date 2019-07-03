@@ -8,9 +8,7 @@ class Api::SessionsController < ApplicationController
 
         if @user
             log_in(@user)
-            # debugger
-            # render `api/users/#{@user.id}`
-            # render api_users_url(@user)
+      
             render 'api/users/show'
         else
             render json: ['nu uh.  no log in for you'], status: 418

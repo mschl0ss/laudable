@@ -27,7 +27,7 @@ Laudable, an Audible clone, is an audiobook store and library that allows users
     * USER CREATE - api/users (PENDING COMPLETED)
     * SESSION CREATE - api/session (PENDING COMPLETED)
     * SESSION DELETE - api/session (PENDING COMPLETED)
-* User is greeted by not logged in splash page
+* User is greeted by auth route version of splash page
 * Users can sign up, log in, and log out (PENDING COMPLETED)
 * Users can use a demo login to try out the site
 * Error messages display on failed sign up or log in
@@ -39,12 +39,12 @@ Laudable, an Audible clone, is an audiobook store and library that allows users
 
 ## 3. Audio Books / Categories
 ### 7 / 05 / 2019 :: Friday :: 2 day
-* On login, user is greeted by logged in splash page **(NEED TO REVIEW)**
+* On login, user is greeted by protected version of splash page
 * User engages with the catalog by using the 'Browse' drop down on the Nav Bar
 * When a top level category is chosen in the navbar, several sections render
     * Subcategories component - lists all direct subcategories of given category
-    * BooksSlideShow component - Best Sellers - Display those books in the given category that whose Ids occur most frequently in `books_in_user_library`
-    * BooksSlideShow component - New Releases -Display those books in the given category that were relased most recently
+    * BooksSlideShow component - Best Sellers - Display those books in the given category whose Ids occur most frequently in `books_in_user_library`
+    * BooksSlideShow component - New Releases -Display those books in the given category that were released most recently
 
 #### BONUS
 * On mouse over of an individual book, a pop up shows book info, overall review score, and the most helpful review
@@ -86,19 +86,22 @@ Laudable, an Audible clone, is an audiobook store and library that allows users
 * User can add books to the shopping cart from the book show page or search results
 * User accesses cart from UserNav bar
 * Cart has three sections
-  1. Cart - shows books in cart
+  1. Cart - shows books in the cart with most recent creation timestamp
   2. Checkout - user can submit purchase (include and 'add money to account' button)
   3. Confirmation - 
         1. Cost is deducted from user's wallet
         2. books are added to the library.
-        3. shopping cart is deleted and a new one is made
+        3. A new shopping cart is created for the user
 * Library page shows a list with details of all owned books
 
 #### BONUS
 * Cart page shows the subtotal on the right 
 * SEARCH: results include either two buttons for adding to library/wishlist or a button 'In your library' that redirects to library
 * SHOW: If a book is in a user's library, they can leave a review on the show page
-* order history
+* Order history 
+    - When a cart is checked out, the old one still exists, as do the relevant entries in the joins table
+    - The 'order history list' is the all of the user's shopping carts (except current) orderd by timestamp
+    - Populate the order with entries from the joins table.
 
 .
      
