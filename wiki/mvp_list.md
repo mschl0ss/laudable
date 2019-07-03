@@ -22,13 +22,13 @@ Laudable, an Audible clone, is an audiobook store and library that allows users
 
 ## 2. User sign up and sign in.  Demo user sign in.
 ### 7 / 03 / 2019 :: Wednesday :: 2 days
-* API JSON routes work. 'GET' requests show in browser, 'POST' works in postman
+* API JSON routes work. 'GET' requests show in browser, 'POST' works in postman (PENDING COMPLETED)
     * USER SHOW - api/user/:userId (PENDING COMPLETED)
     * USER CREATE - api/users (PENDING COMPLETED)
-    * SESSION CREATE - api/session (works on /session)
-    * SESSION DELETE - api/session
+    * SESSION CREATE - api/session (PENDING COMPLETED)
+    * SESSION DELETE - api/session (PENDING COMPLETED)
 * User is greeted by not logged in splash page
-* Users can sign up, log in, and log out
+* Users can sign up, log in, and log out (PENDING COMPLETED)
 * Users can use a demo login to try out the site
 * Error messages display on failed sign up or log in
 * Users can't use certain features without logging in
@@ -38,7 +38,7 @@ Laudable, an Audible clone, is an audiobook store and library that allows users
 .
 
 ## 3. Audio Books / Categories
-### 7 / 05 / 2019 :: Friday :: 1 day
+### 7 / 05 / 2019 :: Friday :: 2 day
 * On login, user is greeted by logged in splash page **(NEED TO REVIEW)**
 * User engages with the catalog by using the 'Browse' drop down on the Nav Bar
 * When a top level category is chosen in the navbar, several sections render
@@ -52,7 +52,7 @@ Laudable, an Audible clone, is an audiobook store and library that allows users
 .
      
 ## 4. Search
-### 7 / 06 / 2019 :: Saturday :: 2 days
+### 7 / 06 / 2019 :: Sunday :: 1 days
 * User can use search field in UserNav bar
 * Search results display in drop down that appears below text input
 * Search results update roughly 1 second after last keypress
