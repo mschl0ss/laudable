@@ -5,34 +5,34 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore reference folder
-reference/
+
 
 # Ignore bundler config.
-Laudable/.bundle
+.bundle
 
 # Ignore all logfiles and tempfiles.
-Laudable/log/*
-Laudable/tmp/*
-!Laudable/log/.keep
-!Laudable/tmp/.keep
+log/*
+tmp/*
+!log/.keep
+!tmp/.keep
 
 # Ignore uploaded files in development
-Laudable/storage/*
-!Laudable/storage/.keep
+storage/*
+!storage/.keep
 
-Laudable/yarn-error.log
+yarn-error.log
 
-Laudable/public/assets
-Laudable/.byebug_history
+public/assets
+.byebug_history
 
 # Ignore master key for decrypting credentials and more.
-Laudable/config/master.key
+config/master.key
 
 # Ignore stupid stuff
-Laudable/node_modules/
-Laudable/bundle.js
-Laudable/bundle.js.map
-Laudable/.byebug_history
-Laudable/.DS_Store
-Laudable/npm-debug.log
+node_modules/
+bundle.js
+bundle.js.map
+.byebug_history
+.DS_Store
+npm-debug.log
 .DS_Store
