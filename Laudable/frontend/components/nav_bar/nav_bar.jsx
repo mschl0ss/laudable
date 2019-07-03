@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default (props) => {
-    // debugger;
     const display = props.currentUser ? (
         <div>
             <h3>Logged In</h3>

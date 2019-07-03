@@ -22,7 +22,6 @@ const receiveErrors = errors => ({
 //THE THUNKERINGS
 
 export const createNewUser = formUser => dispatch => {
-// debugger;
 return (
     sessionUtils.postUser(formUser)
         .then(user => dispatch(receiveCurrentUser(user)),

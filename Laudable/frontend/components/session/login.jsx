@@ -25,39 +25,50 @@ class Login extends React.Component {
     renderErrors() {
         // debugger;
         return (
-            <div>
+            <section className = "session-errors">
                 <ul>
                     {this.props.errors.map( (error,i) => (
                         <li key={i} >{error}</li>
                     ))}
                 </ul>
-            </div>
+            </section>
         )
     }
 
     render () {
         return (
-            <div className="session-form">
-                <h1>Login</h1>
+            <section className="session-wrapper">
+                <div className="logo"></div>
+
                 {this.renderErrors()}
-                <form onSubmit={this.handleSubmit}>
-                    <label>Username:
-                        <input
-                            type="text"
-                            value={this.state.username}
-                            onChange={this.updateField('username')}
-                        />
-                    </label>
-                    <label>Password:
-                        <input
-                            type="password"
-                            value={this.state.password}
-                            onChange={this.updateField('password')}
-                        />
-                    </label>
-                    <button>Login</button>
-                </form>
-            </div>
+
+                <section className="session-form">
+                    <h3>Sign in with your Username</h3>
+                    <form onSubmit={this.handleSubmit}>
+                        <ul>
+                            <li>
+                                <label>Username:
+                                    <input
+                                        type="text"
+                                        value={this.state.username}
+                                        onChange={this.updateField('username')}
+                                    />
+                                </label>
+                            </li><li>
+                                <label>Password:
+                                    <input
+                                        type="password"
+                                        value={this.state.password}
+                                        onChange={this.updateField('password')}
+                                    />
+                                </label>
+                            </li><li>
+                                <button className="orange-button">Login</button>
+                            </li>
+                        </ul>
+                    </form>
+                </section>
+            </section>
         )
     }
 }

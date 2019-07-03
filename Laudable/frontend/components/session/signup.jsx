@@ -20,7 +20,6 @@ class Signup extends React.Component {
     }
     handleSubmit(e) {
         e.preventDefault();
-        // debugger;
         this.props.createNewUser(this.state)
             .then( () => this.props.history.push('/'));
     }
@@ -68,6 +67,7 @@ class Signup extends React.Component {
                                     type="password"
                                     value={this.state.password}
                                     onChange={this.updateField('password')}
+                                    placeholder="At least 6 characters"
                                 />
                             </label>
                         </li>

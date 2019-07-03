@@ -5,7 +5,6 @@ import Root from './components/root'
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    // debugger;
     const root = document.getElementById('root');
     let preloadedState = undefined;
     if (window.currentUser) {

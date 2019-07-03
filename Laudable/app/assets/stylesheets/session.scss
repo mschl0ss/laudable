@@ -1,0 +1,28 @@
+@import "./global.scss";
+// body {
+//     background: $orange;
+// }
+
+
+.session-wrapper {
+    display: flex;
+    justify-content: center;
+}
+.session-form {
+    display: inline-block;
+    border: 1px $gray-border solid;
+    margin-top: 10px;
+    padding: 20px 26px;
+    width: 296;
+}
+
+.session-form h3 {
+    font-size: 18px;
+}
+.session-form .orange-button {
+    background: $orange;
+}
+
+.session-form ul {
+    list-style: none;
+}
