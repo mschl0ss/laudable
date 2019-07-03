@@ -7,6 +7,7 @@ class Signup extends React.Component {
             username: '',
             email: '',
             password: '',
+            repassword: '',
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,6 +20,7 @@ class Signup extends React.Component {
     }
     handleSubmit(e) {
         e.preventDefault();
+        // debugger;
         this.props.createNewUser(this.state)
             .then( () => this.props.history.push('/'));
     }
@@ -41,27 +43,44 @@ class Signup extends React.Component {
                 <h1>Sign Up</h1>
                 {this.renderErrors()}
                 <form onSubmit={this.handleSubmit}>
-                    <label>Username:
-                        <input 
-                            type="text"
-                            value={this.state.username}
-                            onChange={this.updateField('username')}
-                        />
-                    </label>
-                    <label>Email:
-                        <input 
-                            type="text"
-                            value={this.state.email}
-                            onChange={this.updateField('email')}
-                        />
-                    </label>
-                    <label>Password:
-                        <input 
-                            type="password"
-                            value={this.state.password}
-                            onChange={this.updateField('password')}
-                        />
-                    </label>
+                    <ul>
+                        <li>
+                            <label>Username
+                                <input 
+                                    type="text"
+                                    value={this.state.username}
+                                    onChange={this.updateField('username')}
+                                />
+                            </label>
+                        </li>
+                        <li>
+                        <label>Email
+                            <input 
+                                type="text"
+                                value={this.state.email}
+                                onChange={this.updateField('email')}
+                            />
+                        </label>
+                        </li>
+                        <li>
+                            <label>Password
+                                <input 
+                                    type="password"
+                                    value={this.state.password}
+                                    onChange={this.updateField('password')}
+                                />
+                            </label>
+                        </li>
+                        <li>
+                            <label>Re-enter password
+                                <input 
+                                    type="password"
+                                    value={this.state.repassword}
+                                    onChange={this.updateField('repassword')}
+                                />
+                            </label>
+                        </li>
+                    </ul>
                     <button>Sign Up</button>
                 </form>
             </div>

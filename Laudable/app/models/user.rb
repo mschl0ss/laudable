@@ -15,10 +15,14 @@
 
 class User < ApplicationRecord
 
-    validates :username, presence: true
-    validates :password, length: {minimum: 6, allow_nil: true}
+    validates :username, :email, uniqueness: true, presence: true
+    validates :password_digest, :session_token, presence: true
+    validates :password, length: { minimum: 6}, allow_nil: true
+    validate :check_password_equals_repassword
+    
 
     attr_reader :password
+    attr_accessor :repassword
 
     after_initialize :ensure_session_token
 
@@ -26,27 +30,38 @@ class User < ApplicationRecord
     has_one :shopping_cart
     has_many :collection_books
 
-    # has_many :library_books
+    # has_many :library_collection_books,
+    #     foreign_key: :user_id,
+    #     class_name: :CollectionBook,
+    #     -> { where "collection_type = 'library"}
 
     has_many :books_in_cart, through: :shopping_cart, source: :books
 
-
-
-
     #spire
 
-    def self.find_by_credentials(username,password)
-        user = User.find_by(username: username)
-        return nil unless user
-        user.is_password?(password) ? user : nil
-
-    end
-
     def password=(password)
+        @password=password
         self.password_digest = BCrypt::Password.create(password)
     end
 
+    def repassword=(repassword)
+        @repassword = repassword
+    end
+  
+    def check_password_equals_repassword
+        errors.add(:base, "Passwords must match") unless @password == @repassword || @repassword.nil?
+    end
+
+    def self.find_by_credentials(username,password)
+        @user = User.find_by(username: username)
+        return nil unless @user
+        @user.is_password?(password) ? @user : nil
+    end
+
+    
+
     def is_password?(password)
+        @password=password
         BCrypt::Password.new(self.password_digest).is_password?(password)
     end
 
@@ -59,4 +74,5 @@ class User < ApplicationRecord
     def ensure_session_token
         self.session_token ||= SecureRandom.urlsafe_base64
     end
+
 end

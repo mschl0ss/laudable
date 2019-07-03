@@ -4,13 +4,14 @@ import { login } from '../../actions/session_actions';
 import Login from './login';
 
 const msp = state =>  ({
-    errors: state.errors.session
+    errors: state.errors.session,
+    formType: 'login'
 })
 
 
 
 const mdp = dispatch => ({
-    login: formUser => dispatch(login(formUser)),
+    processForm: formUser => dispatch(login(formUser)),
 });
 
 export default connect(msp, mdp)(Login);

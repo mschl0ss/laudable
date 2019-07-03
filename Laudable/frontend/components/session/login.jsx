@@ -18,11 +18,12 @@ class Login extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.login(this.state)
+        this.props.processForm(this.state)
             .then(() => this.props.history.push('/'));
     }
 
     renderErrors() {
+        // debugger;
         return (
             <div>
                 <ul>
