@@ -15,6 +15,7 @@ class Splash extends React.Component {
         ) : (
             <div>
                 <h4>NOT LOGGED IN SPLASH</h4>
+                <button onClick={this.props.loginGuestUser}>Guest Login</button>
             </div>
         );
         

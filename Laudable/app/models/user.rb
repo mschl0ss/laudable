@@ -30,10 +30,21 @@ class User < ApplicationRecord
     has_one :shopping_cart
     has_many :collection_books
 
-    # has_many :library_collection_books,
-    #     foreign_key: :user_id,
-    #     class_name: :CollectionBook,
-    #     -> { where "collection_type = 'library"}
+    #this works
+    has_many :collection_books,
+        -> { where collection_type: 'library'}
+
+    # User.first.library_collection_books
+   
+    has_many :library_collection_books,
+    -> { where collection_type: 'library'},
+        foreign_key: :user_id,
+        class_name: :CollectionBook
+
+    has_many :wishlist_collection_books,
+    -> { where collection_type: 'wishlist'},
+        foreign_key: :user_id,
+        class_name: :CollectionBook
 
     has_many :books_in_cart, through: :shopping_cart, source: :books
 

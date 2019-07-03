@@ -14,11 +14,22 @@ require 'faker'
 ### I either concatenated multiple non-unique Faker generated things, and/or
 ### included a random number somewhere in the mix
 
+
+
 #USERS
 user_count = 30
 user_ids = (1..user_count).to_a.shuffle
 
-user_count.times do
+User.create!(
+    username: 'Guest',
+    password: 'guestpassword',
+    email: 'guest@guest.com'
+    city: 'San Francisco',
+    state: 'Califronia' 
+)
+# User.create!(username: 'Guest',  password: 'guestpassword',  email: 'guest@guest.com',  city: 'San Francisco',state: 'California' )
+
+(2..user_count).each do
     name = Faker::Name.unique.name
     User.create!(
         username: name, 
