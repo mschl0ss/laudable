@@ -1,4 +1,4 @@
-import * as sessionUtil from '../util/session_util';
+import * as sessionUtils from '../utils/session_utils';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
@@ -16,17 +16,17 @@ const logoutCurrentUser = () => ({
 //THE THUNKERINGS
 
 export const createNewUser = formUser => dispatch => (
-    sessionUtil.postUser(formUser)
+    sessionUtils.postUser(formUser)
         .then(user => dispatch(receiveCurrentUser(user)))
 );
 
-export const login = formUser => dispatch (
-    sessionUtil.postSession(formUser)
+export const login = formUser => dispatch => (
+    sessionUtils.postSession(formUser)
         .then(user => dispatch(receiveCurrentUser(user)))
 );
 
-export const logout = () => dispatch (
-    sessionUtil.deleteSession()
+export const logout = () => dispatch => (
+    sessionUtils.deleteSession()
         .then(() => dispatch(logoutCurrentUser()))
 );
 
