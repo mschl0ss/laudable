@@ -22,10 +22,24 @@ class Signup extends React.Component {
         this.props.createNewUser(this.state)
             .then( () => this.props.history.push('/'));
     }
+
+    renderErrors() {
+        return (
+            <div>
+                <ul>
+                    {this.props.errors.map((error, i) => (
+                        <li key={i} >{error}</li>
+                    ))}
+                </ul>
+            </div>
+        )
+    }
+
     render() {
         return (
             <div className="session-form">
                 <h1>Sign Up</h1>
+                {this.renderErrors()}
                 <form onSubmit={this.handleSubmit}>
                     <label>Username:
                         <input 
