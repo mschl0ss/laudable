@@ -3,26 +3,115 @@
 //     background: $orange;
 // }
 
-
 .session-wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    color: $text-black;
 }
+
+.session-wrapper .logo img {
+    width: 143px;
+    // height: 60px;
+}
+
+.session-errors, .session-form {
+    width: 296px;
+    padding: 20px 26px;
+}
+.session-errors {
+    border: solid 1px $error-red;
+    font-weight: 400;
+    line-height: 1.255;
+    box-shadow: 0 0 0 4px #fcf4f4 inset;
+    display: flex;
+
+
+}
+.session-errors .right {
+    margin-left: 7px;
+}
+.session-errors ul{
+    list-style: disc;
+    list-style-position: inside;
+}
+.session-errors li{
+    line-height: 19px;
+    
+}
+
+.session-errors h4 {
+    font-size: 17px; 
+    color: $error-red;
+}
+
+.session-errors .alert-img {
+    background-image: url(https://icon2.kisspng.com/20180701/ffq/kisspng-computer-icons-royalty-free-clip-art-red-alert-5b38fb8f31e246.8917341215304610712043.jpg);
+    height: 27px;
+    width: 30px;
+    background-size: 100%;
+}
+
 .session-form {
-    display: inline-block;
+    display: block;
     border: 1px $gray-border solid;
     margin-top: 10px;
-    padding: 20px 26px;
-    width: 296;
+    font-weight: 700;
 }
 
 .session-form h3 {
     font-size: 18px;
+    margin-bottom: 10px;
 }
 .session-form .orange-button {
     background: $orange;
+    width: 100%;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .session-form ul {
-    list-style: none;
+
+}
+
+.session-form li {
+
+}
+
+.session-form label {
+    letter-spacing: .7px;
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.session-form input {
+    // display: block;
+    // background: $light-blue;
+    margin: 5px 0 22px;
+    height: 38px;
+    padding: 0 16px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid $gray-border;
+    border-radius: 2px;
+    box-shadow: none;
+    outline: 0;
+    font-size: 13px;
+}
+
+.session-form input:focus {
+    border-color: $orange-dark;
+    box-shadow: 0 0 5px $orange-shadow;
+}
+
+.session-form .divider {
+    text-align: center;
+    position: relative;
+    top: 2px;
+    padding-top: 1px;
+    margin-bottom: 14px;
+    line-height: 0;
 }

@@ -1,12 +1,23 @@
 $orange: #F3B44D;
+$orange-dark: #e77600;
+$orange-shadow: rgba(228,121,17,.5);
 $gray-border: #cdcdcd;
 $gray-button: #e3e3e3;
+$light-blue: #E8F0FE;
+$error-red: #D80102;
+$text-black: #212325;
 
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 // body {
 //     background: $orange;
 // }
 
+.hidden {
+    display: none;
+}
+
 body {
-    font-family: sans-serif;
-    
+    font-family: 'Roboto',sans-serif;
+
 }

@@ -23,14 +23,22 @@ class Login extends React.Component {
     }
 
     renderErrors() {
-        // debugger;
+        let errorClass;
+
+        errorClass = this.props.errors.length > 0 ? 'session-errors' : 'hidden';
         return (
-            <section className = "session-errors">
-                <ul>
-                    {this.props.errors.map( (error,i) => (
-                        <li key={i} >{error}</li>
-                    ))}
-                </ul>
+            <section className = {errorClass}>
+                <div className="left">
+                    <div className="alert-img"></div>
+                </div>
+                <div className="right">
+                    <h4>There was a problem</h4>
+                    <ul>
+                        {this.props.errors.map( (error,i) => (
+                            <li key={i} >{error}</li>
+                        ))}
+                    </ul>
+                    </div>
             </section>
         )
     }
@@ -38,7 +46,9 @@ class Login extends React.Component {
     render () {
         return (
             <section className="session-wrapper">
-                <div className="logo"></div>
+                <div className="logo">
+                    <img src="audible_logo.jpg" alt="logo" />
+                </div>
 
                 {this.renderErrors()}
 
@@ -47,7 +57,7 @@ class Login extends React.Component {
                     <form onSubmit={this.handleSubmit}>
                         <ul>
                             <li>
-                                <label>Username:
+                                <label>Username
                                     <input
                                         type="text"
                                         value={this.state.username}
@@ -55,7 +65,7 @@ class Login extends React.Component {
                                     />
                                 </label>
                             </li><li>
-                                <label>Password:
+                                <label>Password
                                     <input
                                         type="password"
                                         value={this.state.password}
@@ -63,9 +73,14 @@ class Login extends React.Component {
                                     />
                                 </label>
                             </li><li>
-                                <button className="orange-button">Login</button>
+                                <button className="orange-button">Sign In</button>
                             </li>
                         </ul>
+
+                        <div className="divider">
+                            <h5>New to Audible?</h5>
+                            <button className="gray-button">Create your Audible account</button>
+                        </div>
                     </form>
                 </section>
             </section>
