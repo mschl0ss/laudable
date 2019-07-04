@@ -23,8 +23,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --watch --mode=development",
-    "postinstall": "webpack"
+    "postinstall": "webpack",
+    "start": "webpack --watch --mode=development"
   },
   "enginges": {
     "node": "10.13.0",
@@ -35,5 +35,8 @@
   "license": "ISC",
   "devDependencies": {
     "webpack-cli": "^3.3.5"
+  },
+  "config": {
+    "unsafe-perm": true
   }
 }
