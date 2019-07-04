@@ -97,12 +97,12 @@ class Login extends React.Component {
                     </div>
                         
                         <div className="divider">
-                            <h5><span>New to Audible?</span></h5>
+                            <h5><span>New to Laudible?</span></h5>
                         </div>
                         <div >
                             <button 
                                 className="gray-button"
-                                onClick={this.linkToSignup}>Create your Audible account</button>
+                                onClick={this.linkToSignup}>Create your Laudible account</button>
                         </div>
                 </section>
 
