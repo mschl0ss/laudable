@@ -33,7 +33,6 @@ class Signup extends React.Component {
     renderErrors() {
         let errorClass, errorUlClass = '';
 
-        // errorClass = this.props.errors.length > 0 ? 'session-errors' : 'hidden';
         if (this.props.errors.length > 0) {
             errorClass = 'session-errors';
             if (this.props.errors.length > 1) errorUlClass = ' bullets';

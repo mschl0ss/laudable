@@ -1,29 +1,140 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default (props) => {
-    const display = props.currentUser ? (
-        <div>
-            <h3>Logged In</h3>
-            <p>wutup {props.currentUser.username}</p>
-            <button onClick={props.logout}>Log Out</button>
-        </div>
-    ) :
-     (
-        <div>
-            <h3>Logged Out </h3>
-            <Link className="btn" to="/signup">Sign Up</Link>
-            <Link className="btn" to="/login">Log In</Link>
-        </div>
-    );
+class NavBar extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state= {
+            search: '',
+            showUserNavDropDown: false,
+            showSiteNavDropDown: false,
+        }
+        this.toggleUserNavDropDown = this.toggleUserNavDropDown.bind(this);
+        this.toggleSiteNavDropDown = this.toggleSiteNavDropDown.bind(this);
+    }
+    
 
+    toggleUserNavDropDown() {
+      this.setState({ showUserNavDropDown: !this.state.showUserNavDropDown });
+    }
+
+    toggleSiteNavDropDown() {
+        let delay = 0;
+        if (this.state.showSiteNavDropDown === true) delay = 3000;
+        // console.log(this.state.showSiteNavDropDown);
+
+        setTimeout(() => this.setState({ showSiteNavDropDown: !this.state.showSiteNavDropDown}), delay);
+    }
+
+    userNav () {
+        const dropDownClass = this.state.showUserNavDropDown ? "dropdown-content show" : "dropdown-content hidden";
+        return (
+            this.props.currentUser ? (
+            <nav className="protected">
+                <div className="dropdown">
+                    <button onClick={this.toggleUserNavDropDown }>Hi, {this.props.currentUser.username}</button>
+                    <div 
+                        className={dropDownClass}
+                    >
+                        <button onClick={this.props.logout}>Log Out</button>
+                    </div>
+                </div>
+            </nav>
+            ) :
+            (
+            <nav className="auth">
+                <Link className="btn" to="/login">Sign In</Link>
+            </nav>
+            )
+        )
+    }
+
+
+    updateField(field) {
+        return e => (
+            this.setState({ [field]: e.target.value })
+        )
+    }
+
+    siteNav () {
+
+        // const dropDownClass = this.state.showSiteNavDropDown ? "category-dropdown-content show" : "category-dropdown-content show";
+        const dropDownClass = this.state.showSiteNavDropDown ? "category-dropdown-content show" : "category-dropdown-content hidden";
+
+        return (
+            this.props.currentUser ? (
+                <nav className="site-nav-protected">
+                    protected site nav
+                </nav>
+            ) : 
+            (
+            <nav className="site-nav-auth">
+
+                <div className="left">
+                    <img className="logo" src="audible_logo_white_text.png" />
+                    <div className="browse-dropdown" >
+                            <button onClick={this.toggleSiteNavDropDown}>
+                                Browse
+                                <span className="down-arrow">&#8735;</span>
+                            </button>
+                            <div className={dropDownClass} >
+                            <span className="arrow"></span>
+                            <div className="category-dropdown-box">
+                                <div className="row">
+                                    <ul>
+                                        <li className="lh">Fiction</li>
+                                        <li>Historical</li>
+                                        <li>Westerns</li>
+                                        <li>Literary</li>
+                                        <li>Humor</li>
+                                        <li>Contemporary</li>
+                                        <li>Historical</li>
+                                        <li>Westerns</li>
+                                        <li>Literary</li>
+                                        <li>Humor</li>
+                                    </ul>
+                                    <ul>
+                                        <li className="lh">Sci-Fi &amp; Fantasy</li>
+                                        <li>Alternate History</li>
+                                        <li>Sword &amp; Sworcery</li>
+                                        <li>Dark Fantasy</li>
+                                        <li>Sci Fi&#58; Classics</li>
+                                        <li>Post&#8211;Apocalyptic</li>
+                                        <li>Alternate History</li>
+                                        <li>Sword &amp; Sworcery</li>
+                                        <li>Dark Fantasy</li>
+                                        <li>Sci Fi&#58; Classics</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="right search">
+                    <form onSubmit={this.handleSubmit}>
+                        <input
+                            type="text"
+                            value={this.state.search}
+                            onChange={this.updateField('search')}
+                        />
+                    </form>
+                </div>
+            </nav>
+            )
+        )
+    }
   
-    return (
+    render () {
+        return (
         <header className="nav-bar">
-            <h3 className="logo">oh lawd-able NAVBAR</h3>
             <div>
-                {display}
+                {this.userNav()}
+                {this.siteNav()}
             </div>
         </header>
-    );
-};
+        )
+    }
+}
+
+export default NavBar;
