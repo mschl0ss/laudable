@@ -10,7 +10,7 @@ class Api::SessionsController < ApplicationController
             log_in(@user)
             render 'api/users/show'
         else
-            render json: ['nu uh.  no log in for you'], status: 418
+            render json: ['Bad username or password'], status: 418
         end
     end
 

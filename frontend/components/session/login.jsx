@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from './footer';
 
 class Login extends React.Component {
     constructor(props) {
@@ -8,8 +9,12 @@ class Login extends React.Component {
             password: '',
         }
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.linkToSignup = this.linkToSignup.bind(this);
     }
 
+    componentDidMount(){
+        this.props.clearSessionErrors();
+    }
     updateField(field) {
         return e => (
             this.setState({ [field]: e.target.value })
@@ -22,10 +27,18 @@ class Login extends React.Component {
             .then(() => this.props.history.push('/'));
     }
 
-    renderErrors() {
-        let errorClass;
+    linkToSignup() {
+        this.props.history.push('/signup')
+    }
 
-        errorClass = this.props.errors.length > 0 ? 'session-errors' : 'hidden';
+    renderErrors() {
+        let errorClass, errorUlClass ='';
+
+        // errorClass = this.props.errors.length > 0 ? 'session-errors' : 'hidden';
+        if (this.props.errors.length > 0) {
+            errorClass = 'session-errors';
+            if (this.props.errors.length > 1) errorUlClass = ' bullets';
+        } else { errorClass = 'hidden'}
         return (
             <section className = {errorClass}>
                 <div className="left">
@@ -33,7 +46,7 @@ class Login extends React.Component {
                 </div>
                 <div className="right">
                     <h4>There was a problem</h4>
-                    <ul>
+                    <ul className={errorUlClass}>
                         {this.props.errors.map( (error,i) => (
                             <li key={i} >{error}</li>
                         ))}
@@ -77,12 +90,23 @@ class Login extends React.Component {
                             </li>
                         </ul>
 
-                        <div className="divider">
-                            <h5>New to Audible?</h5>
-                            <button className="gray-button">Create your Audible account</button>
-                        </div>
                     </form>
+
+                    <div className="guest-login">
+                        <p onClick={this.props.loginGuestUser}>Guest login</p>
+                    </div>
+                        
+                        <div className="divider">
+                            <h5><span>New to Audible?</span></h5>
+                        </div>
+                        <div >
+                            <button 
+                                className="gray-button"
+                                onClick={this.linkToSignup}>Create your Audible account</button>
+                        </div>
                 </section>
+
+                <Footer />
             </section>
         )
     }

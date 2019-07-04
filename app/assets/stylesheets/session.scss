@@ -1,7 +1,4 @@
 @import "./global.scss";
-// body {
-//     background: $orange;
-// }
 
 .session-wrapper {
     display: flex;
@@ -10,36 +7,41 @@
     align-items: center;
     font-size: 13px;
     color: $text-black;
+    letter-spacing: .4px;
 }
 
 .session-wrapper .logo img {
     width: 143px;
-    // height: 60px;
 }
 
 .session-errors, .session-form {
     width: 296px;
     padding: 20px 26px;
 }
+
 .session-errors {
     border: solid 1px $error-red;
     font-weight: 400;
     line-height: 1.255;
     box-shadow: 0 0 0 4px #fcf4f4 inset;
     display: flex;
-
-
 }
+
 .session-errors .right {
     margin-left: 7px;
 }
+
 .session-errors ul{
-    list-style: disc;
-    list-style-position: inside;
+    list-style-position: outside;
+    margin-left: 2.5px;
+    margin-top: 5px;
+}
+
+.session-errors .bullets {
+     list-style: disc;
 }
 .session-errors li{
     line-height: 19px;
-    
 }
 
 .session-errors h4 {
@@ -63,33 +65,56 @@
 
 .session-form h3 {
     font-size: 18px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 .session-form .orange-button {
     background: $orange;
+   
+}
+
+.session-form .orange-button:hover {
+    background: $orange-light;
+    cursor: pointer;
+    
+}
+
+.session-form .orange-button:focus {
+    box-shadow: 0 0 3px 2px $orange-shadow;
+}
+
+.session-form .gray-button:focus, .session-form .orange-button:focus {
+    outline: 0;
+}
+
+.session-form .gray-button, .session-form .orange-button {
     width: 100%;
+    height: 37px;
     font-size: 14px;
-    font-weight: bold;
+    border: none;
+    font-weight: 475;
+}
+
+.session-wrapper .gray-button {
+    background: $gray-button;
+}
+.session-wrapper .gray-button:hover {
+    background: $gray-lightest;
+    cursor: pointer;
 }
 
 .session-form ul {
-
+    // margin-bottom: 80px;
 }
 
-.session-form li {
-
-}
+.session-form li {}
 
 .session-form label {
-    letter-spacing: .7px;
     font-family: sans-serif;
     font-size: 13px;
     font-weight: bold;
 }
 
 .session-form input {
-    // display: block;
-    // background: $light-blue;
     margin: 5px 0 22px;
     height: 38px;
     padding: 0 16px;
@@ -107,11 +132,105 @@
     box-shadow: 0 0 5px $orange-shadow;
 }
 
-.session-form .divider {
+.session-form .hint {
+    font-weight: 400;
+    font-size: 11px;
+    position: relative;
+    top: -15px;
+}
+
+.session-wrapper .guest-login {
+    margin: 45px 0 35px;
+}
+
+.session-wrapper .guest-login p {
+    text-decoration:none;
+    color: $teal-link;
+    font-size: 12px;
     text-align: center;
+}
+
+.session-wrapper .guest-login p:hover {
+    cursor: pointer;
+    text-decoration:underline;
+    color: $teal-link-bright;
+}
+
+.session-wrapper .hacky {
+    background: linear-gradient(to bottom,rgba(0,0,0,.14),rgba(0,0,0,.03) 3px,transparent);
+    height: 25px;
+}
+
+
+.session-wrapper .signup{
+    padding: 35px 0 0;
+    height: 15px;
+    margin-top: 40px;
+}
+
+.session-wrapper p.signup {
+    letter-spacing: .5px;
+    font-size: 12px;
+    line-height: 18px;
+    margin: 0 0;
+    padding: 20px 0 40px;
+}
+
+.session-wrapper p.signup a {
+    margin: 0 3px;
+}
+.session-form .divider {
+  
+}
+
+.session-form .divider h5 {
+    color: $gray-dark;
+    width: 100%; 
+    text-align: center; 
+    border-bottom: 1px solid $gray-light; 
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+
+}
+
+.session-form .divider h5 span { 
+    background:#fff; 
+    padding:0 10px; 
     position: relative;
     top: 2px;
-    padding-top: 1px;
-    margin-bottom: 14px;
-    line-height: 0;
+}
+
+.session-wrapper footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin-top: 20px;
+    padding: 15px 0;
+    // border-top: solid 1px $gray-border;
+}
+
+
+.session-wrapper footer ul {
+    margin: 0 auto 10px;
+    width: 25%;
+    display: flex;
+    justify-content: space-around;
+
+}
+.session-wrapper a {
+    text-decoration:none;
+    color: $teal-link;
+}
+
+.session-wrapper a:hover {
+    text-decoration:underline;
+    color: $teal-link-bright;
+}
+
+.session-wrapper footer p {
+    display: inline-block;
+    margin: 0 auto;
+    color: $gray-slate;
+    // line-height: 1.465;
 }
