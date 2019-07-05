@@ -23,7 +23,7 @@ user_ids = (1..user_count).to_a.shuffle
 User.create!(
     username: 'Guest',
     password: 'guestpassword',
-    email: 'guest@guest.com'
+    email: 'guest@guest.com',
     city: 'San Francisco',
     state: 'Califronia' 
 )
