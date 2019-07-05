@@ -8,27 +8,49 @@ class NavBar extends React.Component{
             search: '',
             showUserNavDropDown: false,
             showSiteNavDropDown: false,
+            hideDelay: 0
         }
         this.toggleUserNavDropDown = this.toggleUserNavDropDown.bind(this);
         this.toggleSiteNavDropDown = this.toggleSiteNavDropDown.bind(this);
+        this.showUserNavDropDown = this.showUserNavDropDown.bind(this);
+        this.hideUserNavDropDown = this.hideUserNavDropDown.bind(this);
+        this.showSiteNavDropDown = this.showSiteNavDropDown.bind(this);
         this.hideSiteNavDropDown = this.hideSiteNavDropDown.bind(this);
+
+        this.logoutActions = this.logoutActions.bind(this);
     }
     
+    logoutActions() {
+        this.hideUserNavDropDown();
+        this.props.logout();
+    }
 
     toggleUserNavDropDown() {
-      this.setState({ showUserNavDropDown: !this.state.showUserNavDropDown });
+        let delay = this.state.hideDelay;
+        if (this.state.showUserNavDropDown === false) delay = 0;
+
+        setTimeout(() => this.setState({ showUserNavDropDown: !this.state.showUserNavDropDown }), delay);
     }
 
     toggleSiteNavDropDown() {
-        let delay = 0;
-        if (this.state.showSiteNavDropDown === true) delay = 200;
-        // console.log(this.state.showSiteNavDropDown);
+        let delay = this.state.hideDelay;
+        if (this.state.showSiteNavDropDown === false) delay = 0;
 
         setTimeout(() => this.setState({ showSiteNavDropDown: !this.state.showSiteNavDropDown}), delay);
     }
 
+    hideUserNavDropDown () {
+        setTimeout(() => this.setState({ showUserNavDropDown: false }), this.state.hideDelay);
+    }
+    showUserNavDropDown () {
+        this.setState({ showUserNavDropDown: true });
+    }
+
     hideSiteNavDropDown() {
-        this.setState( {showSiteNavDropDown: false} );
+        setTimeout(() => this.setState( {showSiteNavDropDown: false} ), this.state.hideDelay);
+    }
+    showSiteNavDropDown() {
+       this.setState( {showSiteNavDropDown: true} );
     }
 
     updateField(field) {
@@ -37,29 +59,51 @@ class NavBar extends React.Component{
         )
     }
 
+
+
     //----------------
     // -------USER NAV
     //----------------
 
     userNav () {
-        const dropDownClass = this.state.showUserNavDropDown ? "dropdown-content show" : "dropdown-content hidden";
+        // const dropDownClass = this.state.showUserNavDropDown ? "user-dropdown-content show" : "user-dropdown-content show";
+        const dropDownClass = this.state.showUserNavDropDown ? "user-dropdown-content show" : "user-dropdown-content hidden";
         return (
             this.props.currentUser ? (
-            <nav className="protected">
+            <nav className="protected-user">
                 <div className="wrapper">
-                    <div className="dropdown">
-                        <button onClick={this.toggleUserNavDropDown }>Hi, {this.props.currentUser.username}!</button>
+                    <div className="user-dropdown" 
+                            onMouseLeave={this.hideUserNavDropDown}
+                            >
+                        <button 
+                            onClick={this.toggleUserNavDropDown }
+                            onMouseOver={this.showUserNavDropDown}
+                            >
+                            Hi, {this.props.currentUser.username}!
+                            <span className="down-arrow">&#8735;</span>
+                        </button>
                         <div className={dropDownClass}>
-                            <button onClick={this.props.logout}>Log Out</button>
+                            <span className="arrow"></span>
+                            <div className = "user-dropdown-box">
+                                <ul>
+                                    <li className="lh">Membership Status</li>
+                                    <li className="strong">Gold Monthly</li>
+                                </ul>
+                                
+                                <button 
+                                    onClick={this.logoutActions}
+                                    
+                                    >Not {this.props.currentUser.username}? Sign Out</button>
+                            </div>
                         </div>
                     </div>
                     <div className="separator"></div>
-                    <img src="https://cdn4.iconfinder.com/data/icons/shopping-21/64/shopping-01-512.png" />
+                    <img className="cart" src="https://cdn4.iconfinder.com/data/icons/shopping-21/64/shopping-01-512.png" />
                 </div>
             </nav>
             ) :
             (
-            <nav className="auth">
+            <nav className="auth-user">
                 <Link className="btn" to="/login">Sign In</Link>
             </nav>
             )
@@ -71,29 +115,46 @@ class NavBar extends React.Component{
     // -------SITE NAV
     //----------------
 
+    siteNavProtected(loggedIn) {
+        
+        if (loggedIn) {
+            return (
+             <div className="site-nav-items">
+                <div className="site-nav-item">Wish List</div>
+                <div className="site-nav-item">Browse</div>
+            </div>
+            )
+        }
+    }
+
     siteNav () {
 
         // const dropDownClass = this.state.showSiteNavDropDown ? "browse-dropdown-content show" : "browse-dropdown-content show";
         const dropDownClass = this.state.showSiteNavDropDown ? "browse-dropdown-content show" : "browse-dropdown-content hidden";
-
+        const loggedIn = this.props.currentUser ? true : false;
+        const className = loggedIn ? 'site-nav protected' : 'site-nav auth';
+        const logo = loggedIn ? "audible_logo.jpg" : "audible_logo_white_text.png";
+        const searchIcon = loggedIn ? "searchicondark.png" : "searchbutton.svg";
+        
         return (
-            this.props.currentUser ? (
-                <nav className="site-nav-protected">
-                    protected site nav
-                </nav>
-            ) : 
-            (
-            <nav className="site-nav-auth">
+            <nav className={className}>
 
                 <div className="left">
-                    <img className="logo" src="audible_logo_white_text.png" />
+                    <img className="logo" src={logo} />
+                    <ul>
+                        <li
+                            className={loggedIn ? "" : "hidden"}
+                        >Wish List</li>
+                        <li
+                            className={loggedIn ? "" : "hidden"}
+                        >Library</li>
+                    </ul>
                     <div className="browse-dropdown" 
                         onMouseLeave={this.hideSiteNavDropDown}
                         >
                             <button 
                                 onClick={this.toggleSiteNavDropDown} 
-                                onMouseOver={this.toggleSiteNavDropDown}
-                                
+                                onMouseOver={this.showSiteNavDropDown}
                             >
                                 Browse
                                 <span className="down-arrow">&#8735;</span>
@@ -130,7 +191,11 @@ class NavBar extends React.Component{
                             </div>
                         </div>
                     </div>
+                   
+
+                    
                 </div>
+
 
                 <div className="right search">
                     <form onSubmit={this.handleSubmit}>
@@ -140,12 +205,12 @@ class NavBar extends React.Component{
                             onChange={this.updateField('search')}
                             placeholder="Find your next great listen"
                         />
-                        <img src="searchbutton.svg"></img>
+                        <img src={searchIcon}></img>
                         {/* <span className="search-icon rotate">&#x260C;</span> */}
                     </form>
                 </div>
             </nav>
-            )
+            
         )
     }
   

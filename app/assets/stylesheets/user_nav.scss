@@ -7,71 +7,57 @@
 }
 
 //----------------
-// --PROTECTED USER NAV
+// --PROTECTED-user USER NAV
 //----------------
 
-.nav-bar .protected {
+.nav-bar .protected-user {
     color: rgb(26, 28, 29);
+    // background: slategray;
+    display: flex;
+    justify-content: flex-end;
+    // height: 40px;
+    // margin-top: 20px;
 }
 
-.nav-bar .protected .dropdown > button {
-    font-weight: 550;
-    border: none;
-    cursor: pointer;
-}
 
-.nav-bar .protected .dropdown > button:hover {
-    text-decoration: underline;
-}
-.nav-bar .protected .dropdown > button:focus {
-    outline: none;
-}
 
-.nav-bar .protected .wrapper {
+.nav-bar .protected-user .wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.nav-bar .protected .wrapper {
-
-}
-
-.nav-bar .protected .dropdown-content {
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.nav-bar .protected .separator{
+.nav-bar .protected-user .separator{
     background-color: #aaacae;
     // font-weight: 400;
     height: 12px;
     width: 1px;
     margin: 0 15px;
 }
-.nav-bar .protected img {
+.nav-bar .protected-user img.cart {
     width: 32px;
     height: 32px;
+    cursor: help;
 }
 
 //----------------
 // --AUTH USER NAV
 //----------------
-.nav-bar .auth {
-  color: white;
+.nav-bar .auth-user {
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 13px;
 
 }
 
-.nav-bar .auth a {
+.nav-bar .auth-user a {
   color: white;
   text-decoration: none;
   font-size: inherit;
   font-weight: inherit;
 }
-.nav-bar .auth a:hover {
+.nav-bar .auth-user a:hover {
   text-decoration: underline;
 }
 

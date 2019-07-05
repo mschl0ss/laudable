@@ -8,17 +8,18 @@ $black-text: #1a1c1d;
 //----------------
 
 // BUTTON
-.nav-bar .browse-dropdown button {
+.nav-bar .browse-dropdown button, .nav-bar .protected-user .user-dropdown > button {
     background: none;
     border: none;
     outline: none;
+    cursor: pointer;
 }
-.nav-bar .browse-dropdown button:hover {
+.nav-bar .browse-dropdown button:hover, .nav-bar .protected-user .user-dropdown > button:hover {
     text-decoration: underline;
 }
 
 // DOWN ARROW NEXT TO BUTTON
-.nav-bar .browse-dropdown button .down-arrow{
+.nav-bar button .down-arrow{
     display: inline-block;
     transform: rotate(-45deg);
     font-size: 18px;
@@ -27,50 +28,118 @@ $black-text: #1a1c1d;
     top: -2px;
 }
 
+// UP TRIANGLE ON REVEALED CONTENT
 
-// DROPDOWN CONTENT
-
-.nav-bar .browse-dropdown-content, .nav-bar .user-dropdown-content {
-color: $gray-dark;
-  border: 1px solid #cdcdcd;
-  box-shadow: 2px 2px 6px 0 rgba(51,51,51,.25);
-  background: #fff;
-}
-//----------------
-// --AUTH SITE NAV
-//----------------
-
-//----------------
-// --AUTH SITE NAV
-//----------------
-.site-nav-auth .browse-dropdown {
-    position: relative;
-    top: -35px;
-}
-
-.site-nav-auth .browse-dropdown button {
-    color: white;
-    font-size: 14px;
-}
-
-
-
-
-
-
-.browse-dropdown-content {
-  width: 396px;
-  position: relative;
-  top: 20px;
-  left: -170px;
-}
-
-.browse-dropdown-content .arrow {
+.nav-bar .arrow {
     background-image: url(https://m.media-amazon.com/images/G/01/audibleweb/brickcity/1.0/popover_caret_release_1-0-18._V519763868_.svg);
     content: "";
     height: 18px;
     position: absolute;
     width: 36px;
+
+}
+// DROPDOWN CONTENT
+
+.nav-bar .browse-dropdown-content, .nav-bar .user-dropdown-content {
+    color: $gray-dark;
+    border: 1px solid #cdcdcd;
+    box-shadow: 2px 2px 6px 0 rgba(51,51,51,.25);
+    background: #fff;
+    z-index: 1;
+}
+
+
+//----------------
+// --PROTECTED-user USER NAV
+//----------------
+
+.nav-bar .protected-user .user-dropdown {
+    position: relative;
+    top: 0px;
+}
+
+//nav bar 'Hi username'
+.nav-bar .protected-user .user-dropdown > button {
+    font-weight: 550;
+}
+
+.nav-bar .protected-user .user-dropdown > button:focus {
+    outline: none;
+}
+
+// dropdown content up arrow
+.nav-bar .protected-user .arrow {
+    top: -18px;
+    right: 65px;
+}
+
+//dropdown content
+.nav-bar .protected-user .user-dropdown-content {
+    font-size: 13px;
+    position: absolute;
+    top: 40px;
+    left: -50px;
+    width: 178px;
+}
+
+.nav-bar .protected-user .user-dropdown-content ul {
+    color: rgb(26, 28, 29);
+    padding: 20px;
+    border-bottom: solid 1px #cdcdcd;
+    line-height: 19px;
+    font-weight: 600;
+
+
+}
+.nav-bar .protected-user .user-dropdown-content ul .lh {
+    color: $gray-dark;
+    font-weight: 400;
+}
+
+.nav-bar .protected-user .user-dropdown-content button {
+    border: none;
+    color: rgb(26, 28, 29);
+    font-weight: 550;
+    padding: 20px;
+    cursor: pointer;
+    outline: none;
+}
+
+.nav-bar .protected-user .user-dropdown-content button:hover {
+    text-decoration: underline;
+    
+}
+
+
+//----------------
+// --AUTH SITE NAV
+//----------------
+.browse-dropdown {
+    // position: relative;
+    // top: -35px;
+}
+
+.browse-dropdown button {
+    color: white;
+    font-size: 14px;  
+    position: absolute;
+    top: 59px;
+}
+
+.browse-dropdown-content {
+    width: 396px;
+    position: relative;
+    top: 226px;
+    left: -170px;
+}
+
+.nav-bar .protected .browse-dropdown-content {
+    position: absolute;
+    top: 115px;
+    left: 600px;
+}
+
+.browse-dropdown-content .arrow {
     top: -18px;
     right: 170px;
 }
@@ -106,3 +175,14 @@ color: $gray-dark;
   font-weight: 500;
   margin-bottom: 15px;
 }
+
+//----------------
+// --PROTECTED SITE NAV
+//----------------
+
+.site-nav.protected .browse-dropdown button {
+    color: rgb(26, 28, 29);
+    top:70px;
+}
+
+
