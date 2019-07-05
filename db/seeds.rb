@@ -53,24 +53,161 @@ cc_count.times {ContentCreator.create!(name: Faker::Book.author)}
 #the whole ().ceil business is essentially .to_i but rounding up
 
 
-category_parent_count = 2
-category_children_count = 20
+category_parent_count = 4
+category_children_count = 29
 category_ids = (1..category_children_count).to_a.shuffle
 
-#parent loop
-(1..category_parent_count).each do |i|
-    Category.create!(
-        parent_category_id: nil,
-        category_name: Faker::Book.unique.genre,
-    )
-end
+# Root Categories (4)
 
-(1..category_children_count).each do |i|
-    Category.create!(
-        parent_category_id: i % 2 == 0 ? 1 : 2,
-        category_name: Faker::Book.unique.genre,
-    )
-end
+Category.create!(
+    parent_category_id: nil,
+    category_name: "Arts & Entertainment"
+)
+Category.create!(
+    parent_category_id: nil,
+    category_name: "Bios & Memoirs"
+)
+Category.create!(
+    parent_category_id: nil,
+    category_name: "Sci-Fi & Fantasy"
+)
+Category.create!(
+    parent_category_id: nil,
+    category_name: "Classics"
+)
+
+
+# 1. Arts & Entertainment (5)
+
+Category.create!(
+    parent_category_id: 1,
+    category_name: "Celebrity Bios"
+)
+Category.create!(
+    parent_category_id: 1,
+    category_name: "Interviews & Panels"
+)
+Category.create!(
+    parent_category_id: 1,
+    category_name: "Music"
+)
+Category.create!(
+    parent_category_id: 1,
+    category_name: "TV & Film"
+)
+Category.create!( 
+    parent_category_id: 1,
+    category_name: "Visual Arts"
+)
+
+
+# 2. Bios & Memoirs (8)
+
+Category.create!(
+    parent_category_id: 2,
+    category_name: "Artists, Writers, & Musicians"
+)
+Category.create!(
+    parent_category_id: 2,
+    category_name: "Business Leaders"
+)
+Category.create!(
+    parent_category_id: 2,
+    category_name: "Celebrities"
+)
+Category.create!(
+    parent_category_id: 2,
+    category_name: "Criminals"
+)
+Category.create!(
+    parent_category_id: 2,
+    category_name: "Personal Memoirs"
+)
+Category.create!(
+    parent_category_id: 2,
+    category_name: "Political Figures"
+)
+Category.create!(
+    parent_category_id: 2,
+    category_name: "Religious Figures"
+)
+Category.create!(
+    parent_category_id: 2,
+    category_name: "Science & Technology Leaders"
+)
+
+
+# 3. Sci Fi & Fantasy (9)
+
+Category.create!(
+    parent_category_id: 3,
+    category_name: "Alternate History"
+)
+Category.create!(
+    parent_category_id: 3,
+    category_name: "Dark Fantasy"
+)
+Category.create!(
+    parent_category_id: 3,
+    category_name: "Fantasy: Contemporary"
+)
+Category.create!(
+    parent_category_id: 3,
+    category_name: "Fantasy: Epic"
+)
+Category.create!(
+    parent_category_id: 3,
+    category_name: "Fantasy: Paranormal"
+)
+Category.create!(
+    parent_category_id: 3,
+    category_name: "Military Sci-Fi"
+)
+Category.create!(
+    parent_category_id: 3,
+    category_name: "Post-Apocalyptic"
+)
+Category.create!(
+    parent_category_id: 3,
+    category_name: "Superheroes"
+)
+Category.create!(
+    parent_category_id: 3,
+    category_name: "Sword & Sorcery"
+)
+
+
+# 4. Classics (7)
+
+Category.create!(
+    parent_category_id: 4,
+    category_name: "American Literature"
+)
+Category.create!(
+    parent_category_id: 4,
+    category_name: "British Literature"
+)
+Category.create!(
+    parent_category_id: 4,
+    category_name: "Drama"
+)
+Category.create!(
+    parent_category_id: 4,
+    category_name: "European Literature"
+)
+Category.create!(
+    parent_category_id: 4,
+    category_name: "Greek & Roman"
+)
+Category.create!(
+    parent_category_id: 4,
+    category_name: "Kids & Young Adults"
+)
+Category.create!(
+    parent_category_id: 4,
+    category_name: "Shakespeare"
+)
+
 
 
 #BOOKS
