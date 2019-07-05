@@ -14,11 +14,11 @@ class AuthSplash extends React.Component {
         return (
         <div>
         <section className="splash-main-auth">
+            <div className="movie">
+                <img src="auth_splash_banner.gif" />
+            </div>
             
             <section className="top">
-                <div className="movie">
-                    <img src="auth_splash_banner.gif" />
-                </div>
                 <div className="splash-banner-content">
                     <h1>This is Laudable.</h1>
                     <button className='orange-button' onClick={this.props.loginGuestUser}>Click to Try Laudible Free</button>
@@ -37,13 +37,13 @@ class AuthSplash extends React.Component {
             {/* GET STARTED  */}
             <section className="get-started">
                 <header>
-                    <div>
+                    <div className="selected">
                         <img src="https://m.media-amazon.com/images/G/01/Audible/en_US/images/creative/landing/ANON/icon_GetStarted_v3._CB1539285331_.svg" />
                         <span>Get Started</span>
                     </div>
                     <div>
                         <img src="https://m.media-amazon.com/images/G/01/Audible/en_US/images/creative/landing/ANON/icon_Cancel.svg_v3._CB1539289548_.svg" />
-                        <span className="graytext">Our Guarantee</span>
+                        <span className="graytext">Available for Mobile</span>
                     </div>
                     <div>
                         <img src="https://m.media-amazon.com/images/G/01/Audible/en_US/images/creative/landing/ANON/icon_AnyDevice_v3._CB1539285331_.svg" alt="Listen to Audible on any device." />
@@ -57,11 +57,11 @@ class AuthSplash extends React.Component {
                         <h4>Start your free 30-day trial</h4>
                         <ul>
                             <li><span>&#10003;</span>Free membership for 30 days</li>
-                            <li><span>&#10003;</span>Free membership after that too</li>
-                                <li><span>&#10003;</span>Free membership.  It's just free.&#8727;</li>
+                            <li><span>&#10003;</span>Free membership after that, too.</li>
+                                    <li><span>&#10003;</span>Free membership.  It's just free.<span className="aquamarine">&#8727;</span></li>
                         </ul>
                             <button className='orange-button' onClick={this.props.loginGuestUser}>Click to Try Laudible Free</button>
-                            <aside>&#8727; &#65284;14.95 per month after 30 years. Cancel by combat.</aside>
+                            <aside><span className="aquamarine">&#8727;</span> &#65284;14.95 per month after 30 years. Cancel requires trial by combat.</aside>
                     </div>
                     <div className="right">
                         <img src="get_started_books.jpg" />
@@ -114,6 +114,7 @@ class AuthSplash extends React.Component {
                     <li className="copyright">&copy; Marc Schlossberg, 2019</li>
                     <li> | </li>
                     <li><a href="https://www.appacademy.io/">App Academy</a></li>
+                    <li> | </li>
                     <li><a href="www.audible.com">Audible</a></li>
                     <li> | </li>
                     <li><a href="www.amazon.com">Amazon</a></li>

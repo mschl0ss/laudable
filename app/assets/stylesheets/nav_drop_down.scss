@@ -1,0 +1,108 @@
+// Browse Dropdown
+
+$gray-dark: #767676;
+$black-text: #1a1c1d;
+
+//----------------
+// --SHARED
+//----------------
+
+// BUTTON
+.nav-bar .browse-dropdown button {
+    background: none;
+    border: none;
+    outline: none;
+}
+.nav-bar .browse-dropdown button:hover {
+    text-decoration: underline;
+}
+
+// DOWN ARROW NEXT TO BUTTON
+.nav-bar .browse-dropdown button .down-arrow{
+    display: inline-block;
+    transform: rotate(-45deg);
+    font-size: 18px;
+    margin-left: 10px;
+    position: relative;
+    top: -2px;
+}
+
+
+// DROPDOWN CONTENT
+
+.nav-bar .browse-dropdown-content, .nav-bar .user-dropdown-content {
+color: $gray-dark;
+  border: 1px solid #cdcdcd;
+  box-shadow: 2px 2px 6px 0 rgba(51,51,51,.25);
+  background: #fff;
+}
+//----------------
+// --AUTH SITE NAV
+//----------------
+
+//----------------
+// --AUTH SITE NAV
+//----------------
+.site-nav-auth .browse-dropdown {
+    position: relative;
+    top: -35px;
+}
+
+.site-nav-auth .browse-dropdown button {
+    color: white;
+    font-size: 14px;
+}
+
+
+
+
+
+
+.browse-dropdown-content {
+  width: 396px;
+  position: relative;
+  top: 20px;
+  left: -170px;
+}
+
+.browse-dropdown-content .arrow {
+    background-image: url(https://m.media-amazon.com/images/G/01/audibleweb/brickcity/1.0/popover_caret_release_1-0-18._V519763868_.svg);
+    content: "";
+    height: 18px;
+    position: absolute;
+    width: 36px;
+    top: -18px;
+    right: 170px;
+}
+.category-dropdown-box {}
+
+.category-dropdown-box {
+  font-size: 14px;
+  padding: 20px 25px;
+}
+
+.category-dropdown-box .row{
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-content: flex-start;
+}
+
+.category-dropdown-box ul {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 50%;
+}
+
+.category-dropdown-box ul .lh {
+  text-transform: uppercase;
+  color: $gray-dark;
+  font-weight: 500;
+}
+
+.category-dropdown-box li {
+  color: $black-text;
+  line-height: 20px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}

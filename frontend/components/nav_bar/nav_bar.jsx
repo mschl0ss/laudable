@@ -31,18 +31,30 @@ class NavBar extends React.Component{
         this.setState( {showSiteNavDropDown: false} );
     }
 
+    updateField(field) {
+        return e => (
+            this.setState({ [field]: e.target.value })
+        )
+    }
+
+    //----------------
+    // -------USER NAV
+    //----------------
+
     userNav () {
         const dropDownClass = this.state.showUserNavDropDown ? "dropdown-content show" : "dropdown-content hidden";
         return (
             this.props.currentUser ? (
             <nav className="protected">
-                <div className="dropdown">
-                    <button onClick={this.toggleUserNavDropDown }>Hi, {this.props.currentUser.username}</button>
-                    <div 
-                        className={dropDownClass}
-                    >
-                        <button onClick={this.props.logout}>Log Out</button>
+                <div className="wrapper">
+                    <div className="dropdown">
+                        <button onClick={this.toggleUserNavDropDown }>Hi, {this.props.currentUser.username}!</button>
+                        <div className={dropDownClass}>
+                            <button onClick={this.props.logout}>Log Out</button>
+                        </div>
                     </div>
+                    <div className="separator"></div>
+                    <img src="https://cdn4.iconfinder.com/data/icons/shopping-21/64/shopping-01-512.png" />
                 </div>
             </nav>
             ) :
@@ -55,16 +67,14 @@ class NavBar extends React.Component{
     }
 
 
-    updateField(field) {
-        return e => (
-            this.setState({ [field]: e.target.value })
-        )
-    }
+    //----------------
+    // -------SITE NAV
+    //----------------
 
     siteNav () {
 
-        // const dropDownClass = this.state.showSiteNavDropDown ? "category-dropdown-content show" : "category-dropdown-content show";
-        const dropDownClass = this.state.showSiteNavDropDown ? "category-dropdown-content show" : "category-dropdown-content hidden";
+        // const dropDownClass = this.state.showSiteNavDropDown ? "browse-dropdown-content show" : "browse-dropdown-content show";
+        const dropDownClass = this.state.showSiteNavDropDown ? "browse-dropdown-content show" : "browse-dropdown-content hidden";
 
         return (
             this.props.currentUser ? (

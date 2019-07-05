@@ -1,0 +1,77 @@
+//----------------
+// --SHARED USER NAV
+//----------------
+
+.nav-bar {
+    padding: 15px 0 0;
+}
+
+//----------------
+// --PROTECTED USER NAV
+//----------------
+
+.nav-bar .protected {
+    color: rgb(26, 28, 29);
+}
+
+.nav-bar .protected .dropdown > button {
+    font-weight: 550;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-bar .protected .dropdown > button:hover {
+    text-decoration: underline;
+}
+.nav-bar .protected .dropdown > button:focus {
+    outline: none;
+}
+
+.nav-bar .protected .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-bar .protected .wrapper {
+
+}
+
+.nav-bar .protected .dropdown-content {
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.nav-bar .protected .separator{
+    background-color: #aaacae;
+    // font-weight: 400;
+    height: 12px;
+    width: 1px;
+    margin: 0 15px;
+}
+.nav-bar .protected img {
+    width: 32px;
+    height: 32px;
+}
+
+//----------------
+// --AUTH USER NAV
+//----------------
+.nav-bar .auth {
+  color: white;
+
+}
+
+.nav-bar .auth a {
+  color: white;
+  text-decoration: none;
+  font-size: inherit;
+  font-weight: inherit;
+}
+.nav-bar .auth a:hover {
+  text-decoration: underline;
+}
+

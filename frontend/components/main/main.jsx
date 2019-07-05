@@ -13,7 +13,7 @@ class Splash extends React.Component {
     render () {
         const display = this.props.currentUser ? (
             <div>
-                <h4>LOG IN SPLASH</h4>
+                {/* <h4>LOG IN SPLASH</h4> */}
                 
             </div>
         ) : (
