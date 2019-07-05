@@ -15,18 +15,31 @@ require 'faker'
 ### included a random number somewhere in the mix
 
 
+ActiveRecord::Base.transaction do
+
+    CollectionBook.destroy_all
+    ShoppingCartBook.destroy_all
+    ShoppingCart.destroy_all
+    Review.destroy_all
+    BookCategory.destroy_all
+    Book.destroy_all
+    Category.destroy_all
+    ContentCreator.destroy_all
+    User.destroy_all
 
 #USERS
 user_count = 30
 user_ids = (1..user_count).to_a.shuffle
+# user_ids = (demo.id..User.last.id).to_a.shuffle
 
 User.create!(
     username: 'Guest',
     password: 'guestpassword',
     email: 'guest@guest.com',
     city: 'San Francisco',
-    state: 'Califronia' 
+    state: 'California' 
 )
+
 # User.create!(username: 'Guest',  password: 'guestpassword',  email: 'guest@guest.com',  city: 'San Francisco',state: 'California' )
 
 (2..user_count).each do
@@ -298,4 +311,7 @@ collection_book_count = 200
         book_id: book_ids[i % book_count],
         collection_type: i % 4 == 0 ? 'wishlist' : 'library'
     )
+end
+
+
 end

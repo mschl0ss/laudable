@@ -4,6 +4,8 @@ import NavBarContainer from '../nav_bar/nav_bar_container';
 import { AuthRoute, ProtectedRoute } from '../../utils/route_utils';
 import SplashContainer from '../splash/splash_container';
 
+import Carousel from '../book_carousel/carousel';
+
 
 class Splash extends React.Component {
 
@@ -24,11 +26,14 @@ class Splash extends React.Component {
         );
         
         return (
+
+            
             <div id="main">
                 {/* <Route whatever></Route> */}
                 <NavBarContainer/>
                 <AuthRoute path="/" component={SplashContainer} />
-                {display}
+                <ProtectedRoute exact path="/carousel" component={Carousel} />
+               
                 
             </div>
         )
