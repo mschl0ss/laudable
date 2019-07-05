@@ -29,7 +29,7 @@ class Splash extends React.Component {
             <section className="hr">
                 <aside>
                     <span onClick={this.props.loginGuestUser}>
-                    Learn more &#10148;
+                        Learn more &#10148;
                     </span>
                 </aside>
             </section>
