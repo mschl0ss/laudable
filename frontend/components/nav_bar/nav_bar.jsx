@@ -141,6 +141,8 @@ class NavBar extends React.Component{
 
                 <div className="left">
                     <img className="logo" src={logo} />
+
+                    {/* ** LINKS */}
                     <ul>
                         <li
                             className={loggedIn ? "" : "hidden"}
@@ -149,6 +151,8 @@ class NavBar extends React.Component{
                             className={loggedIn ? "" : "hidden"}
                         >Library</li>
                     </ul>
+
+                    {/* **BROWSE BUTTON */}
                     <div className="browse-dropdown" 
                         onMouseLeave={this.hideSiteNavDropDown}
                         >
