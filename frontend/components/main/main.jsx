@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import NavBarContainer from '../nav_bar/nav_bar_container';
 import { AuthRoute, ProtectedRoute } from '../../utils/route_utils';
-import AuthSplashContainer from '../splash/auth_splash_container';
+import SplashContainer from '../splash/splash_container';
 
 
 class Splash extends React.Component {
@@ -27,7 +27,7 @@ class Splash extends React.Component {
             <div id="main">
                 {/* <Route whatever></Route> */}
                 <NavBarContainer/>
-                <AuthRoute path="/" component={AuthSplashContainer} />
+                <AuthRoute path="/" component={SplashContainer} />
                 {display}
                 
             </div>

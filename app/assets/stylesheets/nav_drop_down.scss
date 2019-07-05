@@ -110,10 +110,6 @@ $black-text: #1a1c1d;
     
 }
 
-
-//----------------
-// --AUTH SITE NAV
-//----------------
 .browse-dropdown {
     // position: relative;
     // top: -35px;
@@ -176,6 +172,14 @@ $black-text: #1a1c1d;
   margin-bottom: 15px;
 }
 
+.category-dropdown-box li:hover {
+    text-decoration: underline;
+    cursor: help
+}
+.category-dropdown-box .lh:hover {
+    text-decoration: none;
+    cursor: default;
+}
 //----------------
 // --PROTECTED SITE NAV
 //----------------

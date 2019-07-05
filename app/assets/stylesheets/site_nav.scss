@@ -130,6 +130,11 @@ $black-text: #1a1c1d;
   font-weight: 400;
   font-size: 14px;
 }
+
+.site-nav .left>ul li:hover {
+  text-decoration: underline;
+  cursor: help;
+}
 // logo
 .site-nav.auth img.logo {
   width: 180px;

@@ -17,8 +17,8 @@
  *= require session.scss
  *= require nav_drop_down.scss
  *= require user_nav.scss
- *= require auth_site_nav_bar.scss
- *= require auth_splash.scss
+ *= require site_nav.scss
+ *= require splash.scss
  
 
 

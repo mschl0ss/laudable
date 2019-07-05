@@ -4,7 +4,7 @@ import NavBarContainer from '../nav_bar/nav_bar_container';
 import ErrorBoundary from '../../utils/error_boundary';
 
 
-class AuthSplash extends React.Component {
+class Splash extends React.Component {
 
 
 
@@ -140,4 +140,4 @@ class AuthSplash extends React.Component {
 
 }
 
-export default AuthSplash;
+export default Splash;

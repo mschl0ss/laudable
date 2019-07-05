@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { login } from '../../actions/session_actions';
 
-import AuthSplash from './auth_splash';
+import Splash from './splash';
 
 const msp = state => ({
     currentUser: state.session.currentUser,
@@ -14,4 +14,4 @@ const mdp = dispatch => {
     });
 }
 
-export default connect (msp,mdp)(AuthSplash);
+export default connect (msp,mdp)(Splash);
