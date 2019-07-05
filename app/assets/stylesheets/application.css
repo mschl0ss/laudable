@@ -15,7 +15,7 @@
  *= require reset.scss
  *= require global.scss
  *= require session.scss
- *= require nav_bar.scss
+ *= require auth_nav_bar.scss
  *= require auth_splash.scss
  
 

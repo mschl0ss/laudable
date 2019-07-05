@@ -21,8 +21,8 @@ class User < ApplicationRecord
     validate :check_password_equals_repassword
     
 
-    attr_reader :password
-    attr_accessor :repassword
+    attr_reader :password, :repassword
+    # attr_accessor 
 
     after_initialize :ensure_session_token
 

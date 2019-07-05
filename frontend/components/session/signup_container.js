@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import { createNewUser, clearSessionErrors } from '../../actions/session_actions';
 import Signup from './signup';
@@ -13,4 +14,4 @@ const mdp = dispatch => ({
     clearSessionErrors: () => dispatch(clearSessionErrors()),
 });
 
-export default connect (msp, mdp)(Signup);
+export default withRouter(connect (msp, mdp)(Signup));

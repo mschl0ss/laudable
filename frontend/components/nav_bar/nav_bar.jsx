@@ -11,6 +11,7 @@ class NavBar extends React.Component{
         }
         this.toggleUserNavDropDown = this.toggleUserNavDropDown.bind(this);
         this.toggleSiteNavDropDown = this.toggleSiteNavDropDown.bind(this);
+        this.hideSiteNavDropDown = this.hideSiteNavDropDown.bind(this);
     }
     
 
@@ -20,10 +21,14 @@ class NavBar extends React.Component{
 
     toggleSiteNavDropDown() {
         let delay = 0;
-        if (this.state.showSiteNavDropDown === true) delay = 3000;
+        if (this.state.showSiteNavDropDown === true) delay = 200;
         // console.log(this.state.showSiteNavDropDown);
 
         setTimeout(() => this.setState({ showSiteNavDropDown: !this.state.showSiteNavDropDown}), delay);
+    }
+
+    hideSiteNavDropDown() {
+        this.setState( {showSiteNavDropDown: false} );
     }
 
     userNav () {
@@ -72,8 +77,14 @@ class NavBar extends React.Component{
 
                 <div className="left">
                     <img className="logo" src="audible_logo_white_text.png" />
-                    <div className="browse-dropdown" >
-                            <button onClick={this.toggleSiteNavDropDown}>
+                    <div className="browse-dropdown" 
+                        onMouseLeave={this.hideSiteNavDropDown}
+                        >
+                            <button 
+                                onClick={this.toggleSiteNavDropDown} 
+                                onMouseOver={this.toggleSiteNavDropDown}
+                                
+                            >
                                 Browse
                                 <span className="down-arrow">&#8735;</span>
                             </button>
@@ -117,7 +128,10 @@ class NavBar extends React.Component{
                             type="text"
                             value={this.state.search}
                             onChange={this.updateField('search')}
+                            placeholder="Find your next great listen"
                         />
+                        <img src="searchbutton.svg"></img>
+                        {/* <span className="search-icon rotate">&#x260C;</span> */}
                     </form>
                 </div>
             </nav>
@@ -128,10 +142,10 @@ class NavBar extends React.Component{
     render () {
         return (
         <header className="nav-bar">
-            <div>
+            <nav>
                 {this.userNav()}
                 {this.siteNav()}
-            </div>
+            </nav>
         </header>
         )
     }

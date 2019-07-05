@@ -1,0 +1,224 @@
+
+.nav-bar {
+  box-sizing: border-box;
+  width: 1000px;
+  margin: 0 auto;
+  font-family: 'Helvetica',sans-serif;
+}
+
+.nav-bar .auth, .nav-bar .protected {
+  display: flex;
+  justify-content: flex-end;
+  font-weight: 550;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.protected .dropdown > button {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.protected .dropdown > button:hover, .userNav .dropdown > button:focus {
+    background-color: #2980B9;
+}
+
+.protected .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.protected .dropdown-content {
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.auth {
+  color: white;
+  padding: 15px 0 0;
+}
+
+.auth a {
+  color: white;
+  text-decoration: none;
+  font-size: inherit;
+  font-weight: inherit;
+}
+.auth a:hover {
+  text-decoration: underline;
+}
+
+
+// ------------------------------
+// ------------------------------
+// ------SITE NAV AUTH
+// ------------------------------
+// ------------------------------
+
+.site-nav-auth {
+  display: flex;
+  justify-content: space-between;
+  // border: solid;
+  height: 40px;
+  margin-top: 20px;
+}
+
+.site-nav-auth, .right, .left {
+  // border: solid 1px orange;
+}
+// ------------------------------
+// ------SITE NAV RIGHT
+// ------------------------------
+
+.site-nav-auth .right {
+  // display: flex;
+  // align-content: flex-end;
+  height: 40px;
+}
+
+.site-nav-auth .right form {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.site-nav-auth .right form input{
+  box-sizing: border-box;
+  height: 100%;
+  width: 275px;
+  background-color: rgba(180,180,180,.3);
+  border: none;
+  color: #fff;
+  outline: none;
+  padding: 3px 36px 3px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  position: relative;
+  left: 20px;
+}
+
+.site-nav-auth .right form input::placeholder {
+  color: #fff;
+  opacity: 1;
+}
+.site-nav-auth .right img {
+  position: relative;
+  left: -10px;
+  top: 4px;
+  cursor: pointer;
+
+
+}
+
+.site-nav-auth .right form .search-icon {}
+
+// ------------------------------
+// ------SITE NAV LEFT
+// ------------------------------
+
+$gray-dark: rgba(26,28,29,.65);
+$black-text: #1a1c1d;
+
+
+.site-nav-auth .left {
+  display: flex;
+  align-items: baseline;
+  position: relative;
+  top: -20px;
+}
+
+// logo
+.site-nav-auth img.logo {
+  width: 180px;
+  height: 82px;
+  position: relative;
+  top: -8px;
+}
+
+// Browse Dropdown
+
+.site-nav-auth .browse-dropdown {
+  position: relative;
+  top: -35px;
+}
+
+.site-nav-auth .browse-dropdown button {
+  background: none;
+  color: white;
+  border: none;
+  font-size: 14px;
+  outline: none;
+}
+
+.site-nav-auth .browse-dropdown button .down-arrow{
+  display: inline-block;
+  transform: rotate(-45deg);
+  font-size: 18px;
+  margin-left: 10px;
+  position: relative;
+  top: -2px;
+}
+
+.site-nav-auth .browse-dropdown button:hover {
+  text-decoration: underline;
+}
+
+
+.category-dropdown-content {
+  color: $gray-dark;
+  border: 1px solid #cdcdcd;
+  box-shadow: 2px 2px 6px 0 rgba(51,51,51,.25);
+  background: #fff;
+  width: 396px;
+  position: relative;
+  top: 20px;
+  left: -170px;
+}
+
+.category-dropdown-content .arrow {
+    background-image: url(https://m.media-amazon.com/images/G/01/audibleweb/brickcity/1.0/popover_caret_release_1-0-18._V519763868_.svg);
+    content: "";
+    height: 18px;
+    position: absolute;
+    width: 36px;
+    top: -18px;
+    right: 170px;
+}
+.category-dropdown-box {}
+
+.category-dropdown-box {
+  font-size: 14px;
+  padding: 20px 25px;
+}
+
+.category-dropdown-box .row{
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-content: flex-start;
+}
+
+.category-dropdown-box ul {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 50%;
+}
+
+.category-dropdown-box ul .lh {
+  text-transform: uppercase;
+  color: $gray-dark;
+  font-weight: 500;
+}
+
+.category-dropdown-box li {
+  color: $black-text;
+  line-height: 20px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}

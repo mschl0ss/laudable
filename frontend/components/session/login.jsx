@@ -15,6 +15,7 @@ class Login extends React.Component {
     componentDidMount(){
         this.props.clearSessionErrors();
     }
+    
     updateField(field) {
         return e => (
             this.setState({ [field]: e.target.value })

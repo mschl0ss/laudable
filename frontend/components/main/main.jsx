@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import NavBarContainer from '../nav_bar/nav_bar_container';
 import { AuthRoute, ProtectedRoute } from '../../utils/route_utils';
-import AuthSplash from '../splash/auth_splash';
+import AuthSplashContainer from '../splash/auth_splash_container';
 
 
 class Splash extends React.Component {
@@ -24,10 +24,10 @@ class Splash extends React.Component {
         );
         
         return (
-            <div>
+            <div id="main">
                 {/* <Route whatever></Route> */}
                 <NavBarContainer/>
-                <AuthRoute exact path="/" component={AuthSplash} />
+                <AuthRoute path="/" component={AuthSplashContainer} />
                 {display}
                 
             </div>

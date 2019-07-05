@@ -16,6 +16,7 @@ $text-black: #212325;
 
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway:900&display=swap');
 // body {
 //     background: $orange;
 // }
@@ -28,5 +29,19 @@ $text-black: #212325;
 
 body {
     font-family: 'Roboto',sans-serif;
+    min-height: 100vh;
+    min-width: 100vw;
+    overflow-x: hidden;
+    // overflow: hidden;
 
+}
+
+#root {
+    width: 1500px;
+    margin: 0 auto;
+
+}
+#root, #app, #main {
+    width: 1500px;
+    margin: 0 auto;
 }
