@@ -28,9 +28,10 @@ class Splash extends React.Component {
 
             <section className="hr">
                 <aside>
-                    <span onClick={this.props.loginGuestUser}>
+                    {/* <span onClick={this.props.loginGuestUser}>
                         Learn more &#10148;
-                    </span>
+                    </span> */}
+                    <img src="https://m.media-amazon.com/images/G/01/Audible/en_US/images/creative/amazon/A4-653_PrimeDay_2019_AU_MA_LandingPage_DT_PrimeExclusive_1440x100_V01.jpg" />
                 </aside>
             </section>
 
