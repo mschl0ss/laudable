@@ -15,7 +15,7 @@
  *= require reset.scss
  *= require global.scss
  *= require session.scss
- *= require nav_drop_down.scss
+
  *= require user_nav.scss
  *= require site_nav.scss
  *= require splash.scss

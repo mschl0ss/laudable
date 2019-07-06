@@ -22,7 +22,7 @@ $text-black: #212325;
 // }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .show {display:block;}

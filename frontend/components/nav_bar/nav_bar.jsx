@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import BrowseDropDown from './browse_dropdown';
 
 class NavBar extends React.Component{
     constructor(props) {
@@ -73,8 +74,8 @@ class NavBar extends React.Component{
             <nav className="protected-user">
                 <div className="wrapper">
                     <div className="user-dropdown" 
-                            onMouseLeave={this.hideUserNavDropDown}
-                            >
+                        onMouseLeave={this.hideUserNavDropDown}
+                        >
                         <button 
                             onClick={this.toggleUserNavDropDown }
                             onMouseOver={this.showUserNavDropDown}
@@ -133,73 +134,25 @@ class NavBar extends React.Component{
         const dropDownClass = this.state.showSiteNavDropDown ? "browse-dropdown-content show" : "browse-dropdown-content hidden";
         const loggedIn = this.props.currentUser ? true : false;
         const className = loggedIn ? 'site-nav protected' : 'site-nav auth';
-        const logo = loggedIn ? "audible_logo.jpg" : "audible_logo_white_text.png";
         const searchIcon = loggedIn ? "searchicondark.png" : "searchbutton.svg";
         
         return (
             <nav className={className}>
 
                 <div className="left">
-                    {/* <img className="logo" src={logo} /> */}
+                   
+                    {/* LOGO */}
                     <span className="logo-text">
                         laudible
                         <span>&#319;</span>
                     </span>
-                    {/* ** LINKS */}
-                    <ul>
-                        <li
-                            className={loggedIn ? "" : "hidden"}
-                        >Wish List</li>
-                        <li
-                            className={loggedIn ? "" : "hidden"}
-                        >Library</li>
+
+                    {/*LINKS */}
+                    <ul className={loggedIn ? "" : "hidden"}>
+                        <li>Wish List </li>
+                        <li>Library</li>
                     </ul>
-
-                    {/* **BROWSE BUTTON */}
-                    <div className="browse-dropdown" 
-                        onMouseLeave={this.hideSiteNavDropDown}
-                        >
-                            <button 
-                                onClick={this.toggleSiteNavDropDown} 
-                                onMouseOver={this.showSiteNavDropDown}
-                            >
-                                Browse
-                                <span className="down-arrow">&#8735;</span>
-                            </button>
-                            <div className={dropDownClass} >
-                            <span className="arrow"></span>
-                            <div className="category-dropdown-box">
-                                <div className="row">
-                                    <ul>
-                                        <li className="lh">Fiction</li>
-                                        <li>Historical</li>
-                                        <li>Westerns</li>
-                                        <li>Literary</li>
-                                        <li>Humor</li>
-                                        <li>Contemporary</li>
-                                        <li>Historical</li>
-                                        <li>Westerns</li>
-                                        <li>Literary</li>
-                                        <li>Humor</li>
-                                    </ul>
-                                    <ul>
-                                        <li className="lh">Sci-Fi &amp; Fantasy</li>
-                                        <li>Alternate History</li>
-                                        <li>Sword &amp; Sworcery</li>
-                                        <li>Dark Fantasy</li>
-                                        <li>Sci Fi&#58; Classics</li>
-                                        <li>Post&#8211;Apocalyptic</li>
-                                        <li>Alternate History</li>
-                                        <li>Sword &amp; Sworcery</li>
-                                        <li>Dark Fantasy</li>
-                                        <li>Sci Fi&#58; Classics</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                   
-
+                    <BrowseDropDown color={loggedIn ? "black" : "white"}/> 
                     
                 </div>
 

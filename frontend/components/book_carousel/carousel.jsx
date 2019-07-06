@@ -90,7 +90,7 @@ class Carousel extends React.Component {
         }
 
         let slideStyle = {
-            width: `${imgUrls.length * 170}px`
+            width: `${imgUrls.length * 167}px`
         }
         return (
             <div className="carousel-wrapper">
