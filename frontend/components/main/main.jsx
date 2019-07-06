@@ -13,17 +13,6 @@ class Splash extends React.Component {
 
 
     render () {
-        const display = this.props.currentUser ? (
-            <div>
-                {/* <h4>LOG IN SPLASH</h4> */}
-                
-            </div>
-        ) : (
-            <div>
-                {/* <h4>NOT LOGGED IN SPLASH</h4>
-                <button onClick={this.props.loginGuestUser}>Guest Login</button> */}
-            </div>
-        );
         
         return (
 
@@ -31,8 +20,8 @@ class Splash extends React.Component {
             <div id="main">
                 {/* <Route whatever></Route> */}
                 <NavBarContainer/>
-                <AuthRoute path="/" component={SplashContainer} />
-                <Route path="/component" component={Carousel} />
+                {/* <AuthRoute exact path="/" component={SplashContainer} /> */}
+                <Route path="/" component={Carousel} />
                
                 
             </div>

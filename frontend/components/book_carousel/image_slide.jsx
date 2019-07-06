@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ImageSlide = ({img_urls, slideStyle}) => {
+const ImageSlide = ({imgUrls, slideStyle}) => {
     // const styles = {
     //     backgroundImage: `url("${img_url}")`,
     //     backgroundSize: 'cover',
@@ -9,7 +9,7 @@ const ImageSlide = ({img_urls, slideStyle}) => {
 
     //for each img url, i need a pojo that tracks img size pos
 
-    const books = img_urls.map((img_url,i) => {
+    const books = imgUrls.map((img_url,i) => {
         const thisStyle = {
             backgroundImage: `url("${img_url}")`,
             backgroundSize: 'cover',

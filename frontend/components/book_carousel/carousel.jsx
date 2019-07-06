@@ -2,7 +2,7 @@ import React from 'react';
 import ImageSlide from './image_slide';
 import Arrow from './arrow';
 
-const imgUrls = [
+const images = [
     "https://m.media-amazon.com/images/I/611EfwQXstL._SL500_.jpg",
     "https://m.media-amazon.com/images/I/51Nz4frJQmL._SL500_.jpg",
     "https://m.media-amazon.com/images/I/514c-Bpq+-L._SL500_.jpg",
@@ -32,7 +32,7 @@ const imgUrls = [
     "https://m.media-amazon.com/images/I/510WThv+gfL._SL500_.jpg",
 ];
 
-
+const imgUrls = images.slice(0,18);
 
 class Carousel extends React.Component {
     constructor (props) {
@@ -40,13 +40,26 @@ class Carousel extends React.Component {
 
         this.state = {
             currentImagePos: 0,
-            imageIncrementValue: 800,
+            imageIncrementValue: (imgUrls.length * 167) / 3,
+            activeDot: 1,
         };
 
         this.slideBack = this.slideBack.bind(this);
         this.slideForward = this.slideForward.bind(this);
     }
 
+    
+    renderDots () {
+        console.log(this.state.activeDot);
+
+        return (
+            <div className="dots-paginator">
+                <span className= { this.state.activeDot === 1 ? 'active' : ''}>&nbsp;</span>
+                <span className= { this.state.activeDot === 2 ? 'active' : ''}>&nbsp;</span>
+                <span className= { this.state.activeDot === 3 ? 'active' : ''}>&nbsp;</span>
+            </div>
+        )
+    }
    //k so im going to pass all of the img urls into the image slide
    // it will render one super wide container with all the imgs
    // .carousel will have fixed width and overflow hidden
@@ -55,18 +68,20 @@ class Carousel extends React.Component {
     slideBack(){
         const curPos = this.state.currentImagePos;
         const increment = this.state.imageIncrementValue;
-        console.log(curPos);
-        if(curPos <= -increment ) this.setState( {currentImagePos: curPos+increment})
-        // this.setState( {currentImagePos: curPos+100})
+        const dot = this.state.activeDot;
+        if(curPos <= -increment ) {
+            this.setState( {currentImagePos: curPos+increment, activeDot: dot-1});
+        }
     }
 
     slideForward() {
         const curPos = this.state.currentImagePos;
         const increment = this.state.imageIncrementValue;
-        const endPos = imgUrls.length * 170;
-        console.log(curPos)
-        console.log(-(endPos - increment))
-        if (curPos >= -(endPos - increment) )this.setState({ currentImagePos: curPos - increment })
+        const endPos = imgUrls.length * 167;
+        const dot = this.state.activeDot;
+        if (curPos > -(endPos - increment) ){
+            this.setState({ currentImagePos: curPos - increment,  activeDot: dot+1})
+        }
         
     }
     render () {
@@ -79,21 +94,24 @@ class Carousel extends React.Component {
             width: `${imgUrls.length * 170}px`
         }
         return (
-            <div className="carousel">
+            <div className="carousel-wrapper">
+                <div className="carousel">
+                    
+                    <Arrow
+                        direction="left"
+                        clickFunction={ this.slideBack }
+                        glyph="&#9664;" />
+                    <div className="image-slide-container" id="carousel" style={containerStyle}>
+                        <ImageSlide imgUrls={imgUrls} slideStyle={slideStyle}/>
+                    </div>
 
-                <Arrow
-                    direction="left"
-                    clickFunction={ this.slideBack }
-                    glyph="&#9664;" />
-                <div className="image-slide-container" id="carousel" style={containerStyle}>
-                    <ImageSlide img_urls={imgUrls} slideStyle={slideStyle}/>
+                    <Arrow
+                        direction="right"
+                        clickFunction={this.slideForward}
+                        glyph="&#9654;" />
                 </div>
 
-                <Arrow
-                    direction="right"
-                    clickFunction={this.slideForward}
-                    glyph="&#9654;" />
-
+                {this.renderDots()}
             </div>
         )
     }

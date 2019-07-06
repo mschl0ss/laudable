@@ -1,15 +1,21 @@
+.carousel-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px auto;
+}
 .carousel {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 900px;
-    margin: 100px auto;
+    width: 1000px;
+    margin: 0 auto;
     position: relative;
     overflow:hidden;
 }
 
 .image-slide-container {
-    width: 900px;
+    width: 1000px;
 }
 .image-slide {
     display: flex;
@@ -22,7 +28,7 @@
 .image-slide div{
     height: 150px;
     width: 150px;
-    margin: 0 10px;
+    margin: 0 8.5px;
     cursor: help;
 }
 
@@ -52,4 +58,25 @@
 
 .slide-arrow.left {
     left: 0px;
+}
+
+.dots-paginator {
+    overflow: auto;
+    height: 20px;
+    width: 80px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+}
+.dots-paginator span{
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background-color: #888;
+    border-radius: 12px;
+}
+
+.dots-paginator span.active {
+    background-color: #00B0B0;
 }

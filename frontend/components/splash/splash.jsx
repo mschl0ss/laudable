@@ -21,7 +21,7 @@ class Splash extends React.Component {
             <section className="top">
                 <div className="splash-banner-content">
                     <h1>This is Laudable.</h1>
-                    <button className='orange-button' onClick={this.props.loginGuestUser}>Click to Try Laudible Free</button>
+                    <button className='orange-button' onClick={this.props.loginGuestUser}>Click to Try Laudable Free</button>
                 </div>
                 
             </section>
