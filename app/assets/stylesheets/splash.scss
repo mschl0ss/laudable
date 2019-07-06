@@ -238,40 +238,5 @@ $get-started-gray: rgba(26,28,29,.65);
 
 $gray-dark: rgb(26, 28, 29);
 
-.footer {
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 20px;
-    color: #1a1c1d;
-    font-family: 'Arial';
-    background: #f6f7f7;
-    width: 100vw;
-    position: absolute;
-    right: 0;
-    padding: 30px 0;
-    margin: 30px 0 0;
-}
 
-footer ul{
-    display: flex;
-    justify-content: space-evenly;
-    /* padding: 0 100px; */
-    margin: 0 auto;
-    width: 1000px;
-}
-
-footer li{}
-footer {}
-
-footer a {
-    text-decoration: none;
-    color: $gray-dark;
-}
-footer a:hover{
-    text-decoration: underline;
-}
-footer .copyright {
-    font-weight: normal;
-    color: rgba(26, 28, 29, 0.65);;
-}
 
