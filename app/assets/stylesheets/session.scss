@@ -8,11 +8,40 @@
     font-size: 13px;
     color: $text-black;
     letter-spacing: .4px;
+    padding-top: 20px;
 }
 
 .session-wrapper .logo img {
     width: 143px;
 }
+
+
+// logo
+
+.session-wrapper .logo-text {
+  color: white;
+  margin-right: 10px;
+  font-size: 30px;
+  font-weight: 600;
+  position: relative;
+  // top: -9px;
+}
+
+.session-wrapper .logo-text {
+  color:black;
+  // top: -4px;
+}
+
+.session-wrapper .logo-text span {
+    color: #f7991c;
+    transform: rotate(-45deg);
+    position: relative;
+    top: -14px;
+    display: inline-block;
+    font-size: 40px;
+}
+
+//form
 
 .session-errors, .session-form {
     width: 296px;

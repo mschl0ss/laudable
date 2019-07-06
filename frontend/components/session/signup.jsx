@@ -58,7 +58,12 @@ class Signup extends React.Component {
         return (
             <section className="session-wrapper">
                 <div className="logo">
-                    <img src="audible_logo.jpg" alt="logo" />
+                    {/* <img src="audible_logo.jpg" alt="logo" /> */}
+                    {/* LOGO */}
+                    <span className="logo-text">
+                        laudible
+                        <span>&#319;</span>
+                    </span>
                 </div>
 
                 {this.renderErrors()}
