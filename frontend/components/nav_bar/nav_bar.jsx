@@ -140,8 +140,11 @@ class NavBar extends React.Component{
             <nav className={className}>
 
                 <div className="left">
-                    <img className="logo" src={logo} />
-
+                    {/* <img className="logo" src={logo} /> */}
+                    <span className="logo-text">
+                        laudible
+                        <span>&#319;</span>
+                    </span>
                     {/* ** LINKS */}
                     <ul>
                         <li

@@ -9,9 +9,9 @@
 .nav-bar .site-nav{
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-weight: 550;
   font-size: 14px;
-  line-height: 19px;
 }
 
 
@@ -27,11 +27,10 @@
   justify-content: space-between;
   // border: solid;
   height: 40px;
-  margin-top: 20px;
 }
 
 .site-nav.protected {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 // ------------------------------
@@ -53,7 +52,7 @@
 .site-nav .right form input{
   box-sizing: border-box;
   height: 100%;
-  width: 275px;
+  width: 375px;
   background-color: rgba(180,180,180,.3);
   border: none;
   
@@ -121,7 +120,7 @@ $black-text: #1a1c1d;
 .site-nav .left>ul {
   display: flex;
   position: relative;
-  top: 5px;
+  // top: 5px;
 }
 
 .site-nav .left>ul li {
@@ -151,3 +150,25 @@ $black-text: #1a1c1d;
   margin: 0 20px;
 }
 
+.site-nav .left .logo-text {
+  color: white;
+  margin-right: 10px;
+  font-size: 30px;
+  font-weight: 500;
+  position: relative;
+  top: -9px;
+}
+
+.site-nav.protected .left .logo-text {
+  color:black;
+  top: -4px;
+}
+
+.site-nav .left .logo-text span {
+    color: #f7991c;
+    transform: rotate(-45deg);
+    position: relative;
+    top: -14px;
+    display: inline-block;
+    font-size: 40px;
+}

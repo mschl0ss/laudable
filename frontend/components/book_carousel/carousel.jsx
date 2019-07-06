@@ -50,8 +50,6 @@ class Carousel extends React.Component {
 
     
     renderDots () {
-        console.log(this.state.activeDot);
-
         return (
             <div className="dots-paginator">
                 <span className= { this.state.activeDot === 1 ? 'active' : ''}>&nbsp;</span>
@@ -60,6 +58,7 @@ class Carousel extends React.Component {
             </div>
         )
     }
+    
    //k so im going to pass all of the img urls into the image slide
    // it will render one super wide container with all the imgs
    // .carousel will have fixed width and overflow hidden

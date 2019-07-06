@@ -20,8 +20,8 @@ class Splash extends React.Component {
             <div id="main">
                 {/* <Route whatever></Route> */}
                 <NavBarContainer/>
-                {/* <AuthRoute exact path="/" component={SplashContainer} /> */}
-                <Route path="/" component={Carousel} />
+                <AuthRoute exact path="/" component={SplashContainer} />
+                <Route path="/carousel" component={Carousel} />
                
                 
             </div>
