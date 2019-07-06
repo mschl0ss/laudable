@@ -71,7 +71,7 @@ class NavBar extends React.Component{
     userNav () {
         // const dropDownClass = this.state.showUserNavDropDown ? "user-dropdown-content show" : "user-dropdown-content show";
         const dropDownClass = this.state.showUserNavDropDown ? "user-dropdown-content show" : "user-dropdown-content hidden";
-        console.log(this.state.loggedIn);
+
         return (
             this.props.currentUser ? (
             <nav className="protected-user">

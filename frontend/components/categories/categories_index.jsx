@@ -3,42 +3,40 @@ import React from 'react';
 
 
 class CategoryIndex extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            mybool: false
-        }
-    }
 
     componentDidMount () {
         this.props.fetchCategories();
         
     }
-
     render() {
-        // debugger;
+        const parents = [];
+        const children = [];
+        this.props.categories.forEach( category => {
+            if(category.parentCategoryId ) children.push(category);
+            else parents.push(category);
+        })
 
-        const cats = this.props.categories.map( cat => (
-            <ul>
-                <li>id: {cat.id}</li>
-                <li>Name: {cat.categoryName}</li>
-                <li>Parent: {cat.parentCategoryId}</li>
-                <li>children: {cat.childCategories.map(child=>(
-                    <ul>
-                        <li>{child.id}</li>
-                        <li>{child.categoryName}</li>
-                    </ul>
-                    ))
-                }
-                </li>
+        const categoryLists = parents.map(parent => (
+            <ul key={parent.id}>
+                <li key={parent.id} className="lh">{parent.categoryName}</li>
+                {children.map(child => { 
+                    if (child.parentCategoryId === parent.id) {
+                        return <li key={child.id}>{child.categoryName}</li>
+                    }
+                })}
             </ul>
+
         ))
+
         return (
-            <div>
-                {cats}
-                <button onClick={()=>this.setState( {mybool: !mybool})}>clicketyclikit</button>
-            </div>
+            <section className="category-index">
+                <h1>All Categories</h1>
+                <h4>{parents.length} total</h4>
+
+                <div className="category-lists-container">
+                    {categoryLists}
+                </div>
+            </section>
         )
     }
 }

@@ -2,7 +2,6 @@
 .nav-bar {
   box-sizing: border-box;
   width: 1000px;
-  margin: 0 auto;
   font-family: 'Helvetica',sans-serif;
 }
 
@@ -30,9 +29,6 @@
   height: 40px;
 }
 
-.site-nav.protected {
-  margin-top: 5px;
-}
 
 // ------------------------------
 // ------SITE NAV RIGHT
@@ -99,10 +95,6 @@
 //----------------
 // --PROTECTED SITE NAV RIGHT
 //----------------
-
-
-
-.site-nav .right form .search-icon {}
 
 // ------------------------------
 // ------SITE NAV LEFT
