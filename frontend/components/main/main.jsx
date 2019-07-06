@@ -24,7 +24,7 @@ class Splash extends React.Component {
                 <AuthRoute exact path="/" component={SplashContainer} />
 
                 <ProtectedRoute exact path="/categories" component={CategoryIndexContainer} />
-                <Route path="/carousel" component={Carousel} />
+                <Route exact path="/carousel" component={Carousel} />
                
                 
             </div>

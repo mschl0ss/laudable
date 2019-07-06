@@ -105,7 +105,7 @@ class Signup extends React.Component {
                                 </label>
                             </li>
                         </ul>
-                        <button className="orange-button">Create your Laudable Account</button>
+                        <button className="orange-button">Create your Laudible Account</button>
                     </form>
 
                     <p className="signup">

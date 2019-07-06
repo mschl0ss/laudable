@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import BrowseDropDown from './browse_dropdown';
+import UserDropDown from './user_dropdown';
 
 class NavBar extends React.Component{
     constructor(props) {
@@ -9,7 +10,8 @@ class NavBar extends React.Component{
             search: '',
             showUserNavDropDown: false,
             showSiteNavDropDown: false,
-            hideDelay: 0
+            hideDelay: 0,
+            loggedIn: this.props.currentUser ? true : false,
         }
         this.toggleUserNavDropDown = this.toggleUserNavDropDown.bind(this);
         this.toggleSiteNavDropDown = this.toggleSiteNavDropDown.bind(this);
@@ -69,35 +71,14 @@ class NavBar extends React.Component{
     userNav () {
         // const dropDownClass = this.state.showUserNavDropDown ? "user-dropdown-content show" : "user-dropdown-content show";
         const dropDownClass = this.state.showUserNavDropDown ? "user-dropdown-content show" : "user-dropdown-content hidden";
+        console.log(this.state.loggedIn);
         return (
             this.props.currentUser ? (
             <nav className="protected-user">
                 <div className="wrapper">
-                    <div className="user-dropdown" 
-                        onMouseLeave={this.hideUserNavDropDown}
-                        >
-                        <button 
-                            onClick={this.toggleUserNavDropDown }
-                            onMouseOver={this.showUserNavDropDown}
-                            >
-                            Hi, {this.props.currentUser.username}!
-                            <span className="down-arrow">&#8735;</span>
-                        </button>
-                        <div className={dropDownClass}>
-                            <span className="arrow"></span>
-                            <div className = "user-dropdown-box">
-                                <ul>
-                                    <li className="lh">Membership Status</li>
-                                    <li className="strong">Gold Monthly</li>
-                                </ul>
-                                
-                                <button 
-                                    onClick={this.logoutActions}
-                                    
-                                    >Not {this.props.currentUser.username}? Sign Out</button>
-                            </div>
-                        </div>
-                    </div>
+                    <UserDropDown 
+                        logout={this.props.logout}
+                        currentUser={this.props.currentUser} />
                     <div className="separator"></div>
                     <img className="cart" src="https://cdn4.iconfinder.com/data/icons/shopping-21/64/shopping-01-512.png" />
                 </div>
@@ -115,18 +96,6 @@ class NavBar extends React.Component{
     //----------------
     // -------SITE NAV
     //----------------
-
-    siteNavProtected(loggedIn) {
-        
-        if (loggedIn) {
-            return (
-             <div className="site-nav-items">
-                <div className="site-nav-item">Wish List</div>
-                <div className="site-nav-item">Browse</div>
-            </div>
-            )
-        }
-    }
 
     siteNav () {
 

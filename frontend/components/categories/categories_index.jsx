@@ -24,7 +24,14 @@ class CategoryIndex extends React.Component {
                 <li>id: {cat.id}</li>
                 <li>Name: {cat.categoryName}</li>
                 <li>Parent: {cat.parentCategoryId}</li>
-                <li>children: {cat.childCategories.map(child=>(<div>{child.categoryName}</div>))}</li>
+                <li>children: {cat.childCategories.map(child=>(
+                    <ul>
+                        <li>{child.id}</li>
+                        <li>{child.categoryName}</li>
+                    </ul>
+                    ))
+                }
+                </li>
             </ul>
         ))
         return (

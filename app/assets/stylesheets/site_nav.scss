@@ -12,6 +12,7 @@
   align-items: center;
   font-weight: 550;
   font-size: 14px;
+  padding-top: 10px;
 }
 
 
@@ -115,6 +116,7 @@ $black-text: #1a1c1d;
   display: flex;
   align-items: baseline;
   width: 700px;
+  padding-bottom: 10px;
 }
 
 .site-nav .left>ul {
@@ -127,7 +129,7 @@ $black-text: #1a1c1d;
   color: $black-text;
   margin: 0 10px;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 13px;
   min-width: 60px;
 }
 
