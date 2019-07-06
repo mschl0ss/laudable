@@ -5,7 +5,7 @@ const Arrow = ({ direction, clickFunction, glyph }) => (
         className={ `slide-arrow ${direction}` }
         onClick={ clickFunction }>
             { glyph }
-        </div>
+    </div>
 )
 
 export default Arrow
