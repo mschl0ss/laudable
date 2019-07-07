@@ -1,7 +1,7 @@
 
 .splash-main-auth {
-    width: 1000px;
-    margin: 0 auto;
+    // width: 1000px;
+    // margin: 0 auto;
 }
 
 .movie {
@@ -11,7 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 500px;
+    height: 450px;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -21,10 +21,8 @@
 }
 
 .movie img {
-    // width: 2160px;
     opacity: 0.4;
-    height: 500px;
-    min-width: 1920px;
+    height: 450px;
 }
 
 // ------------------------------
@@ -34,7 +32,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 100px 0 155px;
+    margin: 0 auto 106px;
 }
 // ------------------------------
 // ------AUTH SPLASH BANNER CONTENT
@@ -88,10 +86,7 @@ $orange-shadow: rgba(228,121,17,.5);
 
 .splash-main-auth .hr {
     height: 100px;
-    background: #A5E6F8;
-    width: 100vw;
-    position: absolute;
-    left: 0px;
+    background: #A5E7F8;
 }
 
 .splash-main-auth .hr aside {
@@ -122,8 +117,8 @@ $gray-border: #cdcdcd;
 $get-started-gray: rgba(26,28,29,.65);
 
 .splash-main-auth .get-started {
+    margin: 0 auto;
     width: 1000px;
-    margin: 260px auto 0;
 }
 
 .splash-main-auth .get-started header {
@@ -188,7 +183,10 @@ $get-started-gray: rgba(26,28,29,.65);
 // ------slideshow standin prop
 // ------------------------------
 
-.splash-main-auth .slideshow-prop {}
+.splash-main-auth .slideshow-prop {
+    width: 1000px;
+    margin: 0 auto;
+}
 .splash-main-auth .slideshow-prop {}
 .splash-main-auth .slideshow-prop h5 {
     font-weight: 700;
