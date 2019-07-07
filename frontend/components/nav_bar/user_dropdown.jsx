@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 // props needed: logout(), currentUser
 
@@ -30,7 +31,7 @@ class UserDropDown extends React.Component {
 
     logoutActions() {
         this.hide();
-        this.props.logout();
+        this.props.logout().then(() => this.props.history.push('/'));
     }
 
     renderContent () {
@@ -89,7 +90,7 @@ class UserDropDown extends React.Component {
 }
 
 
-export default UserDropDown;
+export default withRouter(UserDropDown);
 
 
 

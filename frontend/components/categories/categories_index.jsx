@@ -9,6 +9,7 @@ class CategoryIndex extends React.Component {
         
     }
     render() {
+        // debugger;
         const parents = [];
         const children = [];
         this.props.categories.forEach( category => {
@@ -27,7 +28,7 @@ class CategoryIndex extends React.Component {
             </ul>
 
         ))
-
+     
         return (
             <section className="category-index">
                 <h1>All Categories</h1>

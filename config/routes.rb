@@ -5,7 +5,7 @@ Rails.application.routes.draw do
    
   namespace :api, defaults: { format: :json } do
     resources :users, only: %w(index show create)
-    resources :categories, only: %w(index) do 
+    resources :categories, only: %w(index show) do 
       resources :books, only: %w(index)
     end
 

@@ -13,47 +13,6 @@ class NavBar extends React.Component{
             hideDelay: 0,
             loggedIn: this.props.currentUser ? true : false,
         }
-        this.toggleUserNavDropDown = this.toggleUserNavDropDown.bind(this);
-        this.toggleSiteNavDropDown = this.toggleSiteNavDropDown.bind(this);
-        this.showUserNavDropDown = this.showUserNavDropDown.bind(this);
-        this.hideUserNavDropDown = this.hideUserNavDropDown.bind(this);
-        this.showSiteNavDropDown = this.showSiteNavDropDown.bind(this);
-        this.hideSiteNavDropDown = this.hideSiteNavDropDown.bind(this);
-
-        this.logoutActions = this.logoutActions.bind(this);
-    }
-    
-    logoutActions() {
-        this.hideUserNavDropDown();
-        this.props.logout();
-    }
-
-    toggleUserNavDropDown() {
-        let delay = this.state.hideDelay;
-        if (this.state.showUserNavDropDown === false) delay = 0;
-
-        setTimeout(() => this.setState({ showUserNavDropDown: !this.state.showUserNavDropDown }), delay);
-    }
-
-    toggleSiteNavDropDown() {
-        let delay = this.state.hideDelay;
-        if (this.state.showSiteNavDropDown === false) delay = 0;
-
-        setTimeout(() => this.setState({ showSiteNavDropDown: !this.state.showSiteNavDropDown}), delay);
-    }
-
-    hideUserNavDropDown () {
-        setTimeout(() => this.setState({ showUserNavDropDown: false }), this.state.hideDelay);
-    }
-    showUserNavDropDown () {
-        this.setState({ showUserNavDropDown: true });
-    }
-
-    hideSiteNavDropDown() {
-        setTimeout(() => this.setState( {showSiteNavDropDown: false} ), this.state.hideDelay);
-    }
-    showSiteNavDropDown() {
-       this.setState( {showSiteNavDropDown: true} );
     }
 
     updateField(field) {
