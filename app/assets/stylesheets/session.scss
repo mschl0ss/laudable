@@ -80,10 +80,12 @@
 }
 
 .session-errors .alert-img {
-    background-image: url(https://icon2.kisspng.com/20180701/ffq/kisspng-computer-icons-royalty-free-clip-art-red-alert-5b38fb8f31e246.8917341215304610712043.jpg);
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcU1X4qmJddwGChbvZgM-EPtZTGePv5zPeTpbnpJsnlmjn3EWx_A);
     height: 27px;
     width: 30px;
-    background-size: 100%;
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-position-y: center;
 }
 
 .session-form {
