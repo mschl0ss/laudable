@@ -12,14 +12,7 @@
  *
  *= require_tree .
  *= require_self
- *= require reset.scss
- *= require global.scss
- *= require session.scss
 
- *= require user_nav.scss
- *= require site_nav.scss
- *= require splash.scss
- *= require carousel.scss
  
 
 

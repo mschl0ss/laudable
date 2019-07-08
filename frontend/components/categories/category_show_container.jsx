@@ -1,17 +1,15 @@
 import { connect } from 'react-redux';
 import CategoryShow from './category_show';
-import { 
-    getChildCategories,
-    getParentCategory, 
-    getSiblingCategories } from '../../reducers';
+import { getTargetCategories} from '../../reducers/selectors';
 import { fetchCategory, fetchCategories } from '../../actions/category_actions'
-import {withRouter} from 'react-router-dom';
+
 
 
 const msp = (state,ownProps) => ({
-    children: getChildCategories(state, ownProps.match.params.categoryId),
-    parent: getParentCategory(state, ownProps.match.params.categoryId),
-    siblings: getSiblingCategories(state, ownProps.match.params.categoryId),
+    children: getTargetCategories(state, 'children', ownProps.match.params.categoryId),
+    parent: getTargetCategories(state, 'parent',ownProps.match.params.categoryId),
+    siblings: getTargetCategories(state, 'siblings', ownProps.match.params.categoryId),
+    category: state.entities.categories[ownProps.match.params.categoryId],
 })
 
 const mdp = dispatch => ({

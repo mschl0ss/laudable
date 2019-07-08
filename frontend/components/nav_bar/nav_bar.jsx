@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import BrowseDropDown from './browse_dropdown';
+import BrowseDropDownContainer from './browse_dropdown_container';
 import UserDropDown from './user_dropdown';
 
 class NavBar extends React.Component{
@@ -80,7 +80,7 @@ class NavBar extends React.Component{
                         <li>Wish List </li>
                         <li>Library</li>
                     </ul>
-                    <BrowseDropDown color={loggedIn ? "black" : "white"}/> 
+                    <BrowseDropDownContainer color={loggedIn ? "black" : "white"}/> 
                     
                 </div>
 

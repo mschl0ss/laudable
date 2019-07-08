@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 
@@ -19,10 +20,14 @@ class CategoryIndex extends React.Component {
 
         const categoryLists = parents.map(parent => (
             <ul key={parent.id}>
-                <li key={parent.id} className="lh">{parent.categoryName}</li>
+                <li key={parent.id} className="lh">
+                    <Link to={`/categories/${parent.id}`}>{parent.categoryName}</Link>
+                </li>
                 {children.map(child => { 
                     if (child.parentCategoryId === parent.id) {
-                        return <li key={child.id}>{child.categoryName}</li>
+                        return <li key={child.id}>
+                            <Link to={`/categories/${child.id}`}>{child.categoryName}</Link>
+                        </li>
                     }
                 })}
             </ul>

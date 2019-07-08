@@ -46,7 +46,7 @@ $text-black: #212325;
 .bdd-content {
     display: flex;
     justify-content: space-around;
-    width: 394px;
+    width: 245px;
     box-sizing: border-box;
     border: 1px solid #cdcdcd;
     padding: 10px;
@@ -56,13 +56,12 @@ $text-black: #212325;
     z-index: 1;
     position: absolute;
     top: 15px;
-    left: -160px;
+    left: -95px;
 }
 
 .bdd-content li {
     margin: 20px 0;
     color: $text-black;
-    cursor: help;
 }
 
 .bdd-content .lh{
@@ -71,4 +70,14 @@ $text-black: #212325;
     text-transform: uppercase;
     font-weight: 400;
     cursor: default;
+}
+
+.bdd-content a {
+    color: #007eb0;
+    text-decoration: none;
+}
+
+.bdd-content a:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import CategoryIndex from './categories_index';
+import CategoryIndex from './category_index';
 import { fetchCategories } from '../../actions/category_actions';
 
 const msp = state => ({

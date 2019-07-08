@@ -1,0 +1,41 @@
+
+
+.category-show {
+    margin: 0 auto;
+    width: 1000px;
+}
+
+.category-show header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.category-show h1 {
+    font-weight: 700;
+    font-size: 26px;
+    color: #1a1c1d;
+    line-height: 34px;
+    margin: 10px 0 0;
+}
+
+.category-show h5 {
+    color: rgba(26,28,29,.65);
+    line-height: 20px;
+    font-size: 13px;
+}
+
+
+.category-show {}
+.category-show {}
+.category-show {}
+
+.category-show a {
+    color: rgb(0, 126, 176);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.category-show a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

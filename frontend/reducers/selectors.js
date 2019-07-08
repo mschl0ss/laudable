@@ -1,39 +1,41 @@
+import { fetchCategory, fetchCategories } from '../actions/category_actions';
 
-
-export const getChildCategories = (state, categoryId) => {
-    const children = [];
-
+export const getTargetCategories = (state, type, categoryId) => {
+    fetchCategories();
     const categories = Object.values(state.entities.categories);
+    const thisCategory = state.entities.categories[categoryId];
 
-    categories.forEach(category => {
-        if (category.parentCategoryId === categoryId) children.push(category)
-    });
+    switch (type) {
+        case 'children':
+            const children = [];
+            categories.forEach(category => {
+                if (category.parentCategoryId === categoryId) children.push(category)
+            });
+            return children;
 
-    return children;
-}
+        case 'siblings':
+            const siblings = [];
+            categories.forEach(category => {
+                if (category.parentCategoryId === thisCategory.parentCategoryId) {
+                    siblings.push(category)
+                }
+            })
+            return siblings;
 
-export const getSiblingCategories = (state, categoryId) => {
-    const siblings = [];
-    const thisCategory = state.entities.categories[categoryID];
-    const categories = Object.values(state.entities.categories);
-
-    categories.forEach(category => {
-        if (category.parentCategoryId === thisCategory.parentCategoryId ) {
-            siblings.push(category)
-        }
-    })
-
-    return siblings;
-}
-
-export const getParentCategory = (state, categoryId) => {
-    const thisCategory = state.entities.categories[categoryID];
-    let parent;
-    const categories = Object.values(state.entities.categories);
-
-    categories.forEach(category => {
-        if(category.id === thisCategory.parentCategoryId ) parent = category;
-    })
-
-    return parent
+        case 'parent':
+            let parent;
+            categories.forEach(category => {
+                if (category.id === thisCategory.parentCategoryId) parent = category;
+            })
+            return parent;
+        case 'parents':
+            
+            const parents = [];
+            categories.forEach(category => {
+                if(category.parentCategoryId === null ) parents.push(category);
+            })
+            return parents;
+        default:
+            return undefined;
+    }   
 }

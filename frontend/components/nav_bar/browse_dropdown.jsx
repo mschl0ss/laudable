@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 class BrowseDropDown extends React.Component {
@@ -13,6 +14,10 @@ class BrowseDropDown extends React.Component {
         this.hide = this.hide.bind(this);
         this.show = this.show.bind(this);
     }
+
+    componentDidMount(){
+        this.props.fetchCategories();
+    }
     toggle () {
         let delay = this.state.hideDelay;
         setTimeout(() => this.setState({ show: !this.state.show }), delay);
@@ -26,43 +31,20 @@ class BrowseDropDown extends React.Component {
         this.setState({ show: true });
     }
 
-    leftContent () {
-        return (
-            <ul>
-                <li className="lh">Fiction</li>
-                <li>Historical</li>
-                <li>Westerns</li>
-                <li>Literary</li>
-                <li>Humor</li>
-                <li>Contemporary</li>
-                <li>Historical</li>
-                <li>Westerns</li>
-                <li>Literary</li>
-                <li>Humor</li>
-            </ul>
+    renderContent() {
+        const roots = this.props.rootCategories ? this.props.rootCategories : [];
+        const rootList = roots.map (root => (
+            <li key={root.id}><Link to={`/categories/${root.id}`}>{root.categoryName}</Link></li>
+        ))
+        return(
+        <ul>
+            <li className="lh">Audiobook Categoires</li>
+            {rootList}
+            <li><Link to="/categories/">All Categories</Link></li>
+        </ul>
         )
     }
-
-    rightContent () {
-
-        return (
-            <ul>
-                <li className="lh">Sci-Fi &amp; Fantasy</li>
-                <li>Alternate History</li>
-                <li>Sword &amp; Sworcery</li>
-                <li>Dark Fantasy</li>
-                <li>Sci Fi&#58; Classics</li>
-                <li>Post&#8211;Apocalyptic</li>
-                <li>Alternate History</li>
-                <li>Sword &amp; Sworcery</li>
-                <li>Dark Fantasy</li>
-                <li>Sci Fi&#58; Classics</li>
-            </ul>
-        )
-    }
-
     render () {
-
         const contentClass = this.state.show ? "bdd-content-wrapper" : "hidden";
         // const contentClass = "bdd-content-wrapper" ;
         return (
@@ -90,7 +72,7 @@ class BrowseDropDown extends React.Component {
 
                     {/* this is the actual content */}
                     <div className="bdd-content">
-                        {this.leftContent()} {this.rightContent()}
+                        {this.renderContent()}
                     </div>
 
                 </div>
