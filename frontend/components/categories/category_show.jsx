@@ -16,7 +16,8 @@ class CategoryShow extends React.Component {
             parent: {
                 id: 0,
                 categoryName: 'blank',
-            }
+            },
+            
         }
 
         this.renderContent = this.renderContent.bind(this);

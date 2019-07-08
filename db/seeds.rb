@@ -227,6 +227,16 @@ Category.create!(
 book_count = 100
 book_ids = (1..book_count).to_a.shuffle
 
+Book.create!(
+    title: "Name of the Wind",
+    author_id: 1,
+    narrator_id: 1,
+    publisher_summary: "Best fookin book ever",
+    release_date: Date.today - rand(10000),
+    length_in_minutes: rand(120...300),
+    price_in_cents: rand(500...2000),
+    language: 'english'
+)
 (1..book_count).each do |i|
     pub_sum = Faker::Movies::PrincessBride.quote + " | "
     pub_sum += Faker::Movies::Lebowski.quote + " | "

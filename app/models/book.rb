@@ -36,6 +36,10 @@ class Book < ApplicationRecord
     has_many :shopping_cart_books
     has_many :shopping_carts, through: :shopping_cart_books, source: :shopping_cart
 
+
+    #active storage
+    has_one_attached :photo
+    
     belongs_to :author,
         foreign_key: :author_id,
         class_name: :ContentCreator
