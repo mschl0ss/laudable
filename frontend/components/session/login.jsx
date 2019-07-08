@@ -66,7 +66,7 @@ class Login extends React.Component {
                     {/* LOGO */}
                     <Link to="/">
                         <span className="logo-text">
-                            laudible
+                            laudable
                             <span>&#319;</span>
                         </span>
                     </Link>
@@ -106,12 +106,12 @@ class Login extends React.Component {
                     </div>
                         
                         <div className="divider">
-                            <h5><span>New to Laudible?</span></h5>
+                            <h5><span>New to Laudable?</span></h5>
                         </div>
                         <div >
                             <button 
                                 className="gray-button"
-                                onClick={this.linkToSignup}>Create your Laudible account</button>
+                                onClick={this.linkToSignup}>Create your Laudable account</button>
                         </div>
                 </section>
 

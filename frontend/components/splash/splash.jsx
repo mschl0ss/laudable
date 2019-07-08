@@ -20,8 +20,8 @@ class Splash extends React.Component {
             
             <section className="top">
                 <div className="splash-banner-content">
-                    <h1>This is Laudible.</h1>
-                    <button className='orange-button' onClick={this.props.loginGuestUser}>Click to Try Laudible Free</button>
+                    <h1>This is Laudable.</h1>
+                    <button className='orange-button' onClick={this.props.loginGuestUser}>Click to Try Laudable Free</button>
                 </div>
                 
             </section>
@@ -61,7 +61,7 @@ class Splash extends React.Component {
                             <li><span>&#10003;</span>Free membership after that, too.</li>
                                     <li><span>&#10003;</span>Free membership.  It's just free.<span className="aquamarine">&#8727;</span></li>
                         </ul>
-                            <button className='orange-button' onClick={this.props.loginGuestUser}>Click to Try Laudible Free</button>
+                            <button className='orange-button' onClick={this.props.loginGuestUser}>Click to Try Laudable Free</button>
                             <aside><span className="aquamarine">&#8727;</span> &#65284;14.95 per month after 30 years. Cancel requires trial by combat.</aside>
                     </div>
                     <div className="right">
