@@ -11,13 +11,14 @@
     padding-top: 20px;
 }
 
-.session-wrapper .logo img {
-    width: 143px;
-}
+
 
 
 // logo
 
+.session-wrapper .logo a:hover {
+    text-decoration: none;
+}
 .session-wrapper .logo-text {
   color: white;
   margin-right: 10px;

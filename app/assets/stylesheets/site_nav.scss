@@ -130,6 +130,9 @@ $black-text: #1a1c1d;
   cursor: not-allowed;
 }
 // logo
+.site-nav .left .logo a{
+  text-decoration:none;
+}
 
 .site-nav .left .logo-text {
   color: white;

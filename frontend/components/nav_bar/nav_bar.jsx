@@ -70,10 +70,14 @@ class NavBar extends React.Component{
                 <div className="left">
                    
                     {/* LOGO */}
-                    <span className="logo-text">
-                        laudible
-                        <span>&#319;</span>
-                    </span>
+                    <div className="logo">
+                        <Link to="/">
+                            <span className="logo-text">
+                                laudible
+                                <span>&#319;</span>
+                            </span>
+                        </Link>
+                    </div>
 
                     {/*LINKS */}
                     <ul className={loggedIn ? "" : "hidden"}>

@@ -60,10 +60,12 @@ class Signup extends React.Component {
                 <div className="logo">
                     {/* <img src="audible_logo.jpg" alt="logo" /> */}
                     {/* LOGO */}
-                    <span className="logo-text">
-                        laudible
-                        <span>&#319;</span>
-                    </span>
+                    <Link to="/">
+                        <span className="logo-text">
+                            laudible
+                            <span>&#319;</span>
+                        </span>
+                    </Link>
                 </div>
 
                 {this.renderErrors()}
