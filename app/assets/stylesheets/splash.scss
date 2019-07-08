@@ -60,6 +60,7 @@ $orange: #f7991c;
 $orange-light: #F3B44D;
 $orange-dark: #e77600;
 $orange-shadow: rgba(228,121,17,.5);
+
 .splash-main-auth .orange-button {
     background: $orange;
     width: 268px;
@@ -68,6 +69,7 @@ $orange-shadow: rgba(228,121,17,.5);
     border: none;
     font-weight: 475;
     margin-top: 50px;
+    border-radius: 4px;
 }
 
 .splash-main-auth .orange-button:hover {

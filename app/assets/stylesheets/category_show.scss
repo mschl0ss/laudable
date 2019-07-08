@@ -24,11 +24,6 @@
     font-size: 13px;
 }
 
-
-.category-show {}
-.category-show {}
-.category-show {}
-
 .category-show a {
     color: rgb(0, 126, 176);
     text-decoration: none;
@@ -38,4 +33,44 @@
 .category-show a:hover {
     cursor: pointer;
     text-decoration: underline;
+}
+
+
+.category-show a.active {
+    color: #1a1c1d;
+    font-weight: 600;
+}
+
+.category-show a.active:hover {
+    text-decoration: none;
+    cursor: default;
+}
+
+.category-show main {
+    margin-top: 20px;
+}
+.category-show main ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+.category-show main li{
+    width: 250px;
+    height: 25px;
+}
+.category-show main li .count{
+    color: rgb(33, 35, 37);
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.category-show main .book-carousel header aside {
+    padding: 0 20px;
+}
+.category-show main .book-carousel header h3 {
+    font-size: 20px;
+    line-height: 26px;
+    color: #1a1c1d;
+}
+.category-show main .book-carousel header {
+    margin: 15px 0;
 }

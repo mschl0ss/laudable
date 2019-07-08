@@ -1,7 +1,6 @@
 import { fetchCategory, fetchCategories } from '../actions/category_actions';
 
 export const getTargetCategories = (state, type, categoryId) => {
-    fetchCategories();
     const categories = Object.values(state.entities.categories);
     const thisCategory = state.entities.categories[categoryId];
 
@@ -9,17 +8,18 @@ export const getTargetCategories = (state, type, categoryId) => {
         case 'children':
             const children = [];
             categories.forEach(category => {
-                if (category.parentCategoryId === categoryId) children.push(category)
+                if (category.parentCategoryId === parseInt(categoryId)) children.push(category)
             });
             return children;
 
         case 'siblings':
             const siblings = [];
             categories.forEach(category => {
-                if (category.parentCategoryId === thisCategory.parentCategoryId) {
+                if (thisCategory.parentCategoryId !== null && category.parentCategoryId === thisCategory.parentCategoryId) {
                     siblings.push(category)
                 }
             })
+            // debugger;
             return siblings;
 
         case 'parent':

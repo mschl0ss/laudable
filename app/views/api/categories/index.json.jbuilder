@@ -8,6 +8,7 @@
 # end
 
 json.key_format! camelize: :lower
+
 @categories.each do |category|
     json.set! category.id do
         json.partial! 'api/categories/category', category: category
