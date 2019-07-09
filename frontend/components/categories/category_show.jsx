@@ -11,7 +11,10 @@ class CategoryShow extends React.Component {
         this.state = {
             category: {
                 id: 0,
+                parentCategoryId: 0,
                 categoryName: 'blank',
+                bookCount: 0,
+                childBookCount: 0,
             },
             parent: {
                 id: 0,
@@ -25,21 +28,21 @@ class CategoryShow extends React.Component {
 
     componentDidMount() {
         this.props.fetchCategories();
+        this.props.fetchBooks();
     }
 
     renderContent() {
+        const bookCount = this.props.bookCount ? this.props.bookCount : 0;
         const children = this.props.children ? this.props.children : [];
         const siblings = this.props.siblings ? this.props.siblings : [];
+        const category = this.props.category ? this.props.category : this.state.category;
         
-        if (children.length) console.log(`it has ${children.length} children`);
-        if (siblings.length) console.log(`It has ${siblings.length} siblings`);
-
         let categories = [];
         if (children.length) {
             categories = children.map(child => (
                 <li key={child.id}>
                     <Link to={`/categories/${child.id}`}>{child.categoryName}</Link>
-                    <span className="count">&#40;{Math.floor(Math.random() * 300)}&#41;</span>
+                    <span className="count">&#40;{child.bookCount}&#41;</span>
                 </li>
             ))
         }
@@ -47,7 +50,7 @@ class CategoryShow extends React.Component {
             categories = siblings.map(sibling => (
                 <li key={sibling.id}>
                     <NavLink to={`/categories/${sibling.id}`}>{sibling.categoryName}</NavLink>
-                    <span className="count">&#40;{Math.floor(Math.random() * 300)}&#41;</span>
+                    <span className="count">&#40;{sibling.bookCount}&#41;</span>
                 </li>
             ))
         }
@@ -59,10 +62,11 @@ class CategoryShow extends React.Component {
     render () {
         const blankParent = { categoryName: '', id: 0, }
         const blankCategory = { categoryName: 'blank',}
-        const category = this.props.category ? this.props.category : blankCategory;
+        const category = this.props.category ? this.props.category : this.state.category
         const parent = this.props.parent ? this.props.parent : blankParent;
+        const count = category.bookCount > category.childBookCount ? category.bookCount : category.childBookCount;
         
-        
+        // debugger;
        
         return (
             <section className="category-show">
@@ -73,7 +77,8 @@ class CategoryShow extends React.Component {
                             {parent.categoryName}
                         </Link>
                         <h1>{category.categoryName}</h1>
-                        <h5>{Math.floor((Math.random() * 2000) + 2000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} titles</h5>
+                        <h5>{count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} titles</h5>
+                        {/* <h5>{Math.floor((Math.random() * 2000) + 2000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} titles</h5> */}
                     </div>
                     <aside>
                         <span className="dummy-link">

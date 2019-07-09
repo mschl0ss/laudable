@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import CategoryShow from './category_show';
-import { getTargetCategories} from '../../reducers/selectors';
-import { fetchCategory, fetchCategories } from '../../actions/category_actions'
+import { getTargetCategories, getBookCount} from '../../reducers/selectors';
+import { fetchCategory, fetchCategories } from '../../actions/category_actions';
+import { fetchBooks } from '../../actions/book_actions';
 
 
 
@@ -15,6 +16,7 @@ const msp = (state,ownProps) => ({
 const mdp = dispatch => ({
     fetchCategory: categoryId => dispatch(fetchCategory(categoryId)),
     fetchCategories: () => dispatch(fetchCategories()),
+    fetchBooks: () => dispatch(fetchBooks()),
 });
 
 export default connect(msp,mdp)(CategoryShow);

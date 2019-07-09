@@ -25,5 +25,8 @@ class Category < ApplicationRecord
         foreign_key: :parent_category,
         class_name: :Category
 
+    has_many :child_books,
+        through: :child_categories,
+        source: :books
     
 end

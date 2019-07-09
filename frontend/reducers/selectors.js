@@ -39,3 +39,42 @@ export const getTargetCategories = (state, type, categoryId) => {
             return undefined;
     }   
 }
+
+export const getBookCount = (state, categoryId) => {
+    const bookCategories = Object.values(state.entities.bookCategories);
+
+    let count = 0;
+
+    Object.values(state.entities.bookCategories).forEach(bc => {
+        if (bc.categoryId === parseInt(categoryId)) count +=1;
+    })
+
+    // debugger;
+    return count;
+
+}
+
+export const getBookAuthor = (state, bookId) => {
+    const ccs = Object.values(state.entities.contentCreators);
+    const book = state.entities.books[bookId];
+    let author;
+
+    ccs.forEach(cc => {
+        if (cc.id === book.authorId) author = cc
+    })
+    
+    return author;
+
+}
+export const getBookNarrator = (state, bookId) => {
+    const ccs = Object.values(state.entities.contentCreators);
+    const book = state.entities.books[bookId];
+    let narrator;
+
+    ccs.forEach(cc => {
+        if (cc.id === book.narratorId) narrator = cc
+    })
+    
+    return narrator;
+
+}

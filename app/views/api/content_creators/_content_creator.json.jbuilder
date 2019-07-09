@@ -1,0 +1,1 @@
+json.extract! cc, :id, :fname, :lname

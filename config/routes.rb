@@ -6,12 +6,12 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :users, only: %w(index show create)
     
-    resources :categories, only: %w(index show) do 
-      resources :books, only: %w(index)
-    end
+    resources :categories, only: %w(index show)
+    resources :book_categories, only: %w(index)
 
-    resources :books, only: %w(show)
-    # resources :users, only: [:index, :show, :create]
+    resources :books, only: %w(index show)
+
+    resources :content_creators, only: %w(index show)
     
     resource :session, only: [:create, :destroy]
     

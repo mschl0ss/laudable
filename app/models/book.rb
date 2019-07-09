@@ -38,7 +38,7 @@ class Book < ApplicationRecord
 
 
     #active storage
-    has_one_attached :photo
+    has_one_attached :book_cover
     
     belongs_to :author,
         foreign_key: :author_id,

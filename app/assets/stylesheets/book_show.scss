@@ -1,0 +1,45 @@
+
+
+$orange: #f7991c;
+$orange-light: #F3B44D;
+$orange-dark: #e77600;
+$orange-shadow: rgba(228,121,17,.5);
+$gray-button: #d8d8d8;
+$gray-light: #e7e7e7;
+$gray-lightest: #e3e3e3;
+
+.book-show-container .orange-button, .book-show-container .gray-button {
+    background: $orange;
+    width: 268px;
+    height: 37px;
+    font-size: 14px;
+    border: none;
+    font-weight: 475;
+    margin-top: 50px;
+    border-radius: 4px;
+}
+
+.book-show-container .orange-button:hover {
+    background: $orange-light;
+    cursor: pointer;
+}
+
+.book-show-container .orange-button:focus {
+    box-shadow: 0 0 3px 2px $orange-shadow;
+    outline: 0;
+}
+
+.book-show-container .gray-button {
+    background: $gray-button;
+
+}
+.book-show-container .gray-button:hover {
+    background: $gray-lightest;
+    cursor: pointer;
+}
+
+.book-show-container .gray-button:focus{
+    outline: 0;
+    border-color: #e77600;
+    box-shadow: 0 0 3px 2px rgba(228,121,17,.5);
+}
