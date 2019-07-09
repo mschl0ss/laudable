@@ -1,13 +1,153 @@
-
-
 $orange: #f7991c;
 $orange-light: #F3B44D;
 $orange-dark: #e77600;
 $orange-shadow: rgba(228,121,17,.5);
+$gray-text: rgba(26,28,29,.65);
 $gray-button: #d8d8d8;
 $gray-light: #e7e7e7;
 $gray-lightest: #e3e3e3;
+$black-text: #1a1c1d;
 
+.book-show-container {
+    width: 1000px;
+    margin: 0 auto;
+    font-family: Arial;
+}
+
+.book-show-container a {
+    color: #007eb0;
+    text-decoration:none;
+}
+
+.book-show-container a:hover {
+    text-decoration: underline;
+}
+// => => => HEADER
+.book-show-container header {
+    margin: 0 0 50px;
+}
+
+.book-show-container header h6 {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 20px;
+}
+
+.book-show-container header h6 span {
+    color: rgb(33, 35, 37);
+    margin: 0 10px;
+}
+
+// => Columns
+.book-show-container header .columns {
+    display: flex;
+    justify-content: space-between;
+    width: 1000px;
+}
+
+//left
+.book-show-container header .columns .left-column img{
+    width: 232px;
+    height: 232px;
+}
+
+.book-show-container header .columns .left-column figcaption{
+    background: rgba(232,234,235,.85);
+    padding: 0 16px;
+    width: 200px;
+    height: 40px;
+    position: relative;
+    top: -3px;
+}
+
+//middle
+.book-show-container header .columns .middle-column {
+    box-sizing: border-box;
+    width: 40%;
+}
+
+.book-show-container header .columns .middle-column li{
+    color: $gray-text;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.book-show-container header .columns .middle-column h1 {
+    color: $black-text;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 34px;
+}
+
+.book-show-container header .columns .middle-column h3 {
+    color: $gray-text;
+    font-size: 20px;
+    line-height: 26px;
+    padding-bottom: 15px;
+}
+
+.book-show-container header .columns .middle-column .gold {
+    color: #F7991C;
+    background: none;
+}
+.book-show-container header .columns .middle-column span.gray {
+    color: #AFB0B0;
+    background: none;
+}
+
+.book-show-container header .columns .middle-column .cumulutiveAvg {
+    margin: 0 2px 0 5px;
+}
+
+//right
+.book-show-container header .columns .right-column {
+    box-sizing: border-box;
+    padding: 0 15px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.book-show-container header .columns .right-column .weak {
+    color: $gray-text;
+    font-size: 13px;
+    line-height: 19px;
+}
+
+.book-show-container header .columns .right-column .strong {
+    color: $black-text;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.book-show-container header .columns .right-column .divider {
+    position: relative;
+}
+.book-show-container header .columns .right-column .divider span{
+    margin: 0 auto;
+    color: rgba(26, 28, 29, 0.65);
+    font-size: 14px;
+    position: absolute;
+    top: 2px;
+    left: 90px;
+    padding: 0px 30px;
+    background: white;
+}
+
+.book-show-container header .columns .right-column .divider hr {
+    border-top: solid 1px rgba(232,234,235,.85);
+}
+
+.book-show-container header .columns .right-column .buttons {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.book-show-container header .columns .right-column .buttons button:first-child {
+    margin-bottom: 10px;
+}
 .book-show-container .orange-button, .book-show-container .gray-button {
     background: $orange;
     width: 268px;
@@ -15,7 +155,6 @@ $gray-lightest: #e3e3e3;
     font-size: 14px;
     border: none;
     font-weight: 475;
-    margin-top: 50px;
     border-radius: 4px;
 }
 
@@ -43,3 +182,31 @@ $gray-lightest: #e3e3e3;
     border-color: #e77600;
     box-shadow: 0 0 3px 2px rgba(228,121,17,.5);
 }
+
+.book-show-container main .carousel-section {
+    height: 250px;
+}
+.book-show-container main .carousel-section h3 {
+    color: $black-text;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+    height: 41px;
+}
+
+.book-show-container main .publisher-summary {
+    color: $gray-text;
+    font-size: 14px;
+    line-height: 20px;
+}
+.book-show-container main .publisher-summary h3 {
+    color: $black-text;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+    padding-bottom: 15px;
+}
+.book-show-container main .publisher-summary p {
+    margin: 0 0 14px;
+}
+.book-show-container main {}

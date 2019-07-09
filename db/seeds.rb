@@ -255,6 +255,60 @@ BookCategory.create!(
     book_id: b.id,
     category_id: cat_cb.id
 )
+    helpful_vote_count = rand(1..15)
+    total_vote_count = helpful_vote_count + rand(1..5)
+
+    body = Faker::Food.description + " \n "
+    body += Faker::Quotes::Shakespeare.romeo_and_juliet_quote + " \n " 
+    body += Faker::Quotes::Shakespeare.romeo_and_juliet_quote
+Review.create!(
+    title: Faker::Cosmere.surge + " | " + Faker::Quotes::Shakespeare.hamlet_quote,
+    body: body,
+    book_id: b.id,
+    user_id: demoUser.id,
+    review_type: 'user',
+    rating_overall: rand(1..5),
+    rating_performance: rand(1..5),
+    rating_story: rand(1..5),
+    helpful_vote_count: helpful_vote_count,
+    total_vote_count: total_vote_count,
+)
+
+    helpful_vote_count = rand(1..15)
+    total_vote_count = helpful_vote_count + rand(1..5)
+    body += Faker::Food.description + " \n "
+    body += Faker::Quotes::Shakespeare.romeo_and_juliet_quote + " \n " 
+    body += Faker::Quotes::Shakespeare.romeo_and_juliet_quote
+Review.create!(
+    title: Faker::Cosmere.surge + " | " + Faker::Quotes::Shakespeare.hamlet_quote,
+    body: body,
+    book_id: b.id,
+    user_id: demoUser.id+1,
+    review_type: 'user',
+    rating_overall: rand(1..5),
+    rating_performance: rand(1..5),
+    rating_story: rand(1..5),
+    helpful_vote_count: helpful_vote_count,
+    total_vote_count: total_vote_count,
+)
+
+    helpful_vote_count = rand(1..15)
+    total_vote_count = helpful_vote_count + rand(1..5)
+    body += Faker::Food.description + " \n "
+    body += Faker::Quotes::Shakespeare.romeo_and_juliet_quote + " \n " 
+    body += Faker::Quotes::Shakespeare.romeo_and_juliet_quote
+Review.create!(
+    title: Faker::Cosmere.surge + " | " + Faker::Quotes::Shakespeare.hamlet_quote,
+    body: body,
+    book_id: b.id,
+    user_id: demoUser.id+1,
+    review_type: 'user',
+    rating_overall: rand(1..5),
+    rating_performance: rand(1..5),
+    rating_story: rand(1..5),
+    helpful_vote_count: helpful_vote_count,
+    total_vote_count: total_vote_count,
+)
 
 a = ContentCreator.create!(fname: 'John', lname: 'Cleese')
 
@@ -320,32 +374,49 @@ BookCategory.create!(
     category_id: cat_cb.id
 )
 
-a = ContentCreator.create!(fname: 'Lamar', lname: 'Odom')
+# a = ContentCreator.create!(fname: 'Lamar', lname: 'Odom')
 
-n = ContentCreator.create!(fname: 'Chris', lname: 'Palmer')
+# n = ContentCreator.create!(fname: 'Chris', lname: 'Palmer')
 
-b = Book.create!(
-    title: 'Darkness to Light',
-    subtitle: 'A Memoir',
-    author_id: a.id,
-    narrator_id: n.id,
-    publisher_summary: 
-    release_date: DateTime.new(2019,6,25),
-    length_in_minutes: (7*60)+17,
-    price_in_cents: 2499,
-    language: 'english',
-    publisher: "Brilliance Audio"
-)
+# b = Book.create!(
+#     title: 'Darkness to Light',
+#     subtitle: 'A Memoir',
+#     author_id: a.id,
+#     narrator_id: n.id,
+#     publisher_summary: 
+#     release_date: DateTime.new(2019,6,25),
+#     length_in_minutes: (7*60)+17,
+#     price_in_cents: 2499,
+#     language: 'english',
+#     publisher: "Brilliance Audio"
+# )
 
-b.book_cover.attach(io: open('https://laudable-seeds.s3-us-west-1.amazonaws.com/lamarodomdtol.jpg'), filename: '')
+# b.book_cover.attach(io: open('https://laudable-seeds.s3-us-west-1.amazonaws.com/lamarodomdtol.jpg'), filename: '')
 
-BookCategory.create!(
-    book_id: b.id,
-    category_id: cat_ip.id
-)
+# BookCategory.create!(
+#     book_id: b.id,
+#     category_id: cat_ip.id
+# )
 
 # #REVIEWS
 # review_count = 500
+
+#     body = rand(1..review_count*100).to_s + " | " 
+#     body += Faker::Quotes::Shakespeare.romeo_and_juliet_quote + " | "
+#     body += Faker::Quotes::Shakespeare.romeo_and_juliet_quote + " | " 
+#     body += Faker::Quotes::Shakespeare.romeo_and_juliet_quote
+
+# Review.create (
+#     title: rand(1..review_count*100).to_s + " | " + Faker::Cosmere.surge + " | " + Faker::Quotes::Shakespeare.hamlet_quote,
+#     body: body,
+#     book_id: b.id,
+#     user_id: demoUser.id,
+#     review_type: 'user',
+#     rating_overall: rand(1..5),
+#     rating_performance: rand(1..5),
+#     rating_story: rand(1..5),
+#     helpful_score: rand(-10..10)
+# )
 
 # (1..review_count).each do |i|
 

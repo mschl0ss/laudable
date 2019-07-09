@@ -13,6 +13,8 @@
 #  language          :string           not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  subtitle          :string
+#  publisher         :string
 #
 
 require 'test_helper'

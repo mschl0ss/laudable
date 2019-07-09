@@ -6,7 +6,7 @@ export default (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_BOOK_CATEGORIES:
-            return action.bookCategories;
+            return merge({},state, action.bookCategories)
         default:
             return state;
     }

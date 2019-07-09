@@ -14,6 +14,8 @@
 #  helpful_score      :integer          default(0)
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  helpful_vote_count :integer          default(0)
+#  total_vote_count   :integer          default(0)
 #
 
 class Review < ApplicationRecord

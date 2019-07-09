@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_09_022939) do
+ActiveRecord::Schema.define(version: 2019_07_09_095815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,8 @@ ActiveRecord::Schema.define(version: 2019_07_09_022939) do
     t.integer "helpful_score", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "helpful_vote_count", default: 0
+    t.integer "total_vote_count", default: 0
     t.index ["book_id"], name: "index_reviews_on_book_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end

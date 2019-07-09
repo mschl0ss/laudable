@@ -9,7 +9,7 @@ const receiveBookCategories = bookCategories => ({
 });
 
 
-export const fetchBookCategories = () => dispatch => (
-    getBookCategories()
+export const fetchBookCategories = bookId => dispatch => (
+    getBookCategories(bookId)
         .then(bookCategories => dispatch(receiveBookCategories(bookCategories)))
 );

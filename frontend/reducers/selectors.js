@@ -41,15 +41,12 @@ export const getTargetCategories = (state, type, categoryId) => {
 }
 
 export const getBookCount = (state, categoryId) => {
-    const bookCategories = Object.values(state.entities.bookCategories);
-
     let count = 0;
 
     Object.values(state.entities.bookCategories).forEach(bc => {
         if (bc.categoryId === parseInt(categoryId)) count +=1;
     })
 
-    // debugger;
     return count;
 
 }
@@ -77,4 +74,64 @@ export const getBookNarrator = (state, bookId) => {
     
     return narrator;
 
+}
+
+export const getBookCategories = (state, bookId) => {
+    const bcs = Object.values(state.entities.bookCategories);
+    const categoryIds = [];
+    const categories = Object.values(state.entities.categories);
+
+    // const result = { category: undefined, rootCategory: undefined}
+    const result = {}
+
+    bcs.forEach(bc => {
+        if(bc.bookId === parseInt(bookId) ) {
+            result.category = state.entities.categories[bc.categoryId]
+        }
+    })
+
+    if (result.category) {
+        categories.forEach(category => {
+        //    debugger;
+        if(category.id === result.category.parentCategoryId ) {
+            result.parentCategory = category;
+        }
+        })
+    }
+
+   return result;
+}
+
+export const getBookReviews = (state,bookId) => (
+
+    Object.values(state.entities.reviews)
+        .filter(review=> review.book_id = parseInt(bookId))
+)
+
+export const getBookReviewScores = (state,bookId) => {
+    let count = {
+        ratingOverall: { totalScore: 0, votesCast: 0},
+        ratingPerformance: { totalScore: 0, votesCast: 0},
+        ratingStory: { totalScore: 0, votesCast: 0},
+    }
+
+    Object.values(state.entities.reviews).forEach(review => {
+        if(review.book_id !== parseInt(bookId)) {}
+        else {
+            if(review.ratingOverall !== null) {
+                count.ratingOverall.totalScore += review.ratingOverall;
+                count.ratingOverall.votesCast += 1;
+            }
+            if(review.ratingPerformance !== null) {
+                count.ratingPerformance.totalScore += review.ratingPerformance;
+                count.ratingPerformance.votesCast += 1;
+            }
+            if(review.ratingStory !== null) {
+                count.ratingStory.totalScore += review.ratingStory;
+                count.ratingStory.votesCast += 1;
+            }
+        }
+    })
+    // debugger;
+    return count;
 }
