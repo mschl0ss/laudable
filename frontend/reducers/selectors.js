@@ -55,7 +55,8 @@ export const getBookAuthor = (state, bookId) => {
     const ccs = Object.values(state.entities.contentCreators);
     const book = state.entities.books[bookId];
     let author;
-
+    // debugger;
+    if (!book) return null;
     ccs.forEach(cc => {
         if (cc.id === book.authorId) author = cc
     })
@@ -67,7 +68,7 @@ export const getBookNarrator = (state, bookId) => {
     const ccs = Object.values(state.entities.contentCreators);
     const book = state.entities.books[bookId];
     let narrator;
-
+    if (!book) return null;
     ccs.forEach(cc => {
         if (cc.id === book.narratorId) narrator = cc
     })

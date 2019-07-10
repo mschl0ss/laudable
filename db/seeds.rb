@@ -262,7 +262,7 @@ BookCategory.create!(
     body += Faker::Quotes::Shakespeare.romeo_and_juliet_quote + " \n " 
     body += Faker::Quotes::Shakespeare.romeo_and_juliet_quote
 Review.create!(
-    title: Faker::Cosmere.surge + " | " + Faker::Quotes::Shakespeare.hamlet_quote,
+    title: Faker::Cosmere.surge + " | " + Faker::Movies::Ghostbusters.actor,
     body: body,
     book_id: b.id,
     user_id: demoUser.id,
@@ -280,7 +280,7 @@ Review.create!(
     body += Faker::Quotes::Shakespeare.romeo_and_juliet_quote + " \n " 
     body += Faker::Quotes::Shakespeare.romeo_and_juliet_quote
 Review.create!(
-    title: Faker::Cosmere.surge + " | " + Faker::Quotes::Shakespeare.hamlet_quote,
+    title: Faker::Cosmere.surge + " | " + Faker::Movies::Ghostbusters.actor,
     body: body,
     book_id: b.id,
     user_id: demoUser.id+1,
@@ -298,7 +298,7 @@ Review.create!(
     body += Faker::Quotes::Shakespeare.romeo_and_juliet_quote + " \n " 
     body += Faker::Quotes::Shakespeare.romeo_and_juliet_quote
 Review.create!(
-    title: Faker::Cosmere.surge + " | " + Faker::Quotes::Shakespeare.hamlet_quote,
+    title: Faker::Cosmere.surge + " | " + Faker::Movies::Ghostbusters.actor,
     body: body,
     book_id: b.id,
     user_id: demoUser.id+1,
@@ -331,7 +331,9 @@ Twisting and turning through surprising stories and hilarious digressions - with
     publisher: 'Random House Audio'
 )
 
-b.book_cover.attach(io: open('https://laudable-seeds.s3-us-west-1.amazonaws.com/johncleesesoanyway.jpg'), filename: '')
+file = open('https://laudable-seeds.s3-us-west-1.amazonaws.com/johncleesesoanyway.jpg')
+
+b.book_cover.attach(io: file, filename: 'johncleesesoanyway.jpg')
 
 BookCategory.create!(
     book_id: b.id,
@@ -367,7 +369,7 @@ Lamar brings basketball fans directly into the action of a game during the Laker
     publisher: "Brilliance Audio"
 )
 
-b.book_cover.attach(io: open('https://laudable-seeds.s3-us-west-1.amazonaws.com/lamarodomdtol.jpg'), filename: '')
+b.book_cover.attach(io: open('https://laudable-seeds.s3-us-west-1.amazonaws.com/lamarodomdtol.jpg'), filename: 'lamarodomtol.jpg')
 
 BookCategory.create!(
     book_id: b.id,

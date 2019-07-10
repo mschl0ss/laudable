@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import ReviewIndexContainer from '../reviews/review_index_container';
-import ReviewFormContainer from '../reviews/review_form_container';
 
 import Carousel from '../book_carousel/carousel';
 
@@ -22,9 +21,44 @@ class BookShow extends React.Component {
                 ratingOverall: { totalScore: 0, votesCast: 0 },
                 ratingPerformance: { totalScore: 0, votesCast: 0 },
                 ratingStory: { totalScore: 0, votesCast: 0 },
-            }
+            },
+            review:{
+                title: '',
+                bookId: this.props.match.params.bookId,
+                userId: currentUser.id,
+                body: '',
+                reviewType: 'user',
+                ratingOverall: 0,
+                ratingPerformance: 0,
+                ratingStory: 0,
+            },
+            overallHoverPos: 0,
+            performanceHoverPos: 0,
+            storyHoverPos: 0,
         }
     }
+
+    updateReview(field) {
+        return(e) => {
+            const review = this.state.review;
+            review[field] = e.currentTarget.value;
+            this.setState( { review: review } );
+        }
+    }
+    update(field) {
+        return(e) => {
+            this.setState( { [field]: e.currentTarget.value } );
+        }
+    }
+
+    clearHover() {
+        this.setState( { overallHoverPos: 0});
+        this.setState( { performanceHoverPos: 0});
+        this.setState( { storyHoverPos: 0});
+    }
+    //on mouseover set hovepos to value
+    //on mouseout set it to 0
+
 
     componentDidMount() {
         this.props.fetchBook(this.props.match.params.bookId);
@@ -67,8 +101,6 @@ class BookShow extends React.Component {
 
         let cumulutiveAvg = Math.floor(ratingsOverall.totalScore / ratingsOverall.votesCast);
         if (ratingsOverall.votesCast === 0) cumulutiveAvg = 0;
-        console.log(ratingsOverall);
-        console.log(cumulutiveAvg);
 
         const stars = [];
         const star = "\u2605"
@@ -79,6 +111,7 @@ class BookShow extends React.Component {
         return stars;
 
     }
+
     renderBuy(book){
         return (
             <>
@@ -103,22 +136,65 @@ class BookShow extends React.Component {
         )
     }
 
-    // renderReviewForm(book) {
-    //     return(
-    //         <div className="ratings">
-    //             <ul className="labels">
-    //                 <li>Overall</li>
-    //                 <li>Performance</li>
-    //                 <li>Story</li>
-    //             </ul>
-    //             <ul className="stars">
-    //                 <li>{this.renderStars(review.ratingOverall)}</li>
-    //                 <li>{this.renderStars(review.ratingPerformance)}</li>
-    //                 <li>{this.renderStars(review.ratingStory)}</li>
-    //             </ul>
-    //         </div>
-    //     )
-    // }
+    renderReviewStars() {
+        const star = "\u2605";
+
+        const ratingOverall = [1,2,3,4,5].map(i => (
+            <li key={i}>
+                <label>
+                    <input type="radio" name="ratingOverall" value={i} 
+                        checked={this.state.review.ratingOverall === i}
+                        onChange={this.updateReview('ratingOverall')} 
+                    />
+                    <span className={i <= this.state.review.ratingOverall ? "gold" : "gray"}>{star}</span>
+                </label>
+            </li>
+        ))
+        const ratingPerformance = [1,2,3,4,5].map(i => (
+            <li key={i}>
+                <label>
+                    <input type="radio" name="ratingPerformance" value={i} 
+                        onChange={this.updateReview('ratingPerformance')} 
+                        checked={this.state.review.ratingOverall === i}
+                    />
+                    <span className={i <= this.state.review.ratingPerformance ? "gold" : "gray"}>{star}</span>
+                </label>
+            </li>
+        ))
+        const ratingStory = [1,2,3,4,5].map(i => (
+            <li key={i}>
+                <label>
+                    <input type="radio" name="ratingStory" value={i} 
+                    onChange={this.updateReview('ratingStory')} 
+                        checked={this.state.review.ratingOverall === i}/>
+                    <span className={i <= this.state.review.ratingStory ? "gold" : "gray"}>{star}</span>
+                </label>
+            </li>
+        ))
+        return(
+            <div className="review-stars-container">
+                <div>
+                    <span className="label">Overall</span>
+                    <ul>
+                        {ratingOverall}
+                    </ul>
+                </div>
+                <div>
+                    <span className="label">Performance</span>
+                    <ul>
+                        {ratingPerformance}
+                    </ul>
+                </div>
+                <div>
+                    <span className="label">Story</span>
+                    <ul>
+                        {ratingStory}
+                    </ul>
+                </div>
+
+            </div>
+        )
+    }
     render () {
         const book = this.props.book ? this.props.book : this.state.book;
         const author = this.props.author ? this.props.author : this.state.author;
@@ -132,8 +208,6 @@ class BookShow extends React.Component {
         
         return (
             <section className="book-show-container">
-                {/* {book.bookCoverUrl}
-                <img src={book.bookCoverUrl} /> */}
                 <header>
                     <h6 className="categories">
                         <Link to={`/categories/${categories.parentCategory.id}`}>
@@ -149,8 +223,7 @@ class BookShow extends React.Component {
                         <section className="left-column">
                             
                             <figure>
-                                <img src="https://cdn.waterstones.com/bookjackets/large/9781/8724/9781872405537.jpg" />
-                                {/* <img src="https://m.media-amazon.com/images/I/514mQYTQAkL._SL500_.jpg" /> */}
+                                <img src={book.bookCoverUrl} />
                                 <figcaption className="gray-bar"></figcaption>
                             </figure>
                         </section>
@@ -179,7 +252,34 @@ class BookShow extends React.Component {
                         </section>
 
                         <section className="right-column">
-                           {this.renderBuy(book)}
+                            {/* {this.renderBuy(book)} */}
+                            {this.renderReviewStars()}
+                            <Link to={{
+                                pathname: `/books/${book.id}/reviews`,
+                                state: {
+                                    book: book,
+                                    review: this.state.review,
+                                    author: author,
+                                    narrator: narrator,
+                                    computeLength: this.computeLength,
+                                    avgReviewScoreStars: this.renderOverallReviewAverage(reviewScores.ratingOverall),
+                                    cumulutiveAvg: cumulutiveAvg,
+                                    totalReviewVotes: reviewScores.ratingOverall.votesCast,
+                                    renderReviewStars: this.renderReviewStars,
+                                    titleDisabled: true,
+                                    submitDisabled: true,
+                                    bodyDisabled: true,
+                                    previewForm: false
+                                }
+                            }}
+                                className="small-link">Write a Review</Link>
+
+                            <div className="divider">
+                                <hr />
+                                <span>OR</span>
+                            </div>
+
+                            <button className="real-fake-button">Or don't.  What do I care, I'm a button.</button>
 
                         </section>
                     </div>

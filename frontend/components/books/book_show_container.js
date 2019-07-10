@@ -17,6 +17,7 @@ const msp = (state,ownProps) => ({
     narrator: getBookNarrator(state, ownProps.match.params.bookId),
     categories: getBookCategories(state, ownProps.match.params.bookId),
     reviewScores: getBookReviewScores(state, ownProps.match.params.bookId),
+    currentUser: state.session.currentUser,
     
 });
 

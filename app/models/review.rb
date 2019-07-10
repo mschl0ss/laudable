@@ -21,6 +21,9 @@
 class Review < ApplicationRecord
 
     validates :title, :body, presence: true, uniqueness: true
+
+    validates :title, length: {maximum: 75 }
+    validates :body, length: {minimum: 25 }
     
     validates :review_type, inclusion: { in: %w(user critic editor),
         message: "%{value} is not a valid review type" }

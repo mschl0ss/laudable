@@ -90,7 +90,7 @@ $black-text: #1a1c1d;
     color: #F7991C;
     background: none;
 }
-.book-show-container header .columns .middle-column span.gray {
+.book-show-container header .columns .middle-column .gray {
     color: #AFB0B0;
     background: none;
 }
@@ -107,19 +107,16 @@ $black-text: #1a1c1d;
     display: flex;
     flex-direction: column;
 }
-
 .book-show-container header .columns .right-column .weak {
     color: $gray-text;
     font-size: 13px;
     line-height: 19px;
 }
-
 .book-show-container header .columns .right-column .strong {
     color: $black-text;
     font-size: 14px;
     line-height: 20px;
 }
-
 .book-show-container header .columns .right-column .divider {
     position: relative;
 }
@@ -133,18 +130,15 @@ $black-text: #1a1c1d;
     padding: 0px 30px;
     background: white;
 }
-
 .book-show-container header .columns .right-column .divider hr {
     border-top: solid 1px rgba(232,234,235,.85);
 }
-
 .book-show-container header .columns .right-column .buttons {
     margin: 10px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 .book-show-container header .columns .right-column .buttons button:first-child {
     margin-bottom: 10px;
 }
@@ -157,17 +151,14 @@ $black-text: #1a1c1d;
     font-weight: 475;
     border-radius: 4px;
 }
-
 .book-show-container .orange-button:hover {
     background: $orange-light;
     cursor: pointer;
 }
-
 .book-show-container .orange-button:focus {
     box-shadow: 0 0 3px 2px $orange-shadow;
     outline: 0;
 }
-
 .book-show-container .gray-button {
     background: $gray-button;
 
@@ -176,13 +167,86 @@ $black-text: #1a1c1d;
     background: $gray-lightest;
     cursor: pointer;
 }
-
 .book-show-container .gray-button:focus{
     outline: 0;
     border-color: #e77600;
     box-shadow: 0 0 3px 2px rgba(228,121,17,.5);
 }
 
+.book-show-container .real-fake-button {
+    background-color: #00b0b0;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 16px;
+    margin-top: 20px;
+    font-family: Arial;
+    border-radius: 5px;
+
+}
+// new review entry form
+
+.book-show-container .review-stars-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.book-show-container .review-stars-container>div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-show-container .review-stars-container>div>ul{
+    display: flex;
+}
+
+.book-show-container .review-stars-container li {
+    margin-bottom: 10px;
+}
+.book-show-container .right-column .small-link {
+    font-size: 13px;
+    line-height: 19px;
+    color: #007eb0;
+    margin: 10px 0;
+
+}
+.book-show-container .review-stars-container [type=radio] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.book-show-container .review-stars-container .stars .stars-row li label span:hover {
+    color: #02AFB0;
+}
+
+.book-show-container .review-stars-container .labels {
+    color: rgba(26,28,29,.65);
+    font-size: 13px;
+    line-height: 19px;
+    width: 40%;
+}
+.book-show-container .review-stars-container .stars-row {
+    display: flex;
+    width: 50%;
+}
+.book-show-container .review-stars-container span {
+    font-size: 15px;
+}
+.book-show-container .review-stars-container span:hover {
+    cursor:pointer;
+}
+.book-show-container .review-stars-container span.gold {
+    color: #F7991C;
+    background: none;
+}
+.book-show-container .review-stars-container span.gray {
+    color: white;
+    background: none;
+    text-shadow: -1px 0 #AFB0B0, 0 1px #AFB0B0, 1px 0 #AFB0B0, 0 -1px #AFB0B0;
+
+}
+// CAROUSEL SECTION
 .book-show-container main .carousel-section {
     height: 250px;
 }
