@@ -12,7 +12,7 @@ class BookShow extends React.Component {
             book: { authorId: 1, narratorId: 1, title: '',
                 subtitle: '', publisherSummary: '', releaseDate: '1/1/2001',
                 lengthInMinutes: 100, priceInCents: 100, language: 'Hebrew',
-                publisher: '',
+                publisher: '', 
             },
             author: { fname: 'john', lname: 'smith' },
             narrator: { fname: 'jane',  lname: 'doe' },
@@ -25,7 +25,7 @@ class BookShow extends React.Component {
             review:{
                 title: '',
                 bookId: this.props.match.params.bookId,
-                userId: currentUser.id,
+                userId: currentUser.id || 0,
                 body: '',
                 reviewType: 'user',
                 ratingOverall: 0,
@@ -65,7 +65,26 @@ class BookShow extends React.Component {
         this.props.fetchContentCreators();
         this.props.fetchCategories();
         this.props.fetchBookCategories(this.props.match.params.bookId);
+
+        // this.setState({book: this.props.book})
+        
+        
+        // const book = this.props.book ? this.props.book : this.state.book;
+        // const author = this.props.author ? this.props.author : this.state.author;
+        // const narrator = this.props.narrator ? this.props.narrator : this.state.narrator;
+        // const categories = this.props.categories.category ?
+        //     this.props.categories :
+        //     { category: this.state.category, parentCategory: this.state.category };
     }
+
+    // shouldComponentUpdate(nextProps) {
+    //     return nextProps.book !== this.state.book;
+    // }
+
+    // componentDidUpdate() {
+    //         this.props.fetchBook(this.props.match.params.bookId);
+    //         this.props.fetchBookCategories(this.props.match.params.bookId);
+    // }
 
     computeLength(lengthInMinutes) {
         const hours = Math.floor(lengthInMinutes / 60);
@@ -196,7 +215,9 @@ class BookShow extends React.Component {
         )
     }
     render () {
+        // const book = this.state.book;
         const book = this.props.book ? this.props.book : this.state.book;
+        // console.log(this.props.book)
         const author = this.props.author ? this.props.author : this.state.author;
         const narrator = this.props.narrator ? this.props.narrator : this.state.narrator;
         const categories = this.props.categories.category ? 

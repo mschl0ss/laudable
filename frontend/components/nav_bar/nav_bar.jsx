@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import BrowseDropDownContainer from './browse_dropdown_container';
+import SearchBarContainer from './search_bar_container';
 import UserDropDown from './user_dropdown';
 
 class NavBar extends React.Component{
@@ -20,8 +21,6 @@ class NavBar extends React.Component{
             this.setState({ [field]: e.target.value })
         )
     }
-
-
 
     //----------------
     // -------USER NAV
@@ -90,16 +89,7 @@ class NavBar extends React.Component{
 
 
                 <div className="right search">
-                    <form onSubmit={this.handleSubmit}>
-                        <input
-                            type="text"
-                            value={this.state.search}
-                            onChange={this.updateField('search')}
-                            placeholder="Find your next great listen"
-                        />
-                        <img src={searchIcon}></img>
-                        {/* <span className="search-icon rotate">&#x260C;</span> */}
-                    </form>
+                    <SearchBarContainer searchIcon={searchIcon} loggedIn={loggedIn}/>
                 </div>
             </nav>
             

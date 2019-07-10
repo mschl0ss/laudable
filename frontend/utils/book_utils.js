@@ -12,3 +12,12 @@ export const getBook = bookId => (
     })
 );
 
+export const searchBooks = query => (
+    $.ajax({
+        url: '/api/books/search',
+        dataType: 'json',
+        method: 'GET',
+        data: { query }
+    })
+);
+

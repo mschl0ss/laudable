@@ -10,10 +10,12 @@ Rails.application.routes.draw do
 
     # resources :book_categories, only: %w(index)
 
+    get 'books/search', to: 'books#search'
     resources :books, only: %w(index show) do
       resources :book_categories, only: %w(index)
       resources :reviews, only: %w(index create)
     end
+    
 
     resources :content_creators, only: %w(index show)
     
