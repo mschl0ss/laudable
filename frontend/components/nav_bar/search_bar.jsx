@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import BookIndexContainer from '../books/book_index';
 
 class SearchBar extends React.Component {
 
@@ -18,8 +19,6 @@ class SearchBar extends React.Component {
 
     componentDidMount() {
         window.addEventListener('click', function(e) {
-            // debugger;
-            console.log(e.target.id);
             if (e.target.id !== "search-bar-text-input" 
                 && e.target.id !=="search-results-dd-list") {
                 // debugger;
@@ -28,35 +27,15 @@ class SearchBar extends React.Component {
             }
         })
       
-        // document.getElementById("search-results-dd-list")
-        //     .addEventListener('click', function (e) {e.stopPropagation()})
-
-        // document.getElementById("search-bar-text-input")
-        //     .addEventListener('click', function (e) { e.stopPropagation() })
-
-        
-        // document.getElementById("search-bar-text-input")
-        //     .addEventListener('focusout', () => {
-        //         document.getElementById("search-results-dd-list")
-        //             .className = "hidden"
-        //     })
-        
         document.getElementById("search-bar-text-input")
             .addEventListener('focus', function (e){
                 document.getElementById("search-results-dd-list")
                     .className = "search-results-dd "
             })
-        // document.getElementById("search-bar-text-input")
-        //     .addEventListener('blur', () => {
-        // document.getElementById("search-results-dd-list")
-        //     .className = "hidden"
-        //     })
+
     }
 
-    hideResultsDropDown() {
-        const dd = document.getElementById("search-results-dd-list");
-        dd.className = 'hidden';
-    }
+
     handleSubmit(e) {
         e.preventDefault();
         
@@ -84,17 +63,14 @@ class SearchBar extends React.Component {
     render() {
 
         const resultsList = this.state.results.map(book => {
-            console.log(book)
             return (
-            
-            <li
-                key={book.title}
-                onClick={()=>{
-                    console.log(book.id)
-                    this.props.history.push(`/books/${book.id}`)}}
-            >
-                {book.title}
-            </li>
+                <Link 
+                    key={book.title}
+                    to={`/search/`}>
+                    <li>
+                        {book.title}
+                    </li>
+                </Link>
             )
         })
 
@@ -106,7 +82,6 @@ class SearchBar extends React.Component {
                         type="text"
                         value={this.state.text}
                         onChange={this.fetchAndUpdate}
-                        
                         placeholder="Find your next great listen"
                     />
                     <input type="image" src={this.props.searchIcon} alt="Search Laudable!" />
@@ -115,7 +90,7 @@ class SearchBar extends React.Component {
               
                 <ul className="search-results-dd" id="search-results-dd-list">
                     {resultsList}
-                    <li>Whatup Search</li>
+                    <li className="last hidden"></li>
                 </ul>
                 
 

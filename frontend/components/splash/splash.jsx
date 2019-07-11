@@ -9,7 +9,7 @@ class Splash extends React.Component {
 
 
     render () {
-
+        console.log('Render SPLASH');
         const propBook = "book_icon.png";
         return (
         <div>

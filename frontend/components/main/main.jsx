@@ -8,37 +8,57 @@ import { AuthRoute, ProtectedRoute } from '../../utils/route_utils';
 import SplashContainer from '../splash/splash_container';
 import CategoryIndexContainer from '../categories/category_index_container';
 import CategoryShowContainer from '../categories/category_show_container';
+import BookIndexContainer from '../books/book_index_container';
 import BookShowContainer from '../books/book_show_container';
 import ReviewFormContainer from '../reviews/review_form_container';
 
 import Footer from './footer';
-
 import Carousel from '../book_carousel/carousel';
 
 
-const Main = () => (
-    <div id="main-wrapper">
-        {/* <Route whatever></Route> */}
-        <NavBarContainer />
 
-        <div id="main-body">
-            <Switch>
+    
+    
+class Main extends React.Component {
+    
+    
+    componentDidUpdate(prevProps) {
+        if (this.props.currentUser !== prevProps.currentUser) {
+           //i guess do nothing
+        }
+    }
+    
+    render() {
+        console.log('Render MAIN')
+        console.log(this.props)
+        
+        
+        return (
+        <div id="main-wrapper">
 
-                <ProtectedRoute path="/categories/:categoryId" component={CategoryShowContainer} />
-                <ProtectedRoute exact path="/categories/" component={CategoryIndexContainer} />
+            <NavBarContainer />
 
-                <ProtectedRoute path="/books/:bookId/reviews" component={ReviewFormContainer} />
-                <ProtectedRoute path="/books/:bookId" component={BookShowContainer} />
+            <div id="main-body">
+                <Switch>
 
-                <Route exact path="/carousel" component={Carousel} />
-                <AuthRoute exact path="/" component={SplashContainer} />
-            </Switch>
+                    <ProtectedRoute path="/categories/:categoryId" component={CategoryShowContainer} />
+                    <ProtectedRoute exact path="/categories/" component={CategoryIndexContainer} />
+
+                    <ProtectedRoute path="/search" component={BookIndexContainer} />
+                    <ProtectedRoute path="/books/:bookId/createReview" component={ReviewFormContainer} />
+                    <ProtectedRoute exact path="/books/:bookId" component={BookShowContainer} />
+
+                    <Route exact path="/carousel" component={Carousel} />
+                    <Route exact path="/" component={SplashContainer} />
+                </Switch>
+            </div>
+
+        
+
+            <Footer />
         </div>
+)}
 
-       
-
-        <Footer />
-    </div>
-)
+}
 
 export default Main;

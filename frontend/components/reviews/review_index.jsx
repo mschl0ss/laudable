@@ -6,9 +6,9 @@ class ReviewIndex extends React.Component {
         super(props);
     }
 
-    componentDidUpdate(){
+    componentDidUpdate(prevProps){
 
-         if(this.props.bookId && !this.props.reviews.length) {
+        if (prevProps.bookId !== this.props.bookId) {
             this.props.fetchReviews(this.props.bookId);
          }
     }

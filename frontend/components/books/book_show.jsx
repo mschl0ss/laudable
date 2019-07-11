@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import ReviewIndexContainer from '../reviews/review_index_container';
 
 import Carousel from '../book_carousel/carousel';
+import { receiveTempReviewObj } from '../../actions/temp_review_actions';
 
 class BookShow extends React.Component {
     constructor(props) {
@@ -25,26 +26,54 @@ class BookShow extends React.Component {
             review:{
                 title: '',
                 bookId: this.props.match.params.bookId,
-                userId: currentUser.id || 0,
                 body: '',
                 reviewType: 'user',
-                ratingOverall: 0,
-                ratingPerformance: 0,
-                ratingStory: 0,
+                userId: this.props.currentUser.id,
+                ratingOverall: "0",
+                ratingPerformance: "0",
+                ratingStory: "0",
             },
             overallHoverPos: 0,
             performanceHoverPos: 0,
             storyHoverPos: 0,
         }
+
+        this.navigateToReviewForm = this.navigateToReviewForm.bind(this);
+        this.updateReview = this.updateReview.bind(this);
     }
 
     updateReview(field) {
+        // debugger;
         return(e) => {
-            const review = this.state.review;
+            
+            console.log(this.state.review)
+            const review = Object.assign({}, this.state.review);
             review[field] = e.currentTarget.value;
-            this.setState( { review: review } );
+            this.setState({ review: review})
+            this.props.receiveTempReviewObj(review)
+            
         }
     }
+
+    navigateToReviewForm() {
+        const cumulutiveAvg = (this.props.reviewScores.ratingOverall.totalScore / this.props.reviewScores.ratingOverall.votesCast).toFixed(1);
+        const helperProps = {
+            book: this.props.book,
+            author: this.props.author,
+            narrator: this.props.narrator,
+            computeLength: this.computeLength,
+            avgReviewScoreStars: this.renderOverallReviewAverage(this.props.reviewScores.ratingOverall),
+            cumulutiveAvg: cumulutiveAvg === "NaN" ? cumulutiveAvg : 0,
+            totalReviewVotes: this.props.reviewScores.ratingOverall.votesCast,
+        }
+        // debugger;
+        this.props.receiveHelperProps(helperProps);
+        this.props.receiveTempReviewObj(this.state.review)
+
+        console.log(`/books/${this.props.book.id}/createReview`)
+        this.props.history.push(`/books/${this.props.book.id}/createReview`)
+    }
+
     update(field) {
         return(e) => {
             this.setState( { [field]: e.currentTarget.value } );
@@ -66,25 +95,15 @@ class BookShow extends React.Component {
         this.props.fetchCategories();
         this.props.fetchBookCategories(this.props.match.params.bookId);
 
-        // this.setState({book: this.props.book})
-        
-        
-        // const book = this.props.book ? this.props.book : this.state.book;
-        // const author = this.props.author ? this.props.author : this.state.author;
-        // const narrator = this.props.narrator ? this.props.narrator : this.state.narrator;
-        // const categories = this.props.categories.category ?
-        //     this.props.categories :
-        //     { category: this.state.category, parentCategory: this.state.category };
     }
 
-    // shouldComponentUpdate(nextProps) {
-    //     return nextProps.book !== this.state.book;
-    // }
-
-    // componentDidUpdate() {
-    //         this.props.fetchBook(this.props.match.params.bookId);
-    //         this.props.fetchBookCategories(this.props.match.params.bookId);
-    // }
+    
+    componentDidUpdate(prevProps,prevState,snapshot) {
+        if (prevProps.book !== this.props.book) {
+            this.setState({ book: this.props.book })
+            
+        }
+    }
 
     computeLength(lengthInMinutes) {
         const hours = Math.floor(lengthInMinutes / 60);
@@ -214,8 +233,9 @@ class BookShow extends React.Component {
             </div>
         )
     }
+    
     render () {
-        // const book = this.state.book;
+        console.log('Render BOOK SHOW')
         const book = this.props.book ? this.props.book : this.state.book;
         // console.log(this.props.book)
         const author = this.props.author ? this.props.author : this.state.author;
@@ -275,7 +295,7 @@ class BookShow extends React.Component {
                         <section className="right-column">
                             {/* {this.renderBuy(book)} */}
                             {this.renderReviewStars()}
-                            <Link to={{
+                            {/* <Link to={{
                                 pathname: `/books/${book.id}/reviews`,
                                 state: {
                                     book: book,
@@ -286,14 +306,13 @@ class BookShow extends React.Component {
                                     avgReviewScoreStars: this.renderOverallReviewAverage(reviewScores.ratingOverall),
                                     cumulutiveAvg: cumulutiveAvg,
                                     totalReviewVotes: reviewScores.ratingOverall.votesCast,
-                                    renderReviewStars: this.renderReviewStars,
                                     titleDisabled: true,
                                     submitDisabled: true,
                                     bodyDisabled: true,
                                     previewForm: false
                                 }
-                            }}
-                                className="small-link">Write a Review</Link>
+                            }} */}
+                            <span onClick={this.navigateToReviewForm} className="small-link">Write a Review</span>
 
                             <div className="divider">
                                 <hr />

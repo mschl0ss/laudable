@@ -61,7 +61,11 @@
     box-sizing: border-box;
     position: relative;
     right: 5px;
-    top: -1px;
+    top: 0px;
+}
+
+.search-results-dd a {
+  text-decoration: none;
 }
 
 .search-results-dd li{
@@ -75,4 +79,11 @@
 
 .search-results-dd li:hover{
     background: #e3e3e3;
+}
+
+.search-results-dd li.last {
+  cursor: default;
+}
+.search-results-dd li.last:hover{
+  background: inherit;
 }

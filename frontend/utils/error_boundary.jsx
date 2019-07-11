@@ -1,4 +1,10 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import { receiveEBErrors } from '../actions/error_boundary_actions'
+
+const mdp = dispatch => ({
+    dispatchErrors: errors=> dispatch(receiveEBErrors(errors))
+});
 
 class ErrorBoundary extends React.Component {
     constructor(props) {
@@ -8,13 +14,18 @@ class ErrorBoundary extends React.Component {
 
     componentDidCatch(error, info) {
         // Display fallback UI
+        debugger;
         this.setState({ hasError: true });
+        this.props.dispatchErrors(error)
+
+
         // You can also log the error to an error reporting service
-        logErrorToMyService(error, info);
+        // logErrorToMyService(error, info);
     }
 
     render() {
         if (this.state.hasError) {
+            debugger;
             // You can render any custom fallback UI
             return <h1>Something went wrong.</h1>;
         }
@@ -22,4 +33,4 @@ class ErrorBoundary extends React.Component {
     }
 }
 
-export default ErrorBoundary;
+export default connect(null,mdp)(ErrorBoundary);

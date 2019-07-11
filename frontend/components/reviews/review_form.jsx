@@ -5,14 +5,36 @@ class ReviewForm extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = this.props.history.location.state;
+        this.state = {
+            review: {},
+            helperProps: {},
+            titleDisabled: true,
+            submitDisabled: true,
+            bodyDisabled: true,
+            previewForm: false
+        }
+        
 
-        this.renderReviewStars = this.props.history.location.state.renderReviewStars.bind(this);
+        // this.renderReviewStars = this.props.location.state.renderReviewStars.bind(this);
         this.renderStars = this.renderStars.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.updateReview = this.updateReview.bind(this);
 
     }
 
+    componentDidMount() {
+        this.setState({ review: this.props.reviewObj});
+        this.setState({ helperProps: this.props.helperProps});
+        console.log(this.state)
+
+        this.updateReview('ratingOverall');
+        this.updateReview('ratingPerformance');
+        this.updateReview('ratingStory');
+
+    }
+    componentDidCatch(error, info) {
+        debugger;
+    }
     updateReview(field) {
 
         const title = document.getElementById("review-form-title-input");
@@ -21,9 +43,9 @@ class ReviewForm extends React.Component {
         // debugger;
 
         return (e) => {
-            const review = this.state.review;
+            const review = Object.assign({}, this.state.review);
             review[field] = e.currentTarget.value;
-            this.setState({ review: review });
+            this.setState({ review: review })
             
             if (review.body.length > 25 ) this.setState( {submitDisabled: false});
             if (review.title.length > 0) this.setState({ bodyDisabled: false });
@@ -33,13 +55,74 @@ class ReviewForm extends React.Component {
       
         }
     }
-
     handleSubmit(e) {
         e.preventDefault();
+        const review = Object.assign({}, this.state.review);
+        review.userId = this.props.currentUser.id;
+        this.setState({ review: review })
+        
         this.props.postReview(this.state.review.bookId, this.state.review)
             .then(() => this.props.history.push(`/books/${this.state.review.bookId}`));
     }
-    
+    renderReviewStars() {
+        const star = "\u2605";
+
+        const ratingOverall = [1, 2, 3, 4, 5].map(i => (
+            <li key={i}>
+                <label>
+                    <input type="radio" name="ratingOverall" value={i}
+                        checked={this.state.review.ratingOverall === i}
+                        onChange={this.updateReview('ratingOverall')}
+                    />
+                    <span className={i <= this.state.review.ratingOverall ? "gold" : "gray"}>{star}</span>
+                </label>
+            </li>
+        ))
+        const ratingPerformance = [1, 2, 3, 4, 5].map(i => (
+            <li key={i}>
+                <label>
+                    <input type="radio" name="ratingPerformance" value={i}
+                        onChange={this.updateReview('ratingPerformance')}
+                        checked={this.state.review.ratingOverall === i}
+                    />
+                    <span className={i <= this.state.review.ratingPerformance ? "gold" : "gray"}>{star}</span>
+                </label>
+            </li>
+        ))
+        const ratingStory = [1, 2, 3, 4, 5].map(i => (
+            <li key={i}>
+                <label>
+                    <input type="radio" name="ratingStory" value={i}
+                        onChange={this.updateReview('ratingStory')}
+                        checked={this.state.review.ratingOverall === i} />
+                    <span className={i <= this.state.review.ratingStory ? "gold" : "gray"}>{star}</span>
+                </label>
+            </li>
+        ))
+        return (
+            <div className="review-stars-container">
+                <div>
+                    <span className="label">Overall</span>
+                    <ul>
+                        {ratingOverall}
+                    </ul>
+                </div>
+                <div>
+                    <span className="label">Performance</span>
+                    <ul>
+                        {ratingPerformance}
+                    </ul>
+                </div>
+                <div>
+                    <span className="label">Story</span>
+                    <ul>
+                        {ratingStory}
+                    </ul>
+                </div>
+
+            </div>
+        )
+    }
     renderStars(score) {
         const star = "\u2605";
         return [1,2,3,4,5].map(i => (
@@ -48,9 +131,6 @@ class ReviewForm extends React.Component {
             
         ))
     }
-
-
-
     renderPreview() {
         // debugger;
         const d = new Date();
@@ -91,7 +171,8 @@ class ReviewForm extends React.Component {
         )
     }
     render () {
-        if (this.props.history.location.state === undefined) this.props.history.push(`/books/${this.props.match.params.bookId}`);
+        console.log('Render REVIEWFORM');
+        if(this.state.helperProps.book === undefined ) return null;
         return(
             <section className="review-form-container">
 
@@ -99,17 +180,17 @@ class ReviewForm extends React.Component {
                     <h1>Write a Review</h1>
                     <div>
                         {/* <img src="https://cdn.waterstones.com/bookjackets/large/9781/8724/9781872405537.jpg" /> */}
-                        <img src={this.state.book.bookCoverUrl} />
+                        <img src={this.state.helperProps.book.bookCoverUrl} />
                     
 
                         <section className="book-details">
-                            <h1>{this.state.book.title}</h1>
-                            <h3>{this.state.book.subtitle}</h3>
+                            <h1>{this.state.helperProps.book.title}</h1>
+                            <h3>{this.state.helperProps.book.subtitle}</h3>
 
-                            <p>By: {this.state.author.fname} {this.state.author.lname}</p>
-                            <p>Narrated By: {this.state.narrator.fname} {this.state.narrator.lname}</p>
-                            <p>Length: {this.state.computeLength(this.state.book.lengthInMinutes)}</p>
-                            <p>{this.state.avgReviewScoreStars} {this.state.cumulutiveAvg} &#40; {this.state.totalReviewVotes} ratings&#41;</p>
+                            <p>By: {this.state.helperProps.author.fname} {this.state.helperProps.author.lname}</p>
+                            <p>Narrated By: {this.state.helperProps.narrator.fname} {this.state.helperProps.narrator.lname}</p>
+                            <p>Length: {this.state.helperProps.computeLength(this.state.helperProps.book.lengthInMinutes)}</p>
+                            <p>{this.state.helperProps.avgReviewScoreStars} {this.state.helperProps.cumulutiveAvg} &#40; {this.state.helperProps.totalReviewVotes} ratings&#41;</p>
                         </section>
                     </div>
                 </header>

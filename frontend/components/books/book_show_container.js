@@ -7,6 +7,7 @@ import { fetchCategory, fetchCategories } from '../../actions/category_actions';
 import { fetchBookCategories } from '../../actions/book_category_actions';
 import { getBookAuthor, getBookNarrator, getBookCategories } from '../../reducers/selectors';
 import { getBookReviewScores } from '../../reducers/selectors';
+import { receiveTempReviewObj, receiveHelperProps,clearTempReviewObj } from '../../actions/temp_review_actions';
 
 
 
@@ -29,6 +30,9 @@ const mdp = dispatch => {
         fetchCategories: () => dispatch(fetchCategories()),
         fetchCategory: categoryId => dispatch(fetchCategory(categoryId)),
         fetchBookCategories: bookId => dispatch(fetchBookCategories(bookId)),
+        receiveTempReviewObj: temp => dispatch(receiveTempReviewObj(temp)),
+        receiveHelperProps: helpers => dispatch(receiveHelperProps(helpers)),
+        clearTempReviewObj: () => dispatch(clearTempReviewObj()), 
 
     })
 }

@@ -207,7 +207,10 @@ $black-text: #1a1c1d;
     line-height: 19px;
     color: #007eb0;
     margin: 10px 0;
-
+    cursor: pointer;
+}
+.book-show-container .right-column .small-link:hover {
+    text-decoration: underline;
 }
 .book-show-container .review-stars-container [type=radio] {
     position: absolute;
