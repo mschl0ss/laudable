@@ -10,7 +10,9 @@ class Api::ReviewsController < ApplicationController
         @review.book_id = params[:book_id]
         
         if @review.save!
-            render :show
+            @id = @review.id
+
+            render :show 
         else
             render json: @review.errors.full_messages, status: 418
         end

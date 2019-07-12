@@ -16,7 +16,7 @@ class ReviewIndexItem extends React.Component {
     render () {
         const blankReview = {
             title:'',ratingOverall:0,ratingPerformance:0,ratingStory:0,createdAt:'',
-             helpfulVoteCount: 0, totalVoteCount: 0}
+             helpfulVoteCount: 0, totalVoteCount: 0, body: ''}
         const blankUser = { username:'', city:'', state:''}
 
         const review = this.props.review ? this.props.review : blankReview;
