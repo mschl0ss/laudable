@@ -1,7 +1,7 @@
 
 
 
-<img src="https://raw.githubusercontent.com/mschl0ss/laudable/master/public/readme%20images/laudable_logo.png" >
+<img src="https://raw.githubusercontent.com/mschl0ss/laudable/master/public/readme%20images/laudable_logo.png" target="_blank">
 
 
 ##### Laudable is an Audible clone created by Marc Schlossberg. It replicates some of the core features and styling of the original site using Node, Rails, React, and Redux.
@@ -66,6 +66,8 @@
 
 ## Search & Nav
 <hr />
+
+* User navigates the site using the nav bar at the top.  They can browse, search, and sign in/out.
 
 <hr />
 

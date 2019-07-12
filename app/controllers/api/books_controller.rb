@@ -13,7 +13,15 @@ class Api::BooksController < ApplicationController
     end
 
     def search
-        # debugger
+        
+        # if, in params, there is a [:query] key, then we know theres a search
+        # if the query starts with the string 'category:' then we know it's a search by category
+        #       (this is hardcoded on the front end when a category show page is loaded)
+        # if the query starts with the string ':all:', then we know it's request to return all books
+        # if neither of those keywords are present, it's a regular ol' search by title
+        # each conditional ends with it's own version of selected books
+        # that collection is mapped to @books using rails associations to get desired fields
+        
         if params[:query].present?
             
             if params[:query].class == Hash
@@ -23,12 +31,10 @@ class Api::BooksController < ApplicationController
             elsif params[:query][0..8] == "category:"
                 categoryName = params[:query][10..-1]
                 category_id = Category.where('category_name = ?', "#{categoryName}")[0].id
-                
-                
                 bcs = BookCategory.where('category_id = ?', "#{category_id}")
-                
                 books = bcs.map {|bc| bc.book}
             elsif params[:query][0..4] == ":all:"
+                books = Book.all
             else
                 books = Book.where('lower(title) ~ ?', "#{params[:query].downcase}")
             end

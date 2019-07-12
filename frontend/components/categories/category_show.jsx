@@ -49,6 +49,7 @@ class CategoryShow extends React.Component {
             this.props.fetchSearchResults(`category: ${this.props.category.categoryName}`)
 
             if(this.props.children.length){
+                this.props.fetchSearchResults(`:all:`)
                 this.props.receiveQueryString(``)
             }
             else {
