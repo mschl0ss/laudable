@@ -10,7 +10,7 @@ const msp = state => ({
 
 const mdp = dispatch => ({
     fetchSearchResults: query => dispatch(fetchSearchResults(query)),
-    receiveQueryString: queryString => dispatch(receiveQueryString(queryString)),
+    receiveQueryString: queryString => dispatch(receiveQueryString(queryString))
 });
 
 export default withRouter(connect(msp,mdp)(SearchBar));

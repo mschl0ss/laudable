@@ -1,4 +1,4 @@
-import { RECEIVE_SEARCH_BOOKS } from '../../actions/book_actions';
+import { RECEIVE_SEARCH_BOOKS} from '../../actions/book_actions';
 
 
 export default (state = {}, action) => {
@@ -6,7 +6,7 @@ export default (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_SEARCH_BOOKS:
-            return action.books
+            return action.books;
         default:
             return state;
     }

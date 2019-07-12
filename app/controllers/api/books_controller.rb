@@ -30,7 +30,7 @@ class Api::BooksController < ApplicationController
                 books = bcs.map {|bc| bc.book}
             elsif params[:query][0..4] == ":all:"
             else
-                books = Book.all
+                books = Book.where('lower(title) ~ ?', "#{params[:query].downcase}")
             end
 
             @books = books.map do |book|
