@@ -17,7 +17,7 @@ class ReviewIndexItem extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if(prevProps.review !== this.props.review ){
+        if(this.state.review.title !== this.props.review.title ){
             this.setState({ review: this.props.review})
         }
     }
