@@ -27,6 +27,7 @@ export const getTargetCategories = (state, type, categoryId) => {
             categories.forEach(category => {
                 if (category.id === thisCategory.parentCategoryId) parent = category;
             })
+            // debugger;
             return parent;
         case 'parents':
             

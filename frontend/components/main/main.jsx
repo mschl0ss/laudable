@@ -13,7 +13,7 @@ import BookShowContainer from '../books/book_show_container';
 import ReviewFormContainer from '../reviews/review_form_container';
 
 import Footer from './footer';
-import Carousel from '../book_carousel/carousel';
+import CarouselContainer from '../book_carousel/carousel_container';
 
 
 
@@ -29,8 +29,6 @@ class Main extends React.Component {
     }
     
     render() {
-        console.log('Render MAIN')
-        console.log(this.props)
         
         
         return (
@@ -44,11 +42,13 @@ class Main extends React.Component {
                     <ProtectedRoute path="/categories/:categoryId" component={CategoryShowContainer} />
                     <ProtectedRoute exact path="/categories/" component={CategoryIndexContainer} />
 
-                    <ProtectedRoute path="/search" component={BookIndexContainer} />
+                    <ProtectedRoute path="/books/filteredList" component={BookIndexContainer} />
                     <ProtectedRoute path="/books/:bookId/createReview" component={ReviewFormContainer} />
                     <ProtectedRoute exact path="/books/:bookId" component={BookShowContainer} />
 
-                    <Route exact path="/carousel" component={Carousel} />
+                    <Route exact path="/carousel" component={CarouselContainer} />
+                    {/* <AuthRoute exact path="/" component={SplashContainer} />
+                    <ProtectedRoute exact path="/" component={SplashContainer} /> */}
                     <Route exact path="/" component={SplashContainer} />
                 </Switch>
             </div>

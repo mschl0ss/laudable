@@ -22,8 +22,9 @@ class SearchBar extends React.Component {
             if (e.target.id !== "search-bar-text-input" 
                 && e.target.id !=="search-results-dd-list") {
                 // debugger;
-                document.getElementById("search-results-dd-list")
-                    .className = "hidden"
+                if (document.getElementById("search-results-dd-list")) {
+                    document.getElementById("search-results-dd-list").className = "hidden"
+                }
             }
         })
       
@@ -33,6 +34,8 @@ class SearchBar extends React.Component {
                     .className = "search-results-dd "
             })
 
+        // this.setState({text: document.getElementById("search-bar-text-input").value});
+
     }
 
 
@@ -40,16 +43,17 @@ class SearchBar extends React.Component {
         e.preventDefault();
         
         if (this.props.loggedIn) { 
-            console.log("render bookindex with search results");
+            this.props.history.push('/books/filteredList');
         }
         else {
-            console.log('show an error in the dropdown "have to be logged in"');
+            this.props.history.push('/login');
         }
     }
 
     fetchAndUpdate(e) {
         this.setState( { text: e.target.value } );
         this.props.fetchSearchResults(e.target.value);
+        this.props.receiveQueryString(e.target.value);
     }
     componentWillReceiveProps(nextProps) {
         this.setState( { results: Object.values(nextProps.searchResults)})
@@ -64,13 +68,9 @@ class SearchBar extends React.Component {
 
         const resultsList = this.state.results.map(book => {
             return (
-                <Link 
-                    key={book.title}
-                    to={`/search/`}>
-                    <li>
+                    <li key={book.id} onClick={this.handleSubmit}>
                         {book.title}
                     </li>
-                </Link>
             )
         })
 
@@ -88,9 +88,9 @@ class SearchBar extends React.Component {
                 </form>
 
               
-                <ul className="search-results-dd" id="search-results-dd-list">
+                <ul className="search-results-dd hidden" id="search-results-dd-list">
                     {resultsList}
-                    <li className="last hidden"></li>
+                    
                 </ul>
                 
 
@@ -102,13 +102,3 @@ class SearchBar extends React.Component {
 export default SearchBar;
 
 
-{/* <form onSubmit={this.handleSubmit}>
-    <input
-        type="text"
-        value={this.state.search}
-        onChange={this.updateField('search')}
-        placeholder="Find your next great listen"
-    />
-    <img src={searchIcon}></img>
-    <span className="search-icon rotate">&#x260C;</span>
-</form> */}

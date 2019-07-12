@@ -64,6 +64,13 @@
     top: 0px;
 }
 
+.auth .search-results-dd {
+    border-color: #d1d6d7;
+    background: #1a1c1d;
+    right: -2px;
+    
+}
+
 .search-results-dd a {
   text-decoration: none;
 }
@@ -77,13 +84,24 @@
     cursor: pointer;
 }
 
+.auth .search-results-dd li{
+  color: #fff;
+}
+.auth .search-results-dd li:hover{
+  color: #1a1c1d;
+}
+
 .search-results-dd li:hover{
     background: #e3e3e3;
 }
 
-.search-results-dd li.last {
+.search-results-dd li.error {
   cursor: default;
+  color: red;
+  background: #fff;
+  border: solid 1px red;
+  box-sizing: border-box;
 }
-.search-results-dd li.last:hover{
+.search-results-dd li.error:hover{
   background: inherit;
 }

@@ -65,7 +65,7 @@ $black-text: #1a1c1d;
 }
 
 .site-nav .left>ul>li {
-  color: $black-text;
+  color: $gray-dark;
   margin: 0 10px;
   font-weight: 400;
   font-size: 13px;
@@ -73,7 +73,7 @@ $black-text: #1a1c1d;
 }
 
 .site-nav .left>ul li:hover {
-  text-decoration: underline;
+  // text-decoration: underline;
   cursor: not-allowed;
 }
 // logo

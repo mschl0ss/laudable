@@ -70,7 +70,7 @@ class NavBar extends React.Component{
                    
                     {/* LOGO */}
                     <div className="logo">
-                        <Link to="/">
+                        <Link to="/categories/">
                             <span className="logo-text">
                                 laudable
                                 <span>&#319;</span>

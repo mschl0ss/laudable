@@ -1,21 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const ImageSlide = ({imgUrls, slideStyle}) => {
+const ImageSlide = ({books, slideStyle}) => {
 
-    const books = imgUrls.map((img_url,i) => {
+    const bookDivs = books.map((book,i) => {
         const thisStyle = {
-            backgroundImage: `url("${img_url}")`,
+            backgroundImage: `url("${book.bookCoverUrl}")`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
         }
         return (
-            <div style={thisStyle} key={i}></div>
+            <Link to={`/books/${book.id}`} key={i}><div style={thisStyle} ></div></Link>
         )
     })
    
     return (
         <div className="image-slide" style={slideStyle}>
-            {books}
+            {bookDivs}
         </div>
     )
 }

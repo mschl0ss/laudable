@@ -40,14 +40,35 @@ class Carousel extends React.Component {
 
         this.state = {
             currentImagePos: 0,
-            imageIncrementValue: (imgUrls.length * 167) / 3,
+            // imageIncrementValue: (imgUrls.length * 167) / 3,
+            length: 3006,
+            imageIncrementValue: (3006)/3,
             activeDot: 1,
+            books: [],
+            imgUrls: imgUrls,
         };
 
         this.slideBack = this.slideBack.bind(this);
         this.slideForward = this.slideForward.bind(this);
+
+
     }
 
+    componentDidMount() {
+        this.props.fetchBooks();
+        this.setState({ books: this.props.books })
+        const imgs = this.props.books.map(book => book.bookCoverUrl)
+        this.setState({ imgUrls: imgs })
+    }
+
+    componentDidUpdate(prevProps) {
+        // debugger;
+        if (prevProps.books.length !== this.props.books.length) {
+            this.setState({books: this.props.books})
+            const imgs = this.props.books.map(book => book.bookCoverUrl)
+            this.setState({imgUrls: imgs})
+        }
+    }
     
     renderDots () {
         return (
@@ -101,7 +122,8 @@ class Carousel extends React.Component {
                         clickFunction={ this.slideBack }
                         glyph="&#9664;" />
                     <div className="image-slide-container" id="carousel" style={containerStyle}>
-                        <ImageSlide imgUrls={imgUrls} slideStyle={slideStyle}/>
+                        <ImageSlide books={this.state.books.slice(0,19)} slideStyle={slideStyle}/>
+                        {/* <ImageSlide imgUrls={this.state.imgUrls.slice(0,19)} slideStyle={slideStyle}/> */}
                     </div>
 
                     <Arrow

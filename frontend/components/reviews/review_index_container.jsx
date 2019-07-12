@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ReviewIndex from './review_index';
-import { fetchReviews } from '../../actions/review_actions';
+import { fetchReviews, clearReviews } from '../../actions/review_actions';
 import { getBookReviews } from '../../reducers/selectors';
 
 const msp = (state,ownProps) => ({
@@ -8,7 +8,8 @@ const msp = (state,ownProps) => ({
 });
 
 const mdp = dispatch => ({
-    fetchReviews: bookId => dispatch(fetchReviews(bookId))
+    fetchReviews: bookId => dispatch(fetchReviews(bookId)),
+    clearReviews: () => dispatch(clearReviews()),
 });
 
 export default connect(msp,mdp)(ReviewIndex);

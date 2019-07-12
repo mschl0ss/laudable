@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
-import Carousel from '../book_carousel/carousel';
+import BookIndexContainer from '../books/book_index_container'
+import CarouselContainer from '../book_carousel/carousel_container';
 
 //this.props. children, parent, siblings
 class CategoryShow extends React.Component {
@@ -13,29 +14,56 @@ class CategoryShow extends React.Component {
                 id: 0,
                 parentCategoryId: 0,
                 categoryName: 'blank',
-                bookCount: 0,
-                childBookCount: 0,
             },
-            parent: {
-                id: 0,
-                categoryName: 'blank',
-            },
-            
+            parent: { id: 0, categoryName: 'blank', parentCategoryId: 0},
+            children: [],
+            siblings: [],
+            searchResults: [],
+            bookCount: 0,
         }
 
         this.renderContent = this.renderContent.bind(this);
+        this.renderParentLink = this.renderParentLink.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchCategories();
         this.props.fetchBooks();
+        
+        
+       
+
+    }
+
+    componentDidUpdate(prevProps) {
+        // debugger;
+        if (prevProps.category !== this.props.category) {
+
+            this.setState({ category: this.props.category})
+            this.setState({ siblings: this.props.siblings })
+            
+            this.setState({ children: this.props.children })
+            this.setState({ searchResults: this.props.searchResults})
+            this.setState({ bookCount: this.props.bookCount})
+
+            this.props.fetchSearchResults(`category: ${this.props.category.categoryName}`)
+
+            if(this.props.children.length){
+                this.props.receiveQueryString(``)
+            }
+            else {
+                this.props.receiveQueryString(`Category: ${this.props.category.categoryName}`)
+            }   
+        }
+
+        if (this.state.parent !== this.props.parent) this.setState({ parent: this.props.parent })
     }
 
     renderContent() {
-        const bookCount = this.props.bookCount ? this.props.bookCount : 0;
-        const children = this.props.children ? this.props.children : [];
-        const siblings = this.props.siblings ? this.props.siblings : [];
-        const category = this.props.category ? this.props.category : this.state.category;
+        
+        const children = this.state.children;
+        const siblings = this.state.siblings
+        // const category = this.props.category ? this.props.category : this.state.category;
         
         let categories = [];
         if (children.length) {
@@ -59,30 +87,38 @@ class CategoryShow extends React.Component {
         return categories;
         
     }
+
+    renderParentLink() {
+
+        if (this.props.parent !== undefined){
+         return (
+         <Link to={`/categories/${this.props.parent.id}`}>
+            {this.props.parent.categoryName}
+        </Link>
+        )}
+    }
     render () {
-        const blankParent = { categoryName: '', id: 0, }
-        const blankCategory = { categoryName: 'blank',}
-        const category = this.props.category ? this.props.category : this.state.category
-        const parent = this.props.parent ? this.props.parent : blankParent;
-        const count = category.bookCount > category.childBookCount ? category.bookCount : category.childBookCount;
-        
-        // debugger;
+
+        const category = this.state.category;
+        const parent = this.state.parent;
        
         return (
+    
             <section className="category-show">
                 
                 <header>
                     <div>
-                        <Link to={`/categories/${parent.id}`}>
+                        {/* <Link to={`/categories/${parent.id}`}>
                             {parent.categoryName}
-                        </Link>
+                        </Link> */}
+                        {this.renderParentLink()}
                         <h1>{category.categoryName}</h1>
-                        <h5>{count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} titles</h5>
+                        {/* <h5>{this.state.bookCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} titles</h5> */}
                         {/* <h5>{Math.floor((Math.random() * 2000) + 2000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} titles</h5> */}
                     </div>
                     <aside>
                         <span className="dummy-link">
-                            See all in {category.categoryName}
+                            &nbsp;
                         </span>
                     </aside>                    
                 </header>
@@ -90,24 +126,17 @@ class CategoryShow extends React.Component {
                    <ul>
                         {this.renderContent()}
                     </ul> 
-  
-                    <section className="book-carousel">
-                        <header>
-                            <h3>New Releases</h3>
-                            <aside>View all</aside>
-                        </header>
-                        <Carousel />
-                    </section>
+
                     <section className="book-carousel">
                         <header>
                             <h3>Best Sellers</h3>
-                            <aside>View all</aside>
+                            <aside><Link to="/books/filteredList/">View all</Link></aside>
                         </header>
-                        <Carousel />
+                        <CarouselContainer />
                     </section>
                 </main>
 
-
+                <BookIndexContainer />
             </section>
         )
 

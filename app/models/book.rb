@@ -50,4 +50,6 @@ class Book < ApplicationRecord
         foreign_key: :narrator_id,
         class_name: :ContentCreator
 
+  
+
 end

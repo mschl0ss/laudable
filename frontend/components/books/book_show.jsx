@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import ReviewIndexContainer from '../reviews/review_index_container';
 
-import Carousel from '../book_carousel/carousel';
+import CarouselContainer from '../book_carousel/carousel_container';
 import { receiveTempReviewObj } from '../../actions/temp_review_actions';
 
 class BookShow extends React.Component {
@@ -45,8 +45,7 @@ class BookShow extends React.Component {
     updateReview(field) {
         // debugger;
         return(e) => {
-            
-            console.log(this.state.review)
+
             const review = Object.assign({}, this.state.review);
             review[field] = e.currentTarget.value;
             this.setState({ review: review})
@@ -70,7 +69,7 @@ class BookShow extends React.Component {
         this.props.receiveHelperProps(helperProps);
         this.props.receiveTempReviewObj(this.state.review)
 
-        console.log(`/books/${this.props.book.id}/createReview`)
+        
         this.props.history.push(`/books/${this.props.book.id}/createReview`)
     }
 
@@ -98,7 +97,7 @@ class BookShow extends React.Component {
     }
 
     
-    componentDidUpdate(prevProps,prevState,snapshot) {
+    componentDidUpdate(prevProps) {
         if (prevProps.book !== this.props.book) {
             this.setState({ book: this.props.book })
             
@@ -108,7 +107,7 @@ class BookShow extends React.Component {
     computeLength(lengthInMinutes) {
         const hours = Math.floor(lengthInMinutes / 60);
         const minutes = lengthInMinutes % 60;
-        return `${hours} hours and ${minutes} mins`;
+        return `${hours} hrs and ${minutes} mins`;
     }
  
     computeDate(date) {
@@ -235,9 +234,8 @@ class BookShow extends React.Component {
     }
     
     render () {
-        console.log('Render BOOK SHOW')
         const book = this.props.book ? this.props.book : this.state.book;
-        // console.log(this.props.book)
+        
         const author = this.props.author ? this.props.author : this.state.author;
         const narrator = this.props.narrator ? this.props.narrator : this.state.narrator;
         const categories = this.props.categories.category ? 
@@ -285,7 +283,7 @@ class BookShow extends React.Component {
                                     {this.renderOverallReviewAverage(reviewScores.ratingOverall)}
                                     <span className="cumulutiveAvg">{cumulutiveAvg}</span>
                                     <span>&#40;
-                                        <a href="#reviews">{reviewScores.ratingOverall.votesCast} ratings</a>
+                                        {reviewScores.ratingOverall.votesCast} ratings
                                         &#41;</span>
                                     </li>
                             </ul>
@@ -295,23 +293,7 @@ class BookShow extends React.Component {
                         <section className="right-column">
                             {/* {this.renderBuy(book)} */}
                             {this.renderReviewStars()}
-                            {/* <Link to={{
-                                pathname: `/books/${book.id}/reviews`,
-                                state: {
-                                    book: book,
-                                    review: this.state.review,
-                                    author: author,
-                                    narrator: narrator,
-                                    computeLength: this.computeLength,
-                                    avgReviewScoreStars: this.renderOverallReviewAverage(reviewScores.ratingOverall),
-                                    cumulutiveAvg: cumulutiveAvg,
-                                    totalReviewVotes: reviewScores.ratingOverall.votesCast,
-                                    titleDisabled: true,
-                                    submitDisabled: true,
-                                    bodyDisabled: true,
-                                    previewForm: false
-                                }
-                            }} */}
+                            
                             <span onClick={this.navigateToReviewForm} className="small-link">Write a Review</span>
 
                             <div className="divider">
@@ -330,7 +312,7 @@ class BookShow extends React.Component {
 
                     <div className="carousel-section">
                         <h3>People who bought this also bought...</h3>
-                        <Carousel />
+                        <CarouselContainer />
                     </div>
 
                     <div className="publisher-summary">

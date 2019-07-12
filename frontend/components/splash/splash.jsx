@@ -8,9 +8,13 @@ class Splash extends React.Component {
 
 
 
+    redirect() {
+        this.props.history.push("/categories/");
+    }
     render () {
-        console.log('Render SPLASH');
-        const propBook = "book_icon.png";
+        
+        if (this.props.currentUser) {
+            this.redirect();}
         return (
         <div>
         <section className="splash-main-auth">

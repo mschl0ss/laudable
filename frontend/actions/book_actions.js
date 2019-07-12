@@ -3,6 +3,7 @@ import { getBook, getBooks, searchBooks } from '../utils/book_utils';
 export const RECEIVE_BOOKS = 'RECEIVE_BOOKS';
 export const RECEIVE_BOOK = 'RECEIVE_BOOK';
 export const RECEIVE_SEARCH_BOOKS = 'RECEIVE_SEARCH_BOOKS';
+export const RECEIVE_QUERY_STRING = 'RECEIVE_QUERY_STRING';
 
 
 const receiveBooks = books => ({
@@ -18,6 +19,11 @@ const receiveBook = book => ({
 const receiveSearchBooks = books => ({
     type: RECEIVE_SEARCH_BOOKS,
     books
+});
+
+export const receiveQueryString = queryString => ({
+    type: RECEIVE_QUERY_STRING,
+    queryString
 });
 
 export const fetchBooks = () => dispatch => (

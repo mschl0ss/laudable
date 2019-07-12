@@ -6,9 +6,6 @@ import Root from './components/root';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-
-
-    console.log('Render LAUDABLE ENTRY');
     
     const root = document.getElementById('root');
     let preloadedState = undefined;

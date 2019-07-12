@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-
+import BookIndexItem from './book_index_item';
 
 
 class BookIndex extends React.Component {
@@ -12,28 +12,56 @@ class BookIndex extends React.Component {
         super(props);
         this.state = {
             books: [],
+            allBooks: [],
+            queryString: '',
         }
     }
     componentDidMount() {
-        this.setState( {books: this.props.books})
+        this.setState( {books: this.props.books});
+        this.setState( {queryString: this.props.queryString})
+        this.setState( {allBooks: this.props.allBooks})
+
+        
     }
-    componentDidUpdate(prevProps,prevState,snapshot) {
+    componentDidUpdate(prevProps) {
         if(prevProps.books !== this.props.books) {
             this.setState( { books: this.props.books})
+            this.setState( { queryString: this.props.queryString})
+            this.setState({ allBooks: this.props.allBooks })
         }
     }
 
     render() {
-        // debugger;
-        const results = this.state.books.map(book=>(
+   
+        const queryLength = this.state.queryString.length ? true : false;
+        let resultsFor = '';
+        let books;
+       
+         //if queryString has characters and state.books has length => Showing results for
+         if (queryLength === true && this.state.books.length !== 0) {
+             resultsFor = `Showing Results for "${this.state.queryString}"`;
+             books = this.state.books;
+         }
+         // if queryString has characters and state.books has no length => No results for
+         else if (queryLength === true && this.state.books.length === 0) {
+             resultsFor = `No Results for "${this.state.queryString}"`;
+             books = []
+         }
+         // if queryString has no characters, show all
+         else {
+             resultsFor = 'Showing All';
+             books = this.state.allBooks;
+         }
+         
+        const results = books.map(book => (
             <li key={book.id}>
-                <Link to={`/books/${book.id}`}>{book.title}</Link>
+                <BookIndexItem book={book} />
             </li>
         ))
 
         return (
             <section className="books-index-wrapper">
-                <h1>Showing Results</h1>
+                <h1>{resultsFor}</h1>
                 <ul>
                     {results}
                 </ul>

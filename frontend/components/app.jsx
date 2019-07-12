@@ -8,7 +8,6 @@ import { AuthRoute, ProtectedRoute } from '../utils/route_utils';
 
 
 export default () => {
-        console.log('Render APP')
         return (
             <div id="app">
                 {/* <Route path="/" component={NavBarContainer} /> */}

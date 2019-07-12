@@ -1,10 +1,23 @@
+
+
+.review-index > h3 {
+    color: #1a1c1d;
+    font-weight: 700;
+    font-size: 20px;
+    margin: 40px 0;
+}
+.review-index > h6 {
+    color: rgba(26,28,29,.65);
+    font-size: 16px;
+    margin: 20px;
+}
+
 .review {
     display: flex;
     justify-content: space-between;
     color: rgba(26, 28, 29, 0.65);
     padding: 30px 0;
 }
-
 .review aside {
     width: 30%;
 }

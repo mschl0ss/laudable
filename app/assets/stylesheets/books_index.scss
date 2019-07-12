@@ -1,4 +1,55 @@
 .books-index-wrapper {
     width: 1000px;
     margin: 0 auto;
+    font-family: Arial;
+}
+
+.books-index-wrapper h1 {
+    font-weight: 700;
+    color: #1a1c1d;
+    font-size: 26px;
+    margin: 50px 0 30px;
+}
+
+.books-index-wrapper::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.book-index-item {
+    color: rgba(26, 28, 29, 0.65);
+    font-size: 13px;
+    line-height: 19px;
+    display: flex;
+    clear: both;
+    width: 850px;
+    margin-bottom: 20px;
+}
+.book-index-item h1 {
+    font-size: 20px;
+    
+}
+
+.book-index-item a {
+    color: #007eb0;
+    text-decoration: none;
+}
+.book-index-item a:hover {
+    text-decoration: underline;
+}
+.book-index-item .title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 10px;
+    
+}
+.book-index-item figure {
+    margin-right: 30px;
+}
+.book-index-item img {
+    outline: 1px solid rgba(33,35,37,.08);
+    outline-offset: -1px;
+    width: 189px;
+    height: 189px;
 }
