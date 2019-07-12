@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import BookShow from './book_show';
-import { fetchBook } from '../../actions/book_actions';
+import { fetchBook, fetchSearchByAuthorResults } from '../../actions/book_actions';
 import { fetchContentCreators } from '../../actions/content_creator_actions';
 import { fetchCategory, fetchCategories } from '../../actions/category_actions';
 import { fetchBookCategories } from '../../actions/book_category_actions';
@@ -33,6 +33,8 @@ const mdp = dispatch => {
         receiveTempReviewObj: temp => dispatch(receiveTempReviewObj(temp)),
         receiveHelperProps: helpers => dispatch(receiveHelperProps(helpers)),
         clearTempReviewObj: () => dispatch(clearTempReviewObj()), 
+        fetchSearchByAuthorResults: authorId => dispatch(fetchSearchByAuthorResults(authorId)),
+        
 
     })
 }

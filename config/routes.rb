@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get 'books/search', to: 'books#search'
     resources :books, only: %w(index show) do
       resources :book_categories, only: %w(index)
-      resources :reviews, only: %w(index create)
+      resources :reviews, only: %w(index create update)
     end
     
 

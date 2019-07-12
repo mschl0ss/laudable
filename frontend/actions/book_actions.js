@@ -1,4 +1,4 @@
-import { getBook, getBooks, searchBooks } from '../utils/book_utils';
+import { getBook, getBooks, searchBooks, searchBooksByAuthor } from '../utils/book_utils';
 
 export const RECEIVE_BOOKS = 'RECEIVE_BOOKS';
 export const RECEIVE_BOOK = 'RECEIVE_BOOK';
@@ -38,5 +38,10 @@ export const fetchBook = bookId => dispatch => (
 
 export const fetchSearchResults = query => dispatch => (
     searchBooks(query)
+        .then(books => dispatch(receiveSearchBooks(books)))
+)
+
+export const fetchSearchByAuthorResults = authorId => dispatch => (
+    searchBooksByAuthor(authorId)
         .then(books => dispatch(receiveSearchBooks(books)))
 )

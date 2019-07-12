@@ -25,22 +25,26 @@ class ReviewForm extends React.Component {
     componentDidMount() {
         this.setState({ review: this.props.reviewObj});
         this.setState({ helperProps: this.props.helperProps});
-        console.log(this.state)
 
-        this.updateReview('ratingOverall');
-        this.updateReview('ratingPerformance');
-        this.updateReview('ratingStory');
 
+    }
+
+    componentDidUpdate(prevProps) {
+        const review = this.state.review;
+
+        let access = 0;
+
+        access = review.ratingOverall > 0 ? access + 1 : access;
+        access = review.ratingPerformance > 0 ? access + 1 : access;
+        access = review.ratingStory > 0 ? access + 1 : access;
+
+        if (access === 3 && this.state.titleDisabled === true) this.setState({ titleDisabled: false })
+        
     }
     componentDidCatch(error, info) {
         debugger;
     }
     updateReview(field) {
-
-        const title = document.getElementById("review-form-title-input");
-        const body = document.getElementById("review-form-body-input");
-  
-        // debugger;
 
         return (e) => {
             const review = Object.assign({}, this.state.review);
@@ -66,7 +70,7 @@ class ReviewForm extends React.Component {
     }
     renderReviewStars() {
         const star = "\u2605";
-
+           
         const ratingOverall = [1, 2, 3, 4, 5].map(i => (
             <li key={i}>
                 <label>
@@ -171,7 +175,7 @@ class ReviewForm extends React.Component {
         )
     }
     render () {
-        console.log('Render REVIEWFORM');
+        
         if(this.state.helperProps.book === undefined ) return null;
         return(
             <section className="review-form-container">

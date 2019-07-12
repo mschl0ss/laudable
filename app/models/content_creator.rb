@@ -18,4 +18,10 @@ class ContentCreator < ApplicationRecord
     has_many :authored_books,
         foreign_key: :author_id,
         class_name: :Book
+
+    
+
+    def full_name()
+        @full_name = self.fname + " " + self.lname
+    end
 end

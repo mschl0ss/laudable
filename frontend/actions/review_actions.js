@@ -4,6 +4,7 @@ import * as ReviewUtils from '../utils/review_utils';
 export const RECEIVE_REVIEWS = 'RECEIVE_REVIEWS';
 export const RECEIVE_REVIEW = 'RECEIVE_REVIEW';
 export const CLEAR_REVIEWS = 'CLEAR_REVIEWS';
+export const VOTE_REVIEW = 'UPDATE_REVIEW'
 
 const receiveReviews = reviews => ({
     type: RECEIVE_REVIEWS,
@@ -15,7 +16,7 @@ const receiveReview = review => ({
     review
 });
 
-export const clearReviews = review => ({
+export const clearReviews = ()=> ({
     type: CLEAR_REVIEWS,
 });
 
@@ -28,3 +29,8 @@ export const postReview = (bookId, review) => dispatch => (
     ReviewUtils.postReview(bookId, review)
         .then(review => dispatch(receiveReview(review)))
 );
+
+export const voteReview = (reviewId, vote) => dispatch => (
+    ReviewUtils.voteReview(reviewId,vote)
+        .then((review) => dispatch(receiveReview(review)))
+)

@@ -24,3 +24,14 @@ export const postReview = (bookId,review) => (
         }
     })
 );
+
+export const voteReview = (reviewId, vote) => (
+    $.ajax({
+        method: 'patch',
+        url: `api/books/${bookId}/reviews/${reviewId}`,
+        data: {
+            review_id: reviewId,
+            vote: vote
+        }
+    })
+)

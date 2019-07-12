@@ -13,10 +13,14 @@ class Api::BooksController < ApplicationController
     end
 
     def search
-
+        # debugger
         if params[:query].present?
             
-            if params[:query][0..7] == "category"
+            if params[:query].class == Hash
+                
+                books = Book.where(author_id: params[:query][:author_id])
+
+            elsif params[:query][0..8] == "category:"
                 categoryName = params[:query][10..-1]
                 category_id = Category.where('category_name = ?', "#{categoryName}")[0].id
                 
@@ -24,6 +28,7 @@ class Api::BooksController < ApplicationController
                 bcs = BookCategory.where('category_id = ?', "#{category_id}")
                 
                 books = bcs.map {|bc| bc.book}
+            
             else
                 books = Book.where('lower(title) LIKE ?', "%#{params[:query].downcase}%")
             end

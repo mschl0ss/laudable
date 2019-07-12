@@ -21,3 +21,11 @@ export const searchBooks = query => (
     })
 );
 
+export const searchBooksByAuthor = authorId => (
+    $.ajax({
+        url: '/api/books/search',
+        dataType: 'json',
+        method: 'GET',
+        data: { query: {author_id: authorId }}
+    })
+);

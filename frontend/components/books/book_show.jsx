@@ -36,9 +36,12 @@ class BookShow extends React.Component {
             overallHoverPos: 0,
             performanceHoverPos: 0,
             storyHoverPos: 0,
+            
+    
         }
 
         this.navigateToReviewForm = this.navigateToReviewForm.bind(this);
+        this.searchByAuthor = this.searchByAuthor.bind(this);
         this.updateReview = this.updateReview.bind(this);
     }
 
@@ -79,6 +82,11 @@ class BookShow extends React.Component {
         }
     }
 
+    searchByAuthor() {
+        this.props.fetchSearchByAuthorResults(this.state.book.author_id)
+            .then( () => this.props.history.push("/books/filteredSearch"));
+    }
+
     clearHover() {
         this.setState( { overallHoverPos: 0});
         this.setState( { performanceHoverPos: 0});
@@ -100,7 +108,6 @@ class BookShow extends React.Component {
     componentDidUpdate(prevProps) {
         if (prevProps.book !== this.props.book) {
             this.setState({ book: this.props.book })
-            
         }
     }
 
@@ -152,8 +159,7 @@ class BookShow extends React.Component {
     renderBuy(book){
         return (
             <>
-                <p className="weak">Regular Price: <span className="strikethrough">{this.computeCost(book.priceInCents)}</span></p>
-                <p className="strong">Member Price: {this.computeDiscountedCost(book.priceInCents)}</p>
+                
 
                 <div className="buttons">
                     <button className="orange-button">Buy Now with Credit</button>
@@ -209,6 +215,8 @@ class BookShow extends React.Component {
             </li>
         ))
         return(
+            <>
+
             <div className="review-stars-container">
                 <div>
                     <span className="label">Overall</span>
@@ -230,11 +238,20 @@ class BookShow extends React.Component {
                 </div>
 
             </div>
+            <span onClick={this.navigateToReviewForm} className="small-link">Write a Review</span>
+
+            <div className="divider">
+                <hr />
+                <span>OR</span>
+            </div>
+
+            <button className="real-fake-button" onClick={this.navigateToReviewForm}>Or don't.  What do I care, I'm a button.</button>
+            </>
         )
     }
     
     render () {
-        const book = this.props.book ? this.props.book : this.state.book;
+        const book = this.state.book;
         
         const author = this.props.author ? this.props.author : this.state.author;
         const narrator = this.props.narrator ? this.props.narrator : this.state.narrator;
@@ -242,10 +259,11 @@ class BookShow extends React.Component {
             this.props.categories :
             {category: this.state.category, parentCategory: this.state.category };
         const reviewScores = this.props.reviewScores ? this.props.reviewScores : this.state.reviewScores;
+ 
         let cumulutiveAvg = (reviewScores.ratingOverall.totalScore / reviewScores.ratingOverall.votesCast).toFixed(1);
         if (reviewScores.ratingOverall.votesCast === 0) cumulutiveAvg = 0;
         
-        return (
+        return !book.id ? null : (
             <section className="book-show-container">
                 <header>
                     <h6 className="categories">
@@ -291,17 +309,13 @@ class BookShow extends React.Component {
                         </section>
 
                         <section className="right-column">
+                            {/* {this.state.reviewedBookIds.length > 0 ? this.renderBuy(book) : this.renderReviewStars()} */}
                             {/* {this.renderBuy(book)} */}
+                            <p className="weak">Regular Price: <span className="strikethrough">{this.computeCost(book.priceInCents)}</span></p>
+                            <p className="strong">Member Price: {this.computeDiscountedCost(book.priceInCents)}</p>
                             {this.renderReviewStars()}
                             
-                            <span onClick={this.navigateToReviewForm} className="small-link">Write a Review</span>
-
-                            <div className="divider">
-                                <hr />
-                                <span>OR</span>
-                            </div>
-
-                            <button className="real-fake-button">Or don't.  What do I care, I'm a button.</button>
+                            
 
                         </section>
                     </div>
@@ -321,6 +335,7 @@ class BookShow extends React.Component {
                     </div>
 
                     <section className="reviews" id="reviews">
+                       
                         <ReviewIndexContainer bookId={book.id}/>
                     </section>
                 </main>

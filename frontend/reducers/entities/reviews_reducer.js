@@ -12,6 +12,7 @@ export default (state = {}, action) => {
             return merge({},state,{ [action.review.id]: action.review})
         case CLEAR_REVIEWS:
             return {};
+
         default:
             return state;
     }

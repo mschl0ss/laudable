@@ -79,4 +79,11 @@ class User < ApplicationRecord
         self.session_token ||= SecureRandom.urlsafe_base64
     end
 
+    def reviewed_book_ids
+        @review_ids = self.reviews.map do |review_obj|
+            review_obj.book_id
+        end
+        return @review_ids
+    end
+
 end

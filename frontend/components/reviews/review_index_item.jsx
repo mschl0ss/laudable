@@ -1,10 +1,25 @@
 import React from 'react';
 
 class ReviewIndexItem extends React.Component {
-   
+   constructor(props) {
+       super(props);
+
+       this.state = {
+           review: {
+               title: '', ratingOverall: 0, ratingPerformance: 0, ratingStory: 0, createdAt: '',
+               helpfulVoteCount: 0, totalVoteCount: 0, body: ''
+           }
+       }
+   }
 
     componentDidMount(){
         this.props.fetchUser(this.props.userId);
+    }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.review !== this.props.review ){
+            this.setState({ review: this.props.review})
+        }
     }
     renderStars (score) {
         let stars = "";
@@ -13,13 +28,17 @@ class ReviewIndexItem extends React.Component {
         return stars;
     }
 
+    voteReview(vote) {
+        this.props.voteReview(this.props.reviewId, vote);
+    }
+
     render () {
         const blankReview = {
             title:'',ratingOverall:0,ratingPerformance:0,ratingStory:0,createdAt:'',
              helpfulVoteCount: 0, totalVoteCount: 0, body: ''}
         const blankUser = { username:'', city:'', state:''}
 
-        const review = this.props.review ? this.props.review : blankReview;
+        const review = this.state.review
         const user = this.props.user ? this.props.user : blankUser;
         const date = new Date(review.createdAt);
         const body = review.body.split('\n').map((p, i) => (

@@ -64,15 +64,15 @@ user_ids = (demoUser.id..User.last.id).to_a.shuffle
 
 root_cat_ae = Category.create!(
     parent_category_id: nil,
-    category_name: "Arts & Entertainment"
+    category_name: "Arts and Entertainment"
 )
 root_cat_bm = Category.create!(
     parent_category_id: nil,
-    category_name: "Bios & Memoirs"
+    category_name: "Bios and Memoirs"
 )
 root_cat_sff = Category.create!(
     parent_category_id: nil,
-    category_name: "Sci-Fi & Fantasy"
+    category_name: "Sci-Fi and Fantasy"
 )
 root_cat_c = Category.create!(
     parent_category_id: nil,
@@ -80,7 +80,7 @@ root_cat_c = Category.create!(
 )
 
 
-# 1. Arts & Entertainment (5)
+# 1. Arts and Entertainment (5)
 
 cat_ae_cb = Category.create!(
     parent_category_id: root_cat_ae.id,
@@ -88,21 +88,21 @@ cat_ae_cb = Category.create!(
 )
 cat_ae_ip = Category.create!(
     parent_category_id: root_cat_ae.id,
-    category_name: "Interviews & Panels"
+    category_name: "Interviews and Panels"
 )
 
 
 
-# 2. Bios & Memoirs (8)
+# 2. Bios and Memoirs (8)
 
 
 cat_bm_stl = Category.create!(
     parent_category_id: root_cat_bm.id,
-    category_name: "Science & Technology Leaders"
+    category_name: "Science and Technology Leaders"
 )
 
 
-# 3. Sci Fi & Fantasy (9)
+# 3. Sci Fi and Fantasy (9)
 
 cat_sff_fc=Category.create!(
     parent_category_id: root_cat_sff.id,
@@ -123,7 +123,7 @@ cat_cla_al = Category.create!(
 )
 cat_cla_gr = Category.create!(
     parent_category_id: root_cat_c.id,
-    category_name: "Greek & Roman"
+    category_name: "Greek and Roman"
 )
 
 
@@ -133,7 +133,7 @@ cat_cla_gr = Category.create!(
 ################
 
 
-#### Arts & Entertainment
+#### Arts and Entertainment
 
 ## Celebrity Bios
 
