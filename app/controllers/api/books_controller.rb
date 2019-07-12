@@ -28,9 +28,9 @@ class Api::BooksController < ApplicationController
                 bcs = BookCategory.where('category_id = ?', "#{category_id}")
                 
                 books = bcs.map {|bc| bc.book}
-            
+            elsif params[:query][0..4] == ":all:"
             else
-                books = Book.where('lower(title) LIKE ?', "%#{params[:query].downcase}%")
+                books = Book.all
             end
 
             @books = books.map do |book|
