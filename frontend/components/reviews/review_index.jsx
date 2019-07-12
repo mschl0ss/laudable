@@ -16,9 +16,9 @@ class ReviewIndex extends React.Component {
         this.props.fetchReviews(this.props.bookId);
     }
     componentDidUpdate(prevProps){
-        console.log(this)
+        
         if (this.state.bookId !== this.props.bookId) {
-            console.log(this)
+            
             this.props.clearReviews();
             this.props.fetchReviews(this.props.bookId);
             this.setState({reviews: this.props.reviews})
