@@ -1,14 +1,20 @@
 class Api::BooksController < ApplicationController
 
     def index
-        @books = Book.all
+        # @books = Book.all
+        @books = Book.all.map do |book|
+            structBook(book)
+        end
         render :index
     end
 
     def show
 
         
-        @book = Book.find_by(id: params[:id])
+        # @book = Book.find_by(id: params[:id])
+        @book = structBook(Book.find_by(id: params[:id]))
+       
+        
         render :show
     end
 
@@ -40,17 +46,7 @@ class Api::BooksController < ApplicationController
             end
 
             @books = books.map do |book|
-                OpenStruct.new(
-                    id: book.id, title: book.title, 
-                    author_id: book.author.id, author: book.author.fname + ' ' + book.author.lname,
-                    narrator_id: book.narrator.id, narrator: book.narrator.fname + ' ' + book.narrator.lname,
-                    length_in_minutes: book.length_in_minutes,
-                    release_date: book.release_date,
-                    book_cover: book.book_cover,
-                    total_reviews: book.reviews.count,
-                    price_dollars: book.price_in_cents / 100,
-                    price_cents: book.price_in_cents % 100
-                    )
+               structBook(book)
             end
             
          
@@ -60,6 +56,24 @@ class Api::BooksController < ApplicationController
        
 
         render :search
+    end
+
+    private
+
+    def structBook(book)
+        OpenStruct.new(
+            id: book.id, title: book.title, 
+            author_id: book.author.id, author: book.author.fname + ' ' + book.author.lname,
+            narrator_id: book.narrator.id, narrator: book.narrator.fname + ' ' + book.narrator.lname,
+            language: book.language,
+            publisher_summary: book.publisher_summary,
+            length_in_minutes: book.length_in_minutes,
+            release_date: book.release_date,
+            book_cover: book.book_cover,
+            total_reviews: book.reviews.count,
+            price_dollars: book.price_in_cents / 100,
+            price_cents: book.price_in_cents % 100
+            )
     end
 
 end

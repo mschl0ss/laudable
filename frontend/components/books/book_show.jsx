@@ -251,6 +251,7 @@ class BookShow extends React.Component {
     }
     
     render () {
+        if(!this.props.book) return null;
         const book = this.state.book;
         
         const author = this.props.author ? this.props.author : this.state.author;

@@ -76,7 +76,7 @@ class SearchBar extends React.Component {
 
         return (
             <div className="right search">
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} autoComplete="off">
                     <input
                         id="search-bar-text-input"
                         type="text"

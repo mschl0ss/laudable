@@ -14,7 +14,7 @@ class ErrorBoundary extends React.Component {
 
     componentDidCatch(error, info) {
         // Display fallback UI
-        debugger;
+        // debugger;
         this.setState({ hasError: true });
         this.props.dispatchErrors(error)
 
@@ -25,7 +25,7 @@ class ErrorBoundary extends React.Component {
 
     render() {
         if (this.state.hasError) {
-            debugger;
+            // debugger;
             // You can render any custom fallback UI
             return <h1>Something went wrong.</h1>;
         }
