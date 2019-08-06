@@ -98,9 +98,6 @@ class BookShow extends React.Component {
 
     componentDidMount() {
         this.props.fetchBook(this.props.match.params.bookId);
-        this.props.fetchContentCreators();
-        this.props.fetchCategories();
-        this.props.fetchBookCategories(this.props.match.params.bookId);
 
     }
 
@@ -253,12 +250,12 @@ class BookShow extends React.Component {
     render () {
         if(!this.props.book) return null;
         const book = this.state.book;
+        console.log(book)
         
-        const author = this.props.author ? this.props.author : this.state.author;
-        const narrator = this.props.narrator ? this.props.narrator : this.state.narrator;
-        const categories = this.props.categories.category ? 
-            this.props.categories :
-            {category: this.state.category, parentCategory: this.state.category };
+        // const narrator = this.props.narrator ? this.props.narrator : this.state.narrator;
+        // const categories = this.props.categories.category ? 
+        //     this.props.categories :
+        //     {category: this.state.category, parentCategory: this.state.category };
         const reviewScores = this.props.reviewScores ? this.props.reviewScores : this.state.reviewScores;
  
         let cumulutiveAvg = (reviewScores.ratingOverall.totalScore / reviewScores.ratingOverall.votesCast).toFixed(1);
@@ -268,12 +265,12 @@ class BookShow extends React.Component {
             <section className="book-show-container">
                 <header>
                     <h6 className="categories">
-                        <Link to={`/categories/${categories.parentCategory.id}`}>
-                            {categories.parentCategory.categoryName}
+                        <Link to={`/categories/${book.parentCategory.id}`}>
+                            {book.parentCategory.category_name}
                         </Link> 
                         <span>></span>
-                        <Link to={`/categories/${categories.category.id}`}>
-                            {categories.category.categoryName}
+                        <Link to={`/categories/${book.category.id}`}>
+                            {book.category.category_name}
                         </Link> 
                     </h6>
 
@@ -291,8 +288,8 @@ class BookShow extends React.Component {
                             <h3>{book.subtitle}</h3>
 
                             <ul>
-                                <li>By: {author.fname} {author.lname}</li>
-                                <li>Narrated by: {narrator.fname} {narrator.lname}</li>
+                                <li>By: {book.author}</li>
+                                <li>Narrated by: {book.narrator}</li>
                                 <li>Length: {this.computeLength(book.lengthInMinutes)}</li>
                                 <li>Unabridged Audiobook</li>
                                 <li>Release Date: {this.computeDate(book.releaseDate)}</li>

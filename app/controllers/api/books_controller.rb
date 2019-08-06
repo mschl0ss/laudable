@@ -65,6 +65,7 @@ class Api::BooksController < ApplicationController
             id: book.id, title: book.title, 
             author_id: book.author.id, author: book.author.fname + ' ' + book.author.lname,
             narrator_id: book.narrator.id, narrator: book.narrator.fname + ' ' + book.narrator.lname,
+            category: book.categories.first, parent_category: book.categories.first.parent_category,
             language: book.language,
             publisher_summary: book.publisher_summary,
             length_in_minutes: book.length_in_minutes,

@@ -15,9 +15,6 @@ import { receiveTempReviewObj, receiveHelperProps,clearTempReviewObj } from '../
 
 const msp = (state,ownProps) => ({
     book: state.entities.books[ownProps.match.params.bookId],
-    author: getBookAuthor(state, ownProps.match.params.bookId),
-    narrator: getBookNarrator(state, ownProps.match.params.bookId),
-    categories: getBookCategories(state, ownProps.match.params.bookId),
     reviewScores: getBookReviewScores(state, ownProps.match.params.bookId),
     currentUser: state.session.currentUser,
     
@@ -27,10 +24,6 @@ const mdp = dispatch => {
     // debugger;
     return ({
         fetchBook: bookId => dispatch(fetchBook(bookId)),
-        fetchContentCreators: () => dispatch(fetchContentCreators()),
-        fetchCategories: () => dispatch(fetchCategories()),
-        fetchCategory: categoryId => dispatch(fetchCategory(categoryId)),
-        fetchBookCategories: bookId => dispatch(fetchBookCategories(bookId)),
         receiveTempReviewObj: temp => dispatch(receiveTempReviewObj(temp)),
         receiveHelperProps: helpers => dispatch(receiveHelperProps(helpers)),
         clearTempReviewObj: () => dispatch(clearTempReviewObj()), 
