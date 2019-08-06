@@ -21,7 +21,9 @@ export default (props) => {
 
         <div className="book-index-item">
             <figure>
-                <img src={book.bookCoverUrl} />
+                <Link to={`/books/${book.id}`} >
+                    <img src={book.bookCoverUrl} />
+                </Link>
                 <figcaption className="gray-bar"></figcaption>
             </figure>
 
