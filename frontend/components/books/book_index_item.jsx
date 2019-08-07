@@ -21,11 +21,10 @@ const indexItem = (props) => {
         const numbers = props.book.releaseDate.split("-");
         return `${numbers[1]}-${numbers[2]}-${numbers[0].slice(2, 4)}`;
     }
-    const renderOverallReviewAverage = function (ratingsOverall) {
+    const renderOverallReviewAverage = function (score,votes) {
 
-        let cumulutiveAvg = Math.floor(ratingsOverall.totalScore / ratingsOverall.votesCast);
-        if (ratingsOverall.votesCast === 0) cumulutiveAvg = 0;
-
+        let cumulutiveAvg = Math.floor(score / votes);
+        if (votes === 0) cumulutiveAvg = 0;
         const stars = [];
         const star = "\u2605"
         for (let i = 0; i < 5; i++) {
@@ -35,7 +34,7 @@ const indexItem = (props) => {
         return stars;
 
     }
-    console.log(props.reviewScores)
+ 
     return(
 
         <div className="book-index-item">
@@ -55,8 +54,8 @@ const indexItem = (props) => {
                 <li>Length: {length}</li>
                 <li>Release date: {computeDate()}</li>
                 <li>
-                    {renderOverallReviewAverage(props.reviewScores.ratingOverall)}
-                    {book.totalReviews} ratings
+                    {renderOverallReviewAverage(props.book.overallTotal, props.book.overallVotes)}
+                    &nbsp;{book.totalReviews} ratings
                 </li>
             </ul>
 

@@ -191,8 +191,8 @@ class ReviewForm extends React.Component {
                             <h1>{this.state.helperProps.book.title}</h1>
                             <h3>{this.state.helperProps.book.subtitle}</h3>
 
-                            <p>By: {this.state.helperProps.author.fname} {this.state.helperProps.author.lname}</p>
-                            <p>Narrated By: {this.state.helperProps.narrator.fname} {this.state.helperProps.narrator.lname}</p>
+                            <p>By: {this.state.helperProps.author}</p>
+                            <p>Narrated By: {this.state.helperProps.narrator}</p>
                             <p>Length: {this.state.helperProps.computeLength(this.state.helperProps.book.lengthInMinutes)}</p>
                             <p>{this.state.helperProps.avgReviewScoreStars} 
                                 &nbsp;{this.state.helperProps.cumulutiveAvg === "NaN" ? 0 : this.state.helperProps.cumulutiveAvg} 

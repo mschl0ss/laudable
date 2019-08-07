@@ -33,9 +33,7 @@ class ReviewIndexItem extends React.Component {
     }
 
     render () {
-        const blankReview = {
-            title:'',ratingOverall:0,ratingPerformance:0,ratingStory:0,createdAt:'',
-             helpfulVoteCount: 0, totalVoteCount: 0, body: ''}
+        
         const blankUser = { username:'', city:'', state:''}
 
         const review = this.state.review
@@ -44,7 +42,7 @@ class ReviewIndexItem extends React.Component {
         const body = review.body.split('\n').map((p, i) => (
             <p key={i}>{p}</p>)
         )
-        // debugger;
+
         return (
 
             <div className="review">
@@ -65,7 +63,7 @@ class ReviewIndexItem extends React.Component {
                     <h6 className="username">{user.username}</h6>
                     <h6 className="location">{user.city},{user.state}</h6>
                     <h6 className="date">
-                        {date.getMonth()}-{date.getDay()}-{(date.getYear() + 1900) % 100}
+                        {date.getMonth()+1}-{date.getDay()}-{(date.getYear() + 1900) % 100}
                     </h6>
                 </aside>
                 <main>

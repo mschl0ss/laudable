@@ -55,11 +55,12 @@ class BookShow extends React.Component {
     }
 
     navigateToReviewForm() {
+        // const cumulutiveAvg = (this.props.book.overallTotal / this.props.reviewScores.ratingOverall.votesCast).toFixed(1);
         const cumulutiveAvg = (this.props.reviewScores.ratingOverall.totalScore / this.props.reviewScores.ratingOverall.votesCast).toFixed(1);
         const helperProps = {
             book: this.props.book,
-            author: this.props.author,
-            narrator: this.props.narrator,
+            author: this.props.book.author,
+            narrator: this.props.book.narrator,
             computeLength: this.computeLength,
             avgReviewScoreStars: this.renderOverallReviewAverage(this.props.reviewScores.ratingOverall),
             cumulutiveAvg: cumulutiveAvg === "NaN" ? cumulutiveAvg : 0,
