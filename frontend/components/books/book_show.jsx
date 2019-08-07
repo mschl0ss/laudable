@@ -117,14 +117,8 @@ class BookShow extends React.Component {
         return `${numbers[1]}-${numbers[2]}-${numbers[0].slice(2, 4)}`;
     }
 
-    computeCost(priceInCents) {
-        const dollars = Math.floor(priceInCents / 100).toFixed(0);
-        const cents = (priceInCents % 100).toFixed(0);
-        return `$${dollars}.${cents}`;
-    }
-
-    computeDiscountedCost(priceInCents) {
-        const discounted = (priceInCents * 0.7);
+    computeDiscountedCost(d,c) {
+        const discounted = (d*100+c)*.7
         const dollars = Math.floor(discounted / 100).toFixed(0);
         const cents = (discounted % 100).toFixed(0);
         return `$${dollars}.${cents}`;
@@ -249,11 +243,7 @@ class BookShow extends React.Component {
         if(!this.props.book) return null;
         const book = this.state.book;
         
-        // const narrator = this.props.narrator ? this.props.narrator : this.state.narrator;
-        // const categories = this.props.categories.category ? 
-        //     this.props.categories :
-        //     {category: this.state.category, parentCategory: this.state.category };
-        const reviewScores = this.props.reviewScores ? this.props.reviewScores : this.state.reviewScores;
+        const reviewScores = this.props.reviewScores;
  
         let cumulutiveAvg = (reviewScores.ratingOverall.totalScore / reviewScores.ratingOverall.votesCast).toFixed(1);
         if (reviewScores.ratingOverall.votesCast === 0) cumulutiveAvg = 0;
@@ -306,8 +296,8 @@ class BookShow extends React.Component {
                         <section className="right-column">
                             {/* {this.state.reviewedBookIds.length > 0 ? this.renderBuy(book) : this.renderReviewStars()} */}
                             {/* {this.renderBuy(book)} */}
-                            <p className="weak">Regular Price: <span className="strikethrough">{this.computeCost(book.priceInCents)}</span></p>
-                            <p className="strong">Member Price: {this.computeDiscountedCost(book.priceInCents)}</p>
+                            <p className="weak">Regular Price: <span className="strikethrough">{`$${book.priceDollars}.${book.priceCents}`}</span></p>
+                            <p className="strong">Member Price: {this.computeDiscountedCost(book.priceDollars, book.priceCents)}</p>
                             {this.renderReviewStars()}
                             
                             
