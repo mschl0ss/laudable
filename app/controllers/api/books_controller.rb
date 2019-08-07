@@ -69,6 +69,7 @@ class Api::BooksController < ApplicationController
             category: book.categories.first, parent_category: book.categories.first.parent_category,
             language: book.language,
             publisher_summary: book.publisher_summary,
+            publisher: book.publisher,
             length_in_minutes: book.length_in_minutes,
             release_date: book.release_date,
             book_cover: book.book_cover,

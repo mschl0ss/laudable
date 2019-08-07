@@ -5,6 +5,7 @@ const msp = state => ({
     books: Object.values(state.entities.searchBooks),
     allBooks: Object.values(state.entities.books),
     queryString: Object.values(state.ui.queryString).join(""),
+    user: state.session.currentUser,
 });
 
 export default connect(msp)(BookIndex);

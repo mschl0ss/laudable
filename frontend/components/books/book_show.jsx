@@ -118,10 +118,11 @@ class BookShow extends React.Component {
     }
 
     computeDiscountedCost(d,c) {
-        const discounted = (d*100+c)*.7
+        const discounted = (d * 100 + c) * .7
         const dollars = Math.floor(discounted / 100).toFixed(0);
         const cents = (discounted % 100).toFixed(0);
-        return `$${dollars}.${cents}`;
+        const zero = cents.toString().length < 2 ? "0" : "";
+        return `$${dollars}.${cents}${zero}`;
     }
 
     computePublisherSummary(publisherSummary) {

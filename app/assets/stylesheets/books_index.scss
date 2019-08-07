@@ -22,8 +22,9 @@
     font-size: 13px;
     line-height: 19px;
     display: flex;
+    justify-content: space-between;
     clear: both;
-    width: 850px;
+    width: 1000px;
     margin-bottom: 20px;
 }
 .book-index-item h1 {
@@ -53,4 +54,17 @@
     outline-offset: -1px;
     width: 189px;
     height: 189px;
+}
+
+.book-index-item .left {
+    display: flex;
+}
+.book-index-item .right {
+    float: right;
+    width: 30%;
+}
+
+.book-index-item .right .strong{
+    font-weight: bold;
+    font-size: 110%;
 }
