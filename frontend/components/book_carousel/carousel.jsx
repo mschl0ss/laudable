@@ -55,10 +55,7 @@ class Carousel extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchBooks();
-        this.setState({ books: this.props.books })
-        const imgs = this.props.books.map(book => book.bookCoverUrl)
-        this.setState({ imgUrls: imgs })
+        if(this.props.books.length < 18) this.props.fetchBooks();
     }
 
     componentDidUpdate(prevProps) {

@@ -1,4 +1,4 @@
-.tease-container {
+a div.tease-container {
     position: absolute;
     top: -70%;
     left: 0;
@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 
-.tease-container * {
+div.tease-container * {
     box-sizing: border-box;
 }
 
@@ -21,7 +21,7 @@
     left: -1%;
 }
 
-.tease-content {
+div.tease-content {
     margin-left: 20px;
     width: 350px;
     padding: 7%;
@@ -29,26 +29,26 @@
     box-shadow: 0 0 5px 0px #888888;
 }
 
-.tease-content h2 {
+div.tease-content h2 {
     font-weight: 700;
     color: #1a1c1d;
     font-size: 20px;
 }
 
-.tease-content h3 {
+div.tease-content h3 {
     color: #1a1c1d;
 }
 
-.tease-content .details {
+div.tease-content .details {
     margin: 3% 0 0;
     font-weight: bold;
 }
 
-.tease-content .stars {
+div.tease-content .stars {
     margin: 5% 0 0;
 }
 
-.tease-content .stars .label {
+div.tease-content .stars .label {
     display: inline-block;
     width: 50%;
 }
