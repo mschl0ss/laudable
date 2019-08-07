@@ -16,11 +16,11 @@ class NavBar extends React.Component{
         }
     }
 
-    updateField(field) {
-        return e => (
-            this.setState({ [field]: e.target.value })
-        )
-    }
+    // updateField(field) {
+    //     return e => (
+    //         this.setState({ [field]: e.target.value })
+    //     )
+    // }
 
     //----------------
     // -------USER NAV
@@ -58,7 +58,7 @@ class NavBar extends React.Component{
     siteNav () {
 
         // const dropDownClass = this.state.showSiteNavDropDown ? "browse-dropdown-content show" : "browse-dropdown-content show";
-        const dropDownClass = this.state.showSiteNavDropDown ? "browse-dropdown-content show" : "browse-dropdown-content hidden";
+        // const dropDownClass = this.state.showSiteNavDropDown ? "browse-dropdown-content show" : "browse-dropdown-content hidden";
         const loggedIn = this.props.currentUser ? true : false;
         const className = loggedIn ? 'site-nav protected' : 'site-nav auth';
         const searchIcon = loggedIn ? "searchicondark.png" : "searchbutton.svg";

@@ -36,4 +36,18 @@ class ApplicationController < ActionController::Base
         !!current_user
     end
 
+    def structUser(user)
+        OpenStruct.new(
+            id: user.id,
+            username: user.username,
+            email: user.email,
+            city: user.city,
+            state: user.state,
+            reviewed_book_ids: user.reviewed_book_ids,
+            library_books: user.library_books,
+            wishlist_books: user.wishlist_books,
+            cart_books: user.shopping_carts.last.shopping_cart_books,
+        )
+    end
+
 end

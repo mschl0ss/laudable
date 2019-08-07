@@ -4,7 +4,10 @@ Rails.application.routes.draw do
    
    
   namespace :api, defaults: { format: :json } do
-    resources :users, only: %w(index show create)
+    resources :users, only: %w(index show create) do 
+      resources :shopping_cart, only: %w(create update)
+      resources :shopping_cart_books, only: %w(create destroy)
+    end
     
     resources :categories, only: %w(index show)
 
@@ -20,6 +23,7 @@ Rails.application.routes.draw do
     resources :content_creators, only: %w(index show)
     
     resource :session, only: [:create, :destroy]
+
     
   end
    root to: 'static_pages#root'

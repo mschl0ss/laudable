@@ -27,7 +27,7 @@ class User < ApplicationRecord
     after_initialize :ensure_session_token
 
     has_many :reviews
-    has_one :shopping_cart
+    has_many :shopping_carts
    
     has_many :library_books,
     -> { where collection_type: 'library'},
@@ -39,7 +39,7 @@ class User < ApplicationRecord
         foreign_key: :user_id,
         class_name: :CollectionBook
  
-    has_many :books_in_cart, through: :shopping_cart, source: :books
+    has_many :books_in_cart, through: :shopping_carts, source: :books
 
     #spire
 
