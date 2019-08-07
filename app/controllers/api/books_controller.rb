@@ -63,7 +63,7 @@ class Api::BooksController < ApplicationController
     def structBook(book)
         stats = reviewStats(book)
         OpenStruct.new(
-            id: book.id, title: book.title, 
+            id: book.id, title: book.title,  subtitle: book.subtitle,
             author_id: book.author.id, author: book.author.fname + ' ' + book.author.lname,
             narrator_id: book.narrator.id, narrator: book.narrator.fname + ' ' + book.narrator.lname,
             category: book.categories.first, parent_category: book.categories.first.parent_category,

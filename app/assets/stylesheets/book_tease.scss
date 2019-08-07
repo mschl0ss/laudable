@@ -1,0 +1,60 @@
+.tease-container {
+    position: absolute;
+    top: -70%;
+    left: 0;
+    margin-left: 100%;
+    box-sizing: border-box;
+}
+
+.tease-container * {
+    box-sizing: border-box;
+}
+
+.tease-beak {
+    background-image: url(https://m.media-amazon.com/images/G/01/audibleweb/brickcity/1.0/popover_caret_release_1-0-18._V519763868_.svg);
+    content: "";
+    height: 18px;
+    width: 36px;
+    transform: rotate(-90deg);
+    position: absolute;
+    top:45%;
+    left: -1%;
+}
+
+.tease-content {
+    margin-left: 20px;
+    width: 350px;
+    padding: 7%;
+    background: white;
+    box-shadow: 0 0 5px 0px #888888;
+}
+
+.tease-content h2 {
+    font-weight: 700;
+    color: #1a1c1d;
+    font-size: 20px;
+}
+
+.tease-content h3 {
+    color: #1a1c1d;
+}
+
+.tease-content .details {
+    margin: 3% 0 0;
+    font-weight: bold;
+}
+
+.tease-content .stars {
+    margin: 5% 0 0;
+}
+
+.tease-content .stars .label {
+    display: inline-block;
+    width: 50%;
+}
+.short-summary {
+    margin: 5% 0 0;
+    height: 250px;
+    overflow: hidden;
+
+}

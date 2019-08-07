@@ -49,8 +49,8 @@ class BookIndex extends React.Component {
          }
          // if queryString has no characters, show all
          else {
-             resultsFor = 'Showing All';
              books = this.state.allBooks;
+             resultsFor = books.length ? 'Showing All' : "No Results";
          }
          
         const results = books.map(book => (
