@@ -99,7 +99,7 @@ class Splash extends React.Component {
                                 <div className="square-small bone"></div>
                             </div>
                             <div className="grid-item">
-                                <div className="square-small gray"></div>
+                                <div className="square-small gray-box"></div>
                             </div>
                         </div>
                     </div>

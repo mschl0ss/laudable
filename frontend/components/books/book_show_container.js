@@ -2,10 +2,6 @@ import { connect } from 'react-redux';
 
 import BookShow from './book_show';
 import { fetchBook, fetchSearchByAuthorResults } from '../../actions/book_actions';
-import { fetchContentCreators } from '../../actions/content_creator_actions';
-import { fetchCategory, fetchCategories } from '../../actions/category_actions';
-import { fetchBookCategories } from '../../actions/book_category_actions';
-import { getBookAuthor, getBookNarrator, getBookCategories } from '../../reducers/selectors';
 import { getBookReviewScores } from '../../reducers/selectors';
 import { receiveTempReviewObj, receiveHelperProps,clearTempReviewObj } from '../../actions/temp_review_actions';
 

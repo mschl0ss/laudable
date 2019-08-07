@@ -15,9 +15,6 @@ class BookShow extends React.Component {
                 lengthInMinutes: 100, priceInCents: 100, language: 'Hebrew',
                 publisher: '', 
             },
-            author: { fname: 'john', lname: 'smith' },
-            narrator: { fname: 'jane',  lname: 'doe' },
-            category: { categoryName: '', id: 0},
             reviewScores: {
                 ratingOverall: { totalScore: 0, votesCast: 0 },
                 ratingPerformance: { totalScore: 0, votesCast: 0 },
@@ -250,7 +247,6 @@ class BookShow extends React.Component {
     render () {
         if(!this.props.book) return null;
         const book = this.state.book;
-        console.log(book)
         
         // const narrator = this.props.narrator ? this.props.narrator : this.state.narrator;
         // const categories = this.props.categories.category ? 

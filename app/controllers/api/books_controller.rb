@@ -61,6 +61,7 @@ class Api::BooksController < ApplicationController
     private
 
     def structBook(book)
+        stats = reviewStats(book)
         OpenStruct.new(
             id: book.id, title: book.title, 
             author_id: book.author.id, author: book.author.fname + ' ' + book.author.lname,
@@ -72,9 +73,35 @@ class Api::BooksController < ApplicationController
             release_date: book.release_date,
             book_cover: book.book_cover,
             total_reviews: book.reviews.count,
+            overall_total: stats[0][0],
+            overall_votes: stats[0][1],
+            performance_total: stats[1][0],
+            performance_votes: stats[1][1],
+            story_total: stats[2][0],
+            story_votes: stats[2][1],
             price_dollars: book.price_in_cents / 100,
             price_cents: book.price_in_cents % 100
             )
+    end
+
+    def reviewStats(book)
+        # [totalScore, votesCast]
+        overall = [0, 0]
+        performance = [0, 0]
+        story = [0, 0]
+
+        book.reviews.each do |review|
+            overall[0] += review.rating_overall
+            performance[0] += review.rating_performance
+            story[0] += review.rating_story
+
+            overall[1]+=1
+            performance[1]+=1
+            story[1]+=1
+        end
+
+        [overall,performance,story]
+
     end
 
 end

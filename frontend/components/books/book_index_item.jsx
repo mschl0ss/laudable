@@ -1,10 +1,16 @@
 import React from 'react';
+import {connect} from 'react-redux'
 import { Link } from 'react-router-dom';
 
+import { getBookReviewScores } from '../../reducers/selectors';
 
 
+const msp = (state,ownProps) => ({
+    reviewScores: getBookReviewScores(state, ownProps.book.id),
+})
 
-export default (props) => {
+
+const indexItem = (props) => {
 
     const book = props.book;
 
@@ -15,8 +21,21 @@ export default (props) => {
         const numbers = props.book.releaseDate.split("-");
         return `${numbers[1]}-${numbers[2]}-${numbers[0].slice(2, 4)}`;
     }
+    const renderOverallReviewAverage = function (ratingsOverall) {
 
+        let cumulutiveAvg = Math.floor(ratingsOverall.totalScore / ratingsOverall.votesCast);
+        if (ratingsOverall.votesCast === 0) cumulutiveAvg = 0;
 
+        const stars = [];
+        const star = "\u2605"
+        for (let i = 0; i < 5; i++) {
+            const className = i < cumulutiveAvg ? 'gold' : 'gray';
+            stars.push(<span className={className} key={i}>{star}</span>)
+        }
+        return stars;
+
+    }
+    console.log(props.reviewScores)
     return(
 
         <div className="book-index-item">
@@ -35,10 +54,15 @@ export default (props) => {
                 <li>Narrated By: {book.narrator}</li>
                 <li>Length: {length}</li>
                 <li>Release date: {computeDate()}</li>
-                <li>{book.totalReviews} ratings</li>
+                <li>
+                    {renderOverallReviewAverage(props.reviewScores.ratingOverall)}
+                    {book.totalReviews} ratings
+                </li>
             </ul>
 
 
         </div>
     )
 }
+
+export default connect(msp)(indexItem);

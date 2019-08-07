@@ -8,7 +8,14 @@ json.extract! book, :id,
             :narrator_id, :narrator,
             :category, :parent_category,
             :language, 
-            :publisher_summary, :length_in_minutes, :release_date, :total_reviews,
+            :publisher_summary, :length_in_minutes, :release_date,
+            :total_reviews,
+            :overall_total,
+            :overall_votes,
+            :performance_total,
+            :performance_votes,
+            :story_total,
+            :story_votes,
             :price_dollars, :price_cents
 
 
