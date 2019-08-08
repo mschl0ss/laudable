@@ -7,3 +7,10 @@ export const addToCart = (userId,bookId) => (
         data: {book_id: bookId}
     })
 )
+
+export const getCartBooks = (userId) => (
+    $.ajax({
+        method: 'get',
+        url: `/api/users/${userId}/shopping_cart_books`,
+    })
+)
