@@ -36,6 +36,8 @@ class BookIndex extends React.Component {
         const queryLength = this.state.queryString.length ? true : false;
         let resultsFor = '';
         let books;
+        const user = this.props.user;
+        
        
          //if queryString has characters and state.books has length => Showing results for
          if (queryLength === true && this.state.books.length !== 0) {
@@ -53,11 +55,19 @@ class BookIndex extends React.Component {
              resultsFor = books.length ? 'Showing All' : "No Results";
          }
          
-        const results = books.map(book => (
+        const results = books.map(book => {
+            const status = user.libraryBooks.includes(book.id)?
+                "library" :
+                user.wishlistBooks.includes(book.id) ?
+                    "wishlist" : 
+                    user.shoppingCartBooks.includes(book.id) ?
+                        "cart" : "unowned";
+            return (
             <li key={book.id}>
-                <BookIndexItem book={book} />
+                <BookIndexItem book={book} status={status} />
             </li>
-        ))
+        )
+        })
 
         return (
             <section className="books-index-wrapper">

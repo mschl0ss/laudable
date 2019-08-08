@@ -18,8 +18,8 @@
           "state": "<%= current_user.state %>",
           "reviewedBookIds": <%= current_user.reviewed_book_ids %>,
           "libraryBooks": <%= current_user.library_books.collect(&:book_id) %>,
-          "wishlistBooks": "<%= render current_user.wishlist_books %>",
-          "shoppingCartBooks": "<%= render current_user.shopping_carts.last.shopping_cart_books %>",
+          "wishlistBooks": <%= current_user.wishlist_books.collect(&:book_id) %>,
+          "shoppingCartBooks": <%= current_user.shopping_carts.last.shopping_cart_books.collect(&:book_id) %>,
         };
       </script>
     <% end %>

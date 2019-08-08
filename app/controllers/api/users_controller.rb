@@ -6,7 +6,7 @@ class Api::UsersController < ApplicationController
     end
     
     def show
-        @user = found_user
+        @user = structUser(found_user)
     end
 
     def create
