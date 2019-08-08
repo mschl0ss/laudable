@@ -64,7 +64,7 @@ class BookIndex extends React.Component {
                         "cart" : "unowned";
             return (
             <li key={book.id}>
-                <BookIndexItem book={book} status={status} />
+                <BookIndexItem book={book} status={status} user={this.props.user}/>
             </li>
         )
         })

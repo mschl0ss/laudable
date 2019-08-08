@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux'
 import { Link } from 'react-router-dom';
 
-import { addToCart } from '../../utils/cart_collection_utils';
+import { addBookToCart } from '../../actions/cart_collection_actions'
 import { getBookReviewScores } from '../../reducers/selectors';
 import BookTease from './book_tease';
 
@@ -13,7 +13,7 @@ const msp = (state,ownProps) => ({
 })
 
 const mdp = dispatch => ({
-    addToCart: (userId, bookId) => dispatch(addToCart(userId,bookId))
+    addBookToCart: (userId, bookId) => dispatch(addBookToCart(userId,bookId))
 })
 
 
@@ -23,8 +23,11 @@ class indexItem extends React.Component {
         super(props);
         this.state = {
             teaseRender: false,
+            status: this.props.status,
 
         }
+
+        this.addBookToCart = this.addBookToCart.bind(this)
     }
 
     componentDidMount() {
@@ -54,21 +57,23 @@ class indexItem extends React.Component {
         return stars;
     }
 
-    addToCart() {
-        this.props.addToCart(this.props.user.id, this.props.book.id)
-            .then(()=>this.setState({status: ""}))
+    addBookToCart() {
+        console.log(this.state.status)
+        this.props.addBookToCart(this.props.user.id, this.props.book.id)
+        this.setState({status: "cart"})
+        console.log(this.state.status)
     }
     renderRight() {
         
         const book = this.props.book;
-        switch(this.props.status) {
+        switch(this.state.status) {
             case "unowned":
                 return (
                     <>
                         <p className="weak" > Regular Price: <span className="strikethrough">{`$${book.priceDollars}.${book.priceCents}`}</span></p >
                         <p className="strong">Member Price: {this.computeDiscountedCost(book.priceDollars, book.priceCents)}</p>
 
-                        <button className="orange-button">Add to Cart</button>
+                        <button className="orange-button" onClick={this.addBookToCart}>Add to Cart</button>
                         <button className="gray-button">Add to Wishlist</button>
                     </>
                 )
@@ -79,6 +84,14 @@ class indexItem extends React.Component {
                         <p className="weak">include 'created_at' in collection book jbuilder</p>
 
                         <button className="real-fake-button" >&#10003; In your Library</button>
+                    </>
+                )
+            case "cart":
+                return (
+                    <>
+                        <p className="weak" > Regular Price: <span className="strikethrough">{`$${book.priceDollars}.${book.priceCents}`}</span></p >
+                        <p className="strong">Member Price: {this.computeDiscountedCost(book.priceDollars, book.priceCents)}</p>
+                        <button className="real-fake-button" >&#10003; In Cart</button>
                     </>
                 )
             default:

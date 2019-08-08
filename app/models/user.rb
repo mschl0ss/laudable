@@ -43,6 +43,11 @@ class User < ApplicationRecord
 
     #spire
 
+    def shopping_cart_books
+        cart = self.shopping_carts.last
+
+        cart.shopping_cart_books
+    end
     def password=(password)
         @password=password
         self.password_digest = BCrypt::Password.create(password)

@@ -2,7 +2,7 @@ import { getUser } from '../utils/user_utils';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 
-const receiveUser = user => ({
+export const receiveUser = user => ({
     type: RECEIVE_USER,
     user
 });
