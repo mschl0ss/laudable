@@ -27,34 +27,37 @@ class NavBar extends React.Component{
     //----------------
 
     userNav () {
-        let cartCount
-        const user = this.state.currentUser || this.props.currentUser;
+        if(this.props.currentUser){
+            let cartCount;
+            const user = this.state.currentUser || this.props.currentUser;
 
-        cartCount = user.shoppingCartBooks.length ? (
-            <div className="cart-count">
-                {user.shoppingCartBooks.length}
-            </div>
-            ) : ( <></> )
-        
-        return (
-            this.props.currentUser ? (
-            <nav className="protected-user">
-                <div className="wrapper">
-                    <UserDropDown 
-                        logout={this.props.logout}
-                        currentUser={this.props.currentUser} />
-                    <div className="separator"></div>
-                    <img className="cart" src="https://cdn4.iconfinder.com/data/icons/shopping-21/64/shopping-01-512.png" />
-                    {cartCount}
+            cartCount = user.shoppingCartBooks.length ? (
+                <div className="cart-count">
+                    {user.shoppingCartBooks.length}
                 </div>
-            </nav>
-            ) :
-            (
+                ) : ( <></> )
+            
+            return (
+            
+                <nav className="protected-user">
+                    <div className="wrapper">
+                        <UserDropDown 
+                            logout={this.props.logout}
+                            currentUser={this.props.currentUser} />
+                        <div className="separator"></div>
+                        <img className="cart" src="https://cdn4.iconfinder.com/data/icons/shopping-21/64/shopping-01-512.png" />
+                        {cartCount}
+                    </div>
+                </nav>
+            )
+        }
+        else {
+            return (
             <nav className="auth-user">
                 <Link className="btn" to="/login">Sign In</Link>
             </nav>
             )
-        )
+        }
     }
 
 
