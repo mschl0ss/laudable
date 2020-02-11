@@ -4,13 +4,13 @@ import rootReducer from '../reducers/root_reducer';
 import thunk from '../thunk/thunk';
 
 
-const configureStore = (preloadedState = {} ) => (
+const configureStore = ( preloadedState = {} ) => (
     
     createStore(
         rootReducer,
         preloadedState,
-        // applyMiddleware(thunk,logger)
-        applyMiddleware(thunk)
+        applyMiddleware(thunk,logger)
+        // applyMiddleware(thunk)   
     )
 
 );

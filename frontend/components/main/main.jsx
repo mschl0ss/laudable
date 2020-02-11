@@ -15,13 +15,8 @@ import ReviewFormContainer from '../reviews/review_form_container';
 import Footer from './footer';
 import CarouselContainer from '../book_carousel/carousel_container';
 
-
-
-    
-    
 class Main extends React.Component {
-    
-    
+       
     componentDidUpdate(prevProps) {
         if (this.props.currentUser !== prevProps.currentUser) {
            //i guess do nothing
@@ -29,8 +24,7 @@ class Main extends React.Component {
     }
     
     render() {
-        
-        
+
         return (
         <div id="main-wrapper">
 
@@ -49,6 +43,8 @@ class Main extends React.Component {
                     <Route exact path="/carousel" component={CarouselContainer} />
                     {/* <AuthRoute exact path="/" component={SplashContainer} />
                     <ProtectedRoute exact path="/" component={SplashContainer} /> */}
+                    
+                    {/* redux demo route gonna go here*/}
                     <Route exact path="/" component={SplashContainer} />
                 </Switch>
             </div>
