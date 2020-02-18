@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import { RECEIVE_QUERY_STRING} from '../../actions/book_actions';
 
 export default (state = {}, action) => {
