@@ -25,8 +25,6 @@ class ReviewForm extends React.Component {
     componentDidMount() {
         this.setState({ review: this.props.reviewObj});
         this.setState({ helperProps: this.props.helperProps});
-
-
     }
 
     componentDidUpdate(prevProps) {

@@ -14,6 +14,8 @@ import ReviewFormContainer from '../reviews/review_form_container';
 
 import Footer from './footer';
 import CarouselContainer from '../book_carousel/carousel_container';
+import ReactDemoWrapper from '../redux_demo/redux_demo_wrapper';
+
 
 class Main extends React.Component {
        
@@ -44,7 +46,7 @@ class Main extends React.Component {
                     {/* <AuthRoute exact path="/" component={SplashContainer} />
                     <ProtectedRoute exact path="/" component={SplashContainer} /> */}
                     
-                    {/* redux demo route gonna go here*/}
+                    <Route exact path="/reduxDemo" component={ReactDemoWrapper} />
                     <Route exact path="/" component={SplashContainer} />
                 </Switch>
             </div>
