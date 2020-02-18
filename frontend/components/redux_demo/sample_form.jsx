@@ -7,7 +7,13 @@ class SampleForm extends React.Component {
         super(props);
 
         this.state = {
-            formFields: {},
+            //need to explicitly declare state variables or else warning
+            //maybe typescript satisfies it differently?
+            formData: {
+                fName: '',
+                lName: '',
+                condiment: '',
+            },
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,24 +22,23 @@ class SampleForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        // alert('submitted');
-        this.setState({formFields: {}});
+        alert(JSON.stringify(this.state.formData));
+        this.setState({formData: {}});
         //dispatch redux action
     }
 
     updateField(field) {
 
         return(e) => {
-            const formFields = Object.assign({}, this.state.formFields);
-            formFields[field] = e.currentTarget.value;
-            //TODO try to do just ({formFields})
-            this.setState({formFields: formFields})
+            const formData = Object.assign({}, this.state.formData);
+            formData[field] = e.currentTarget.value;
+            this.setState({formData})
         }
     }
 
     render() {
 
-        const { formFields } = this.state;
+        const { formData } = this.state;
         return (
             <section className = "redux-demo sample-form session-form">
 
@@ -44,23 +49,23 @@ class SampleForm extends React.Component {
                 <form onSubmit={this.handleSubmit} >
                     <label>First Name
                         <input type="text"
-                            value={formFields.fName}
+                            value={formData.fName}
                             placeholder="Enter your first name"
-                            onChange={this.updateField('fname')}
+                            onChange={this.updateField('fName')}
                         />
                     </label>
                     
                     <label>Last Name
                         <input type="text"
-                            value={formFields.lName}
+                            value={formData.lName}
                             placeholder="Enter your last name"
-                            onChange={this.updateField('lname')}
+                            onChange={this.updateField('lName')}
                         />
                     </label>
                     
                     <label>Favorite Burger Condiment
                         <input type="text"
-                            value={formFields.condiment}
+                            value={formData.condiment}
                             placeholder="there will be a polygraph"
                             onChange={this.updateField('condiment')}
                         />
