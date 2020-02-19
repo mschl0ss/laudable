@@ -1,22 +1,22 @@
 import React from 'react';
 
 function SampleResult(props) {
-    const { fName = '', lName = '', condiment = '' } = props;
+    const { formData = {} } = props;
 
     return(
         <section className="redux-demo session-form result">
             <h3>output</h3>
             
             <label>First Name
-                <mark>{fName}</mark>
+                <mark>{formData.fName}</mark>
             </label>
 
             <label>Last Name
-                <mark>{lName}</mark>
+                <mark>{formData.lName}</mark>
             </label>
 
             <label>Condiment
-                <mark>{condiment}</mark>
+                <mark>{formData.condiment}</mark>
             </label>
 
         </section>
