@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const msp = state => {
-    // console.log(state.ui)
     return ({
         formData: state.ui.reduxDemo
     })
@@ -17,17 +16,8 @@ class SampleResult extends React.Component {
         }
     }
 
-    componentDidUpdate(prevProps) {
-        // console.log('cDU', prevProps, this.props)
-        // console.log('prevState', this.state)
-        if(prevProps.formData !== this.props.formData) {
-            this.setState({ formData: this.props.formData})
-        }
-        // console.log('postState', this.state)
-    }
     render() {
-        console.log('render', this.state)
-        const { formData } = this.state;
+        const { formData } = this.props;
 
         return(
             <section className="redux-demo session-form result">

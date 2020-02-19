@@ -12,5 +12,4 @@ const mdp = dispatch => ({
     fetchCategories: () => dispatch(fetchCategories())
 })
 
-
 export default connect (msp,mdp)(BrowseDropDown);
