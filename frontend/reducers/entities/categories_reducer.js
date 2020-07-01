@@ -9,7 +9,6 @@ export default (state = {}, action ) => {
             return action.categories;
         case RECEIVE_CATEGORY:
             return merge( {}, state, { [action.category.id]: action.category });
-
         default:
             return state;
     }

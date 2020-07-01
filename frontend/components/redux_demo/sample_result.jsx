@@ -1,11 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const msp = state => {
-    return ({
+const msp = state => ({
         formData: state.ui.reduxDemo
     })
-}
 
 class SampleResult extends React.Component {
     constructor(props) {
@@ -40,4 +38,4 @@ class SampleResult extends React.Component {
     }
 }
 
-export default connect(msp)(SampleResult);
+export default connect(msp, null)(SampleResult);
