@@ -65,20 +65,8 @@
 <hr />
 
 ## Search & Nav
-<hr />
 
 * User navigates the site using the nav bar at the top.  They can browse, search, and sign in/out.
 
 <hr />
-
-## Categories
-<hr />
-
-<hr />
-
-## Book Show
-<hr />
-
-
-<hr /><hr />
 
